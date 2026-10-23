@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" width="480" height="300">
+<rect width="480" height="300" fill="#fff"/>
+<!-- body wall -->
+<path d="M20 20 L20 280" stroke="#c99a7e" stroke-width="10"/>
+<!-- shaft curved ventrally (downward) -->
+<path d="M24 110 C140 105 230 120 300 175 L330 205 C340 215 330 235 312 238 C290 242 270 232 262 222 L240 200 C190 165 120 160 24 175 Z" fill="#f2c9ad" stroke="#a8755c" stroke-width="3"/>
+<!-- glans -->
+<path d="M300 175 C335 185 365 215 360 245 C356 268 330 276 312 262 C300 252 296 238 312 238 Z" fill="#e8a99a" stroke="#a8755c" stroke-width="3"/>
+<!-- dorsal hood: redundant foreskin bunched on dorsal side -->
+<path d="M260 140 C300 120 345 150 368 200 C378 222 372 240 362 246 C356 214 330 180 298 170 C282 165 268 160 260 150 Z" fill="#f5d2bb" stroke="#a8755c" stroke-width="3"/>
+<!-- ventral fibrous band (chordee) -->
+<path d="M120 172 C170 178 220 196 262 222" stroke="#b5654f" stroke-width="3" stroke-dasharray="6 5" fill="none"/>
+<!-- meatus on ventral mid shaft -->
+<ellipse cx="185" cy="181" rx="9" ry="5" fill="#7a2f2a" transform="rotate(12 185 181)"/>
+<!-- urine stream -->
+<path d="M183 190 C178 215 170 240 165 280" stroke="#e7c64a" stroke-width="4" fill="none" stroke-linecap="round"/>
+<!-- scrotum -->
+<path d="M24 175 C60 190 90 230 80 270 C70 295 30 295 24 280 Z" fill="#eebc9f" stroke="#a8755c" stroke-width="3"/>
+</svg>

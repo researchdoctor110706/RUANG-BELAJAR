@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 320" width="460" height="320">
+<rect width="460" height="320" fill="#fff"/>
+<g transform="translate(0,0)">
+<path d="M40 30 C20 120 30 250 110 290 C160 310 190 290 200 250 C215 170 190 70 170 30" fill="#f6dccb" stroke="#a8755c" stroke-width="3"/>
+<path d="M115 20 L115 120" stroke="#6b8fd6" stroke-width="10"/>
+<ellipse cx="115" cy="190" rx="38" ry="58" fill="#f3b3a8" stroke="#a8755c" stroke-width="3"/>
+<path d="M150 150 C170 170 170 220 150 240" stroke="#c7836f" stroke-width="10" fill="none"/>
+<path d="M75 120 C50 150 50 240 80 265 C110 285 150 280 165 255 C185 225 180 140 160 120 Z" fill="none" stroke="#5aa0c8" stroke-width="3" stroke-dasharray="7 5"/>
+<path d="M115 248 L115 280" stroke="#a8755c" stroke-width="4"/>
+</g>
+<g transform="translate(240,0)">
+<path d="M40 30 C20 120 30 250 110 290 C160 310 190 290 200 250 C215 170 190 70 170 30" fill="#f6dccb" stroke="#a8755c" stroke-width="3"/>
+<path d="M115 20 L115 110" stroke="#6b8fd6" stroke-width="10"/>
+<ellipse cx="115" cy="160" rx="62" ry="36" fill="#f3b3a8" stroke="#a8755c" stroke-width="3"/>
+<path d="M78 128 C100 115 140 115 160 128" stroke="#c7836f" stroke-width="10" fill="none"/>
+<path d="M30 110 C15 160 20 240 60 270 C110 300 170 290 190 250 C210 200 200 140 185 110 Z" fill="none" stroke="#5aa0c8" stroke-width="3" stroke-dasharray="7 5"/>
+</g>
+<text x="115" y="312" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#333">A</text>
+<text x="355" y="312" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#333">B</text>
+</svg>

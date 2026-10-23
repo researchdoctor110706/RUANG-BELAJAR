@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 360" width="400" height="360">
+<rect width="400" height="360" fill="#fff"/>
+<!-- lower abdomen -->
+<path d="M30 20 L370 20 L370 120 C300 140 100 140 30 120 Z" fill="#f2c9ad" stroke="#a8755c" stroke-width="3"/>
+<!-- penis viewed from above (dorsal surface), short and broad -->
+<path d="M140 122 C140 200 150 260 165 285 C180 305 220 305 235 285 C250 260 260 200 260 122 Z" fill="#f2c9ad" stroke="#a8755c" stroke-width="3"/>
+<!-- open urethral plate groove on dorsum -->
+<path d="M180 128 C176 190 182 250 195 288 C200 296 204 296 207 288 C218 250 224 190 220 128 Z" fill="#d97a72" stroke="#9b3d37" stroke-width="2"/>
+<path d="M200 135 L200 285" stroke="#b44b44" stroke-width="2" stroke-dasharray="4 4"/>
+<!-- meatus at base -->
+<ellipse cx="200" cy="132" rx="14" ry="7" fill="#6b2622"/>
+<!-- split glans -->
+<path d="M165 285 C170 315 192 322 195 300 M205 300 C208 322 230 315 235 285" stroke="#a8755c" stroke-width="3" fill="#e8a99a"/>
+<!-- scrotum below -->
+<path d="M110 300 C120 350 280 350 290 300" stroke="#a8755c" stroke-width="3" fill="none" stroke-dasharray="2 0"/>
+</svg>

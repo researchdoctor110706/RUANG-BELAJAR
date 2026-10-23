@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" width="480" height="280">
+<rect width="480" height="280" fill="#fff"/>
+<path d="M20 30 L20 250" stroke="#c99a7e" stroke-width="10"/>
+<!-- shaft -->
+<path d="M24 105 L250 112 L250 172 L24 178 Z" fill="#f2c9ad" stroke="#a8755c" stroke-width="3"/>
+<!-- swollen, edematous retracted foreskin ring (collar) -->
+<path d="M235 92 C260 78 290 82 296 104 L296 180 C290 202 260 206 235 192 C226 170 226 114 235 92 Z" fill="#f4b9a4" stroke="#a8755c" stroke-width="3"/>
+<path d="M250 96 C262 110 262 175 250 188" stroke="#b5654f" stroke-width="3" fill="none"/>
+<path d="M270 90 C282 112 282 172 270 194" stroke="#d48b77" stroke-width="2" fill="none"/>
+<!-- engorged dusky glans -->
+<path d="M296 98 C360 90 430 112 440 142 C430 172 360 194 296 186 Z" fill="#b8615d" stroke="#7d3a36" stroke-width="3"/>
+<ellipse cx="438" cy="142" rx="4" ry="9" fill="#5c2420"/>
+<!-- shine -->
+<path d="M320 112 C360 106 400 116 420 128" stroke="#e7a39c" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path d="M24 178 C60 195 90 225 80 255 C70 275 30 275 24 262 Z" fill="#eebc9f" stroke="#a8755c" stroke-width="3"/>
+</svg>
