@@ -152,8 +152,9 @@ details.more[open]>summary::before{content:"– "}
 
 /* summaries */
 .reader{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:24px;align-items:start}
-@media (max-width:860px){.reader{grid-template-columns:1fr}}
-.prose{max-width:68ch;display:grid;gap:14px}
+@media (max-width:860px){.reader{grid-template-columns:minmax(0,1fr)}}
+.prose,.reader > *{min-width:0}
+.prose{max-width:68ch;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
 .prose h3{font-size:1.25rem;margin-top:10px;display:flex;gap:10px;align-items:baseline}
 .prose h3 .lvl{font-family:var(--f-mono);font-size:.7rem;color:#fff;background:var(--peri);padding:2px 7px;border-radius:6px;letter-spacing:.06em}
 .prose ul,.prose ol{margin:0;padding-left:1.2em;display:grid;gap:4px}
@@ -173,6 +174,8 @@ details.more[open]>summary::before{content:"– "}
 .toc button{display:block;width:100%;text-align:left;background:none;border:0;padding:5px 6px;border-radius:6px;font:inherit;font-size:.85rem;color:var(--ink);cursor:pointer}
 .toc button:hover{background:var(--sun-soft)}
 .prose h3[id]{scroll-margin-top:120px}
+.prose h3[id]{background:var(--peri-soft);border-left:5px solid var(--peri);padding:9px 12px;border-radius:10px;margin-top:22px;color:var(--ink)}
+.prose p.sub{font-weight:800;color:var(--peri);border-left:3px solid var(--peri);background:linear-gradient(90deg,var(--peri-soft),transparent);padding:4px 10px;border-radius:0 8px 8px 0;margin:8px 0 0}
 .toc-m{display:none;padding:10px 12px}
 .toc-m summary{cursor:pointer}
 @media (max-width:860px){.toc-m{display:block}.toc-d{display:none}.prose h3[id]{scroll-margin-top:180px}}
@@ -1332,6 +1335,7 @@ function fcard(h, html){ return '<div class="card stack"><h3>'+h+'</h3>'+html+'<
 function speakBtn(text){ return '<button class="speak" data-act="speak" data-text="'+esc(text)+'">▶ Dengarkan</button>'; }
 
 /* ---------- RANGKUMAN ---------- */
+function subify(h){ return String(h||"").replace(/<p><b>(\d+(?:\.\d+)+\.?\s[^<]*)<\/b><\/p>/g, '<p class="sub">$1</p>'); }
 function vRangkuman(){
   const kNo = s => { const l = lecById(s.lecture); if (l) return +l.no; const m = /^k(\d+)/.exec(s.lecture||""); return m ? +m[1] : null; };
   const list = allSummaries().slice().sort((a,b) => (kNo(a)??999) - (kNo(b)??999));
@@ -1347,7 +1351,7 @@ function vRangkuman(){
   return '<div class="row"><button class="btn tiny ghost" data-act="closesum">← Semua rangkuman</button>'+speakBtn(cur.title+". "+full)+'</div>'+
   '<div class="reader"><article class="prose"><span class="eyebrow">Diperbarui '+esc(cur.updated||"")+'</span><h2>'+esc(cur.title)+'</h2>'+(cur.note?'<p class="small muted">'+esc(cur.note)+'</p>':'')+
     ((cur.sections||[]).length>2?'<details class="card toc toc-m"><summary><b>Daftar isi</b> <span class="small muted">('+cur.sections.length+' bagian)</span></summary>'+cur.sections.map((s,i) => '<button data-act="gosec" data-id="'+i+'">'+esc(s.h)+'</button>').join("")+'</details>':'')+
-    (cur.sections||[]).map((s,i) => '<h3 id="sec-'+i+'"><span class="lvl">'+esc(s.lvl||"")+'</span>'+esc(s.h)+'</h3>'+termify(s.html, cur.glossary||{})).join("")+
+    (cur.sections||[]).map((s,i) => '<h3 id="sec-'+i+'"><span class="lvl">'+esc(s.lvl||"")+'</span>'+esc(s.h)+'</h3>'+termify(subify(s.html), cur.glossary||{})).join("")+
     '<h3><span class="lvl">Sumber</span>Referensi</h3><ol class="refs">'+(cur.refs||[]).map(r => '<li>'+esc(r)+'</li>').join("")+'</ol></article>'+
   '<aside class="side">'+((cur.sections||[]).length>2?'<div class="card stack toc toc-d"><h3>Daftar isi</h3>'+(cur.sections||[]).map((s,i) => '<button data-act="gosec" data-id="'+i+'">'+esc(s.h)+'</button>').join("")+'</div>':'')+'<div class="card stack"><h3>Glosarium</h3><div class="gloss">'+Object.keys(cur.glossary||{}).sort().map(k => '<div><b>'+esc(k)+'</b>'+esc(cur.glossary[k])+'</div>').join("")+'</div></div>'+
   '<div class="card stack"><h3>Sudah baca?</h3><p class="small muted">Lanjut ke milestone Duduk Manis: tutup layar, tulis ulang di buku.</p>'+(cur.lecture?'<button class="btn tiny pop" data-act="done" data-l="'+cur.lecture+'" data-n="2">Tandai Duduk Manis selesai</button>':'')+'</div></aside></div>';
