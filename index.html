@@ -931,6 +931,7 @@ function vBeranda(){
     '</div>'+
     '<div class="quote"><span class="eyebrow">Kalimat hari ini</span><blockquote>'+esc(q)+'</blockquote><a class="btn ghost tiny" href="#nonton">Lagi jenuh? Buka Nonton &amp; Semangat</a></div>'+
   '</div>'+
+  downloadsCard()+
   '<div class="stack"><div class="row" style="justify-content:space-between"><h3>Milestone hari ini</h3><span class="small muted">'+(b.tentative?'Tanggal KUL masih perkiraan, nanti diganti jadwal asli':'')+'</span></div>'+
     (todays.length ? todays.map(x => taskRow(x,false)).join("") : '<div class="empty">Tidak ada milestone yang jatuh tempo hari ini. Kejar yang tertunda atau latsol santai.</div>')+
   '</div>'+
@@ -1336,12 +1337,22 @@ function speakBtn(text){ return '<button class="speak" data-act="speak" data-tex
 
 /* ---------- RANGKUMAN ---------- */
 function subify(h){ return String(h||"").replace(/<p><b>(\d+(?:\.\d+)+\.?\s[^<]*)<\/b><\/p>/g, '<p class="sub">$1</p>'); }
+function downloadsCard(){
+  const F = [
+    ["Rangkuman 23 KUL", "Semua rangkuman + gambar penting", "Rangkuman-Blok-Uro", "9,3 MB", "6,8 MB"],
+    ["Drill Soal (campur)", "462 soal kating + HOTS diacak, tanpa label KUL", "Drill-Soal-Blok-Uro", "4,1 MB", "3,3 MB"],
+    ["Drill Pembahasan", "Kunci + pembahasan bahasa bayi, nomor sama", "Drill-Pembahasan-Blok-Uro", "4,0 MB", "0,3 MB"]
+  ];
+  return '<div class="card" id="unduh" style="display:grid;gap:10px"><div><span class="eyebrow">Unduh file</span><h3>Rangkuman &amp; drill soal (PDF / Word)</h3><p class="small muted">Kerjakan Drill Soal dulu, baru cocokkan dengan Drill Pembahasan.</p></div>'+
+    '<div class="grid3">'+F.map(f => '<div class="ms" style="display:grid;gap:6px"><b>'+f[0]+'</b><p class="small muted" style="margin:0">'+f[1]+'</p><div class="row" style="gap:6px"><a class="btn tiny solid" href="files/'+f[2]+'.pdf" target="_blank" rel="noopener" download>PDF · '+f[3]+'</a><a class="btn tiny" href="files/'+f[2]+'.docx" download>Word · '+f[4]+'</a></div></div>').join("")+'</div></div>';
+}
 function vRangkuman(){
   const kNo = s => { const l = lecById(s.lecture); if (l) return +l.no; const m = /^k(\d+)/.exec(s.lecture||""); return m ? +m[1] : null; };
   const list = allSummaries().slice().sort((a,b) => (kNo(a)??999) - (kNo(b)??999));
   const cur = list.find(s => s.id === ui.sumId);
   if (!cur) {
     return '<div class="view-head"><span class="eyebrow">Satu rangkuman per PPT</span><h2>Rangkuman</h2><p>Bahasa sederhana, istilah wajib ada artinya (arahkan atau ketuk kata yang bergaris kuning), urut dari dasar ke rinci, dan dilengkapi hanya dari pedoman nasional/internasional atau jurnal terakreditasi. Tiap rangkuman ditutup daftar referensi.</p></div>'+
+    downloadsCard()+
     '<div class="grid3">'+list.map(s => { return '<button class="card" style="text-align:left;display:grid;gap:6px;align-content:start" data-act="opensum" data-id="'+s.id+'"><span class="eyebrow">'+(kNo(s)!=null?'Rangkuman KUL '+kNo(s):'Rangkuman umum')+'</span><h3>'+esc(s.title)+'</h3><span class="small muted">'+(s.sections||[]).length+' bagian · '+Object.keys(s.glossary||{}).length+' istilah · '+(s.refs||[]).length+' referensi</span></button>'; }).join("")+
     '<div class="card flat" style="border-style:dashed;display:grid;gap:6px"><h3>Rangkuman lainnya</h3><p class="small muted">Kirim PPT tiap KUL ke aku di chat. Rangkumannya akan muncul di sini otomatis, tanpa perlu buka file lain.</p></div></div>'+
     '<div class="stack"><h3>Pilih KUL, langsung buka milestone-nya</h3><p class="small muted">Tengkurap untuk baca PPT + prompt GPT, Duduk Manis untuk close book, Lari-lari untuk mengulang.</p>'+kulGrid([1,2,5], l => { const n = list.filter(x => x.lecture===l.id).length; return n ? 'Rangkuman siap' : 'Rangkuman menyusul'; })+'</div>'+
