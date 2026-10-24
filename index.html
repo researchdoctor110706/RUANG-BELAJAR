@@ -1344,8 +1344,28 @@ function downloadsCard(){
     ["Drill Pembahasan", "Kunci + pembahasan bahasa bayi, nomor sama", "Drill-Pembahasan-Blok-Uro", "4,0 MB", "0,3 MB"]
   ];
   return '<div class="card" id="unduh" style="display:grid;gap:10px"><div><span class="eyebrow">Unduh file</span><h3>Rangkuman &amp; drill soal (PDF / Word)</h3><p class="small muted">Kerjakan Drill Soal dulu, baru cocokkan dengan Drill Pembahasan.</p></div>'+
-    '<div class="grid3">'+F.map(f => '<div class="ms" style="display:grid;gap:6px"><b>'+f[0]+'</b><p class="small muted" style="margin:0">'+f[1]+'</p><div class="row" style="gap:6px"><a class="btn tiny solid" href="files/'+f[2]+'.pdf" target="_blank" rel="noopener" download>PDF · '+f[3]+'</a><a class="btn tiny" href="files/'+f[2]+'.docx" download>Word · '+f[4]+'</a></div></div>').join("")+'</div></div>';
+    '<div class="grid3">'+F.map(f => '<div class="ms" style="display:grid;gap:6px"><b>'+f[0]+'</b><p class="small muted" style="margin:0">'+f[1]+'</p><div class="row" style="gap:6px"><a class="btn tiny solid dl" data-name="'+f[2]+'.pdf" href="files/'+f[2]+'.pdf" target="_blank" rel="noopener" download>PDF · '+f[3]+'</a><a class="btn tiny dl" data-name="'+f[2]+'.docx" href="files/'+f[2]+'.docx" download>Word · '+f[4]+'</a></div></div>').join("")+'</div></div>';
 }
+/* Di artifact claude.ai, unduhan lewat izin "downloads"; di GitHub Pages pakai link biasa. */
+let DLNS = null;
+if (window.claude && window.claude.use) window.claude.use("downloads").then(d => { DLNS = d; }).catch(() => {});
+document.addEventListener("click", async e => {
+  const a = e.target.closest && e.target.closest("a.dl"); if (!a || !DLNS) return;
+  e.preventDefault();
+  const name = a.dataset.name, isDoc = name.endsWith(".docx"), old = a.textContent;
+  a.textContent = "Menyiapkan…";
+  try {
+    const r = await fetch("files/" + name + (isDoc ? ".b64.txt" : "")); if (!r.ok) throw { code: "http " + r.status };
+    let data;
+    if (isDoc) { const bin = atob((await r.text()).trim()); const u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); data = new Blob([u]); }
+    else data = await r.blob();
+    await DLNS.save({ filename: name, data });
+    a.textContent = old;
+  } catch (err) {
+    a.textContent = err && err.code === "declined" ? old : "Gagal, coba lagi";
+    if (!(err && err.code === "declined")) setTimeout(() => { a.textContent = old; }, 3000);
+  }
+}, true);
 function vRangkuman(){
   const kNo = s => { const l = lecById(s.lecture); if (l) return +l.no; const m = /^k(\d+)/.exec(s.lecture||""); return m ? +m[1] : null; };
   const list = allSummaries().slice().sort((a,b) => (kNo(a)??999) - (kNo(b)??999));
