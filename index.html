@@ -1339,12 +1339,13 @@ function speakBtn(text){ return '<button class="speak" data-act="speak" data-tex
 function subify(h){ return String(h||"").replace(/<p><b>(\d+(?:\.\d+)+\.?\s[^<]*)<\/b><\/p>/g, '<p class="sub">$1</p>'); }
 function downloadsCard(){
   const F = [
-    ["Rangkuman 23 KUL", "Semua rangkuman + gambar penting", "Rangkuman-Blok-Uro", "9,3 MB", "6,8 MB"],
+    ["Rangkuman KUL 1–12", "Penjelasan runtut, istilah, gambar slide, bedah soal kating", "Rangkuman-Blok-Uro-1", "11,6 MB", ""],
+    ["Rangkuman KUL 13–23", "Penjelasan runtut, istilah, gambar slide, bedah soal kating", "Rangkuman-Blok-Uro-2", "11,1 MB", ""],
     ["Drill Soal (campur)", "462 soal kating + HOTS diacak, tanpa label KUL", "Drill-Soal-Blok-Uro", "4,1 MB", "3,3 MB"],
     ["Drill Pembahasan", "Kunci + pembahasan bahasa bayi, nomor sama", "Drill-Pembahasan-Blok-Uro", "4,0 MB", "0,3 MB"]
   ];
-  return '<div class="card" id="unduh" style="display:grid;gap:10px"><div><span class="eyebrow">Unduh file</span><h3>Rangkuman &amp; drill soal (PDF / Word)</h3><p class="small muted">Kerjakan Drill Soal dulu, baru cocokkan dengan Drill Pembahasan.</p></div>'+
-    '<div class="grid3">'+F.map(f => '<div class="ms" style="display:grid;gap:6px"><b>'+f[0]+'</b><p class="small muted" style="margin:0">'+f[1]+'</p><div class="row" style="gap:6px"><a class="btn tiny solid dl" data-name="'+f[2]+'.pdf" href="files/'+f[2]+'.pdf" target="_blank" rel="noopener" download>PDF · '+f[3]+'</a><a class="btn tiny dl" data-name="'+f[2]+'.docx" href="files/'+f[2]+'.docx" download>Word · '+f[4]+'</a></div></div>').join("")+'</div></div>';
+  return '<div class="card" id="unduh" style="display:grid;gap:10px"><div><span class="eyebrow">Unduh file</span><h3>Rangkuman (PDF) &amp; drill soal</h3><p class="small muted">Kerjakan Drill Soal dulu, baru cocokkan dengan Drill Pembahasan.</p></div>'+
+    '<div class="grid3">'+F.map(f => '<div class="ms" style="display:grid;gap:6px"><b>'+f[0]+'</b><p class="small muted" style="margin:0">'+f[1]+'</p><div class="row" style="gap:6px"><a class="btn tiny solid dl" data-name="'+f[2]+'.pdf" href="files/'+f[2]+'.pdf" target="_blank" rel="noopener" download>PDF · '+f[3]+'</a>'+(f[4]?'<a class="btn tiny dl" data-name="'+f[2]+'.docx" href="files/'+f[2]+'.docx" download>Word · '+f[4]+'</a>':'')+'</div></div>').join("")+'</div></div>';
 }
 /* Di artifact claude.ai, unduhan lewat izin "downloads"; di GitHub Pages pakai link biasa. */
 let DLNS = null;
