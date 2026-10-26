@@ -373,7 +373,18 @@ const LECTURES_DEFAULT = [
   {id:"k20", block:"uro", no:20, tent:true, title:"Gagal Ginjal & Hemodialisis (AKI, CKD, Terapi Pengganti Ginjal)", en:"acute kidney injury chronic kidney disease hemodialysis KDIGO", date:"2026-10-21"},
   {id:"k21", block:"uro", no:21, title:"Batu Saluran Kemih", en:"urolithiasis kidney stones ESWL PCNL", date:"2026-10-22"},
   {id:"k22", block:"uro", no:22, tent:true, title:"Penyimpangan Seksual 1 (Ekshibisionisme, Voyeurisme, Frotteurisme, Fetisisme, Transvestisme, Pedofilia)", en:"paraphilic disorders exhibitionism voyeurism fetishism pedophilia", date:"2026-10-07"},
-  {id:"k23", block:"uro", no:23, tent:true, title:"Penyimpangan Seksual 2 (Sadisme, Masokisme, Spektrum Parafilia, Orientasi Seksual)", en:"sexual sadism masochism paraphilia spectrum", date:"2026-10-07"}
+  {id:"k23", block:"uro", no:23, tent:true, title:"Penyimpangan Seksual 2 (Sadisme, Masokisme, Spektrum Parafilia, Orientasi Seksual)", en:"sexual sadism masochism paraphilia spectrum", date:"2026-10-07"},
+  /* Blok Repro: urutan dari folder PPT kating; tanggal = perkiraan, belum dari jadwal resmi */
+  {id:"r1", block:"repro", no:1, title:"Asuhan Antenatal (ANC) dan Infeksi pada Kehamilan (Hepatitis B, HIV, Sifilis, Malaria, TORCH)", en:"antenatal care hepatitis B HIV syphilis malaria TORCH pregnancy", date:"2026-11-02"},
+  {id:"r2", block:"repro", no:2, title:"Perdarahan pada Kehamilan Muda (Abortus, Kehamilan Ektopik, Mola Hidatidosa, Kuretase)", en:"abortion ectopic pregnancy hydatidiform mole curettage", date:"2026-11-03"},
+  {id:"r3", block:"repro", no:3, title:"Perdarahan pada Kehamilan Lanjut (Plasenta Previa, Solusio Plasenta, Vasa Previa, Syok pada Kehamilan)", en:"placenta previa placental abruption vasa previa obstetric shock", date:"2026-11-04"},
+  {id:"r4", block:"repro", no:4, title:"Patologi Janin dan Neonatus (IUGR, IUFD, Gemelli & Kembar Siam, Polihidramnion, Kelainan Janin, Inkompatibilitas Darah)", en:"IUGR IUFD twin pregnancy conjoined twins polyhydramnios Rh incompatibility", date:"2026-11-05"},
+  {id:"r5", block:"repro", no:5, title:"Gangguan Metabolik dalam Kehamilan (Hipertensi dalam Kehamilan, Preeklamsia, Eklamsia, Sindrom HELLP, Diabetes Gestasional, Insufisiensi Plasenta)", en:"preeclampsia eclampsia HELLP gestational diabetes", date:"2026-11-06"},
+  {id:"r6", block:"repro", no:6, title:"Ultrasonografi (USG) Obstetri dan Kardiotokografi (CTG)", en:"obstetric ultrasound cardiotocography CTG", date:"2026-11-09"},
+  {id:"r7", block:"repro", no:7, title:"Asuhan Persalinan Normal (Pelvimetri, Fisiologi dan Tanda Persalinan, Kala I–IV, Mekanisme Persalinan, Partograf, Komplikasi Pascapersalinan)", en:"normal labor partograph mechanism of labor postpartum hemorrhage", date:"2026-11-10"},
+  {id:"r8", block:"repro", no:8, title:"Persalinan dengan Tindakan (Episiotomi dan Laserasi Perineum, Induksi Persalinan, Profil Biofisik, Ekstraksi Vakum, Persalinan Sungsang, Letak Lintang, Seksio Sesarea)", en:"episiotomy labor induction vacuum extraction breech cesarean section", date:"2026-11-11"},
+  {id:"r9", block:"repro", no:9, title:"Patologi dalam Kehamilan (Persalinan Preterm, Kortikosteroid Antenatal, Kehamilan Postterm, Ketuban Pecah Dini, Korioamnionitis, Inkompetensi Serviks)", en:"preterm labor antenatal corticosteroids postterm PROM chorioamnionitis cervical insufficiency", date:"2026-11-12"},
+  {id:"r10", block:"repro", no:10, title:"Penyulit Persalinan (Malpresentasi, Kelainan Letak, Disproporsi Kepala Panggul, Distosia Bahu, Partus Lama, Prolaps Tali Pusat, Hipoksia Janin, Ruptur Uteri)", en:"malpresentation cephalopelvic disproportion shoulder dystocia cord prolapse uterine rupture", date:"2026-11-13"}
 ];
 
 const QUOTES = [
@@ -649,7 +660,7 @@ function addNewLectures(st){
   if (!st.seenLec) st.seenLec = (st.lectures||[]).map(l => l.id);
   /* rev 2: KUL 9-24 disamakan dengan nomor PDF 2026 */
   if ((st.lecRev||0) < LEC_REV){
-    LECTURES_DEFAULT.forEach(d => { if (d.no < 9) return; const l = (st.lectures||[]).find(x => x.id === d.id); if (l){ l.title = d.title; l.en = d.en; l.no = d.no; if (d.tent) l.tent = true; else delete l.tent; } });
+    LECTURES_DEFAULT.forEach(d => { if (d.block !== "uro" || d.no < 9) return; const l = (st.lectures||[]).find(x => x.id === d.id); if (l){ l.title = d.title; l.en = d.en; l.no = d.no; if (d.tent) l.tent = true; else delete l.tent; } });
     /* rev 3: blok uro cuma 23 KUL, KUL 24 dihapus */
     st.lectures = (st.lectures||[]).filter(l => l.id !== "k24");
     /* rev 4: KUL default yang hilang dari daftar (padahal sudah tercatat 'seen') dimasukkan lagi, kecuali yang sengaja dihapus */
@@ -1338,13 +1349,28 @@ function speakBtn(text){ return '<button class="speak" data-act="speak" data-tex
 /* ---------- RANGKUMAN ---------- */
 function subify(h){ return String(h||"").replace(/<p><b>(\d+(?:\.\d+)+\.?\s[^<]*)<\/b><\/p>/g, '<p class="sub">$1</p>'); }
 function downloadsCard(){
+  if (S.activeBlock === "repro") return dlCard("Rangkuman per KUL (PDF)", "Satu PDF per KUL. Rangkuman gabungan + drill soal kating menyusul di akhir blok.", [
+    ["Rangkuman KUL 1", "ANC dan Infeksi pada Kehamilan", "Rangkuman-Repro-KUL-1", "2,9 MB", ""],
+    ["Rangkuman KUL 2", "Perdarahan Kehamilan Muda", "Rangkuman-Repro-KUL-2", "2,0 MB", ""],
+    ["Rangkuman KUL 3", "Perdarahan Kehamilan Lanjut dan Syok", "Rangkuman-Repro-KUL-3", "1,5 MB", ""],
+    ["Rangkuman KUL 4", "Patologi Janin dan Neonatus", "Rangkuman-Repro-KUL-4", "2,4 MB", ""],
+    ["Rangkuman KUL 5", "Hipertensi, Preeklamsia, dan Diabetes", "Rangkuman-Repro-KUL-5", "2,1 MB", ""],
+    ["Rangkuman KUL 6", "USG Obstetri dan CTG", "Rangkuman-Repro-KUL-6", "3,1 MB", ""],
+    ["Rangkuman KUL 7", "Asuhan Persalinan Normal", "Rangkuman-Repro-KUL-7", "4,7 MB", ""],
+    ["Rangkuman KUL 8", "Persalinan dengan Tindakan", "Rangkuman-Repro-KUL-8", "4,2 MB", ""],
+    ["Rangkuman KUL 9", "Preterm, Postterm, KPD, Korioamnionitis", "Rangkuman-Repro-KUL-9", "2,2 MB", ""],
+    ["Rangkuman KUL 10", "Penyulit Persalinan", "Rangkuman-Repro-KUL-10", "7,1 MB", ""]
+  ]);
   const F = [
     ["Rangkuman KUL 1–12", "Penjelasan runtut, istilah, gambar slide, bedah soal kating", "Rangkuman-Blok-Uro-1", "11,6 MB", ""],
     ["Rangkuman KUL 13–23", "Penjelasan runtut, istilah, gambar slide, bedah soal kating", "Rangkuman-Blok-Uro-2", "11,1 MB", ""],
     ["Drill Soal (campur)", "462 soal kating + HOTS diacak, tanpa label KUL", "Drill-Soal-Blok-Uro", "4,1 MB", "3,3 MB"],
     ["Drill Pembahasan", "Kunci + pembahasan bahasa bayi, nomor sama", "Drill-Pembahasan-Blok-Uro", "4,0 MB", "0,3 MB"]
   ];
-  return '<div class="card" id="unduh" style="display:grid;gap:10px"><div><span class="eyebrow">Unduh file</span><h3>Rangkuman (PDF) &amp; drill soal</h3><p class="small muted">Kerjakan Drill Soal dulu, baru cocokkan dengan Drill Pembahasan.</p></div>'+
+  return dlCard("Rangkuman (PDF) &amp; drill soal", "Kerjakan Drill Soal dulu, baru cocokkan dengan Drill Pembahasan.", F);
+}
+function dlCard(h, sub, F){
+  return '<div class="card" id="unduh" style="display:grid;gap:10px"><div><span class="eyebrow">Unduh file</span><h3>'+h+'</h3><p class="small muted">'+sub+'</p></div>'+
     '<div class="grid3">'+F.map(f => '<div class="ms" style="display:grid;gap:6px"><b>'+f[0]+'</b><p class="small muted" style="margin:0">'+f[1]+'</p><div class="row" style="gap:6px"><a class="btn tiny solid dl" data-name="'+f[2]+'.pdf" href="files/'+f[2]+'.pdf" target="_blank" rel="noopener" download>PDF · '+f[3]+'</a>'+(f[4]?'<a class="btn tiny dl" data-name="'+f[2]+'.docx" href="files/'+f[2]+'.docx" download>Word · '+f[4]+'</a>':'')+'</div></div>').join("")+'</div></div>';
 }
 /* Di artifact claude.ai, unduhan lewat izin "downloads"; di GitHub Pages pakai link biasa. */
@@ -1369,14 +1395,14 @@ document.addEventListener("click", async e => {
 }, true);
 function vRangkuman(){
   const kNo = s => { const l = lecById(s.lecture); if (l) return +l.no; const m = /^k(\d+)/.exec(s.lecture||""); return m ? +m[1] : null; };
-  const list = allSummaries().slice().sort((a,b) => (kNo(a)??999) - (kNo(b)??999));
+  const list = allSummaries().filter(s => { const l = lecById(s.lecture); return l ? l.block === S.activeBlock : S.activeBlock === "uro"; }).sort((a,b) => (kNo(a)??999) - (kNo(b)??999));
   const cur = list.find(s => s.id === ui.sumId);
   if (!cur) {
     return '<div class="view-head"><span class="eyebrow">Satu rangkuman per PPT</span><h2>Rangkuman</h2><p>Bahasa sederhana, istilah wajib ada artinya (arahkan atau ketuk kata yang bergaris kuning), urut dari dasar ke rinci, dan dilengkapi hanya dari pedoman nasional/internasional atau jurnal terakreditasi. Tiap rangkuman ditutup daftar referensi.</p></div>'+
     downloadsCard()+
     '<div class="grid3">'+list.map(s => { return '<button class="card" style="text-align:left;display:grid;gap:6px;align-content:start" data-act="opensum" data-id="'+s.id+'"><span class="eyebrow">'+(kNo(s)!=null?'Rangkuman KUL '+kNo(s):'Rangkuman umum')+'</span><h3>'+esc(s.title)+'</h3><span class="small muted">'+(s.sections||[]).length+' bagian · '+Object.keys(s.glossary||{}).length+' istilah · '+(s.refs||[]).length+' referensi</span></button>'; }).join("")+
     '<div class="card flat" style="border-style:dashed;display:grid;gap:6px"><h3>Rangkuman lainnya</h3><p class="small muted">Kirim PPT tiap KUL ke aku di chat. Rangkumannya akan muncul di sini otomatis, tanpa perlu buka file lain.</p></div></div>'+
-    '<div class="stack"><h3>Pilih KUL, langsung buka milestone-nya</h3><p class="small muted">Tengkurap untuk baca PPT + prompt GPT, Duduk Manis untuk close book, Lari-lari untuk mengulang.</p>'+kulGrid([1,2,5], l => { const n = list.filter(x => x.lecture===l.id).length; return n ? 'Rangkuman siap' : 'Rangkuman menyusul'; })+'</div>'+
+    '<div class="stack"><h3>Pilih KUL, langsung buka milestone-nya</h3><p class="small muted">Tengkurap untuk baca PPT + prompt GPT, Duduk Manis untuk close book, Lari-lari untuk mengulang.</p>'+kulGrid([1,2,5], l => { const n = list.filter(x => x.lecture===l.id).length; return n ? 'Rangkuman siap' : (l.block === "repro" ? 'Rangkuman PDF siap, unduh di atas' : 'Rangkuman menyusul'); })+'</div>'+
     '<div class="card stack"><h3>Struktur rangkuman sesuai ilmunya</h3><p class="small muted">Tiap KUL dirangkum mengikuti ilmunya. Mikrobiologi fokus ke kumannya, PA ke gambaran jaringannya, farmako ke obatnya. Struktur penyakit lengkap dipakai untuk KUL klinik.</p><div class="subtabs">'+Object.keys(DISC).map(k => '<button class="'+(k===(ui.discTab||"mikro")?'on':'')+'" data-act="disctab" data-id="'+k+'">'+DISC[k].nm+'</button>').join("")+'</div><div class="flow">'+DISC[ui.discTab||"mikro"].st.map((x,i,a) => '<span class="node"><span class="small muted">'+(i+1)+'</span> '+esc(x)+'</span>'+(i<a.length-1?'<span class="arr">→</span>':'')).join("")+'</div></div>';
   }
   const full = (cur.sections||[]).map(s => s.h + ". " + s.html.replace(/<[^>]+>/g," ").replace(/\[\[|\]\]/g,"")).join(". ");
