@@ -1,4 +1,4 @@
-const V="rb-225405-1217187";
+const V="rb-eng-20261028";
 self.addEventListener("install",e=>self.skipWaiting());
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener("fetch",e=>{ if(e.request.method!=="GET") return;

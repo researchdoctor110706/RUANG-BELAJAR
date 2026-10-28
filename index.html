@@ -296,6 +296,73 @@ header.top{background:linear-gradient(90deg,rgba(255,227,238,.92),rgba(230,233,2
 .ws-body>.card{background:rgba(255,255,255,.92)}
 canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:50}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* English · IELTS */
+#engBg{position:fixed;inset:0;z-index:-1;background:center/cover no-repeat;opacity:0;transition:opacity .4s}
+#engBg.on{opacity:1}
+#engBg.on::after{content:"";position:absolute;inset:0;background:rgba(251,247,255,.82);backdrop-filter:blur(3px)}
+.eng-hero{position:relative;border-radius:22px;overflow:hidden;min-height:340px;background:#241B4B center/cover;color:#fff;padding:22px;display:grid;gap:10px;align-content:end}
+.eng-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,50,.05) 0%,rgba(20,16,50,.45) 45%,rgba(20,16,50,.88) 100%)}
+.eng-hero>*{position:relative}
+nav.tabs a.tab-eng{color:#B0124A;background:var(--pop-soft)}
+nav.tabs a.tab-eng[aria-current="page"]{color:#fff;background:var(--pop)}
+@media (max-width:560px){.eng-place{position:static!important;justify-self:start}}
+.eng-hero h2{font-size:clamp(1.5rem,4vw,2.2rem);color:#fff;max-width:28ch}
+.eng-hero .eng-why{max-width:70ch;color:#EDE8FF;font-size:.95rem}
+.eng-hero .count{display:flex;gap:22px;flex-wrap:wrap}
+.eng-hero .count .n{font-size:1.9rem;font-weight:800;line-height:1}
+.eng-hero .count .l{font-size:.78rem;color:#EDE8FF}
+.eng-place{position:absolute!important;top:14px;right:14px;font-size:.78rem;font-weight:700;background:rgba(255,255,255,.2);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.35);padding:4px 10px;border-radius:999px}
+.eng-strip{position:relative;border-radius:18px;overflow:hidden;background:#241B4B center/cover;color:#fff;padding:16px;display:grid;gap:10px;grid-template-columns:auto 1fr;align-items:end;min-height:150px}
+.eng-strip::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,50,.15),rgba(20,16,50,.85))}
+.eng-strip>*{position:relative}
+.eng-strip h2{color:#fff;font-size:clamp(1.2rem,3.4vw,1.7rem);margin:2px 0 6px}
+.eng-strip .btn{align-self:start}
+@media (max-width:560px){.eng-strip{grid-template-columns:1fr}}
+.chip.eng-k{border-color:transparent;font-weight:700;font-size:.74rem}
+.chip.eng-k.peri{background:var(--peri-soft);color:#3343C7}.chip.eng-k.aqua{background:var(--aqua-soft);color:#0B7A70}.chip.eng-k.pop{background:var(--pop-soft);color:#B0124A}.chip.eng-k.grape{background:var(--grape-soft);color:#6B2FC4}.chip.eng-k.sun{background:var(--sun-soft);color:#8A6200}
+.chip.eng-st.ok{background:#E3F8F0;color:var(--ok);border-color:transparent}.chip.eng-st.pop{background:var(--pop-soft);color:#B0124A;border-color:transparent}.chip.eng-st.warn{background:var(--sun-soft);color:#8A6200;border-color:transparent}
+.task.eng-done{opacity:.75}
+.eng-days{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.eng-day{background:rgba(255,255,255,.92);border:1.5px solid var(--line);border-radius:16px;overflow:hidden;display:grid;min-width:0}
+.eng-day.today{border-color:var(--pop);box-shadow:0 0 0 3px var(--pop-soft)}
+.eng-day img{width:100%;height:96px;object-fit:cover;display:block}
+.eng-day-b{padding:10px;display:grid;gap:4px}
+.eng-tk{border:1.5px solid var(--line);background:var(--paper);border-radius:8px;padding:4px 8px;font-size:.8rem;font-weight:600;text-align:left}
+.eng-tk.on{background:#E3F8F0;border-color:transparent;color:var(--ok)}
+.eng-quote{margin:0;font-style:italic;color:var(--muted);border-left:3px solid var(--pop);padding-left:10px}
+.eng-link{display:grid;gap:2px;text-decoration:none;color:var(--ink)}
+.eng-bar{display:grid;gap:4px}
+.eng-bar .bar{height:10px;border-radius:99px;background:var(--soft);overflow:hidden}
+.eng-bar .bar span{display:block;height:100%;background:linear-gradient(90deg,var(--peri),var(--pop));border-radius:99px}
+.eng-err{border:1.5px solid var(--line);border-radius:12px;padding:10px;display:grid;gap:4px;background:var(--paper)}
+.eng-ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.eng-q{display:grid;gap:6px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.eng-q:last-child{border-bottom:0}
+.eng-opts{display:grid;gap:6px}
+.eng-in{max-width:280px}
+.eng-in.right{border-color:var(--ok);background:#E3F8F0}.eng-in.wrong{border-color:var(--bad);background:#FFECEC}
+.eng-ok{color:var(--ok)}.eng-bad{color:var(--bad)}
+.eng-read{display:grid;gap:16px;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:start}
+.eng-passage{max-height:80vh;overflow:auto;position:sticky;top:110px;display:grid;gap:10px}
+.eng-pl{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:7px;background:var(--ink);color:#fff;font-size:.8rem;margin-right:4px}
+@media (max-width:820px){.eng-read{grid-template-columns:1fr}.eng-passage{position:static;max-height:none}}
+.eng-lesson p{margin:0 0 6px}
+.eng-prompt{font-size:1.05rem;font-weight:600}
+.eng-chart{width:100%;max-width:600px;background:#fff;border-radius:12px;border:1.5px solid var(--line)}
+.eng-model{display:grid;gap:10px;background:var(--soft);border-radius:12px;padding:12px;font-size:.95rem}
+.eng-model p{margin:0}
+.eng-ai{white-space:pre-wrap;background:var(--soft);border-radius:12px;padding:12px;font-size:.9rem;font-family:var(--f-body);margin:0;overflow-wrap:anywhere}
+.eng-line{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;font-size:.92rem}
+.eng-cards{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.eng-card{display:grid;gap:4px;align-content:center;min-height:92px;text-align:left;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);padding:10px}
+.eng-card.on{background:var(--peri-soft);border-color:var(--peri)}
+.eng-flash{text-align:center;justify-items:center;padding:28px 16px}
+.eng-cue{border-color:var(--grape)}
+.eng-home{display:flex;gap:12px;align-items:center;justify-content:space-between;text-decoration:none;color:#fff;border-radius:18px;padding:16px;position:relative;overflow:hidden;background:#241B4B center/cover;min-height:96px}
+.eng-home::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,16,50,.85),rgba(20,16,50,.35))}
+.eng-home>*{position:relative}
+.eng-home>span:first-child{display:grid;gap:2px}
+.eng-home .btn{border-color:#fff;color:#fff;background:transparent}
 </style>
 
 </head><body>
@@ -315,6 +382,7 @@ canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:50}
     </div>
     <nav class="tabs" id="tabs" aria-label="Menu">
       <a href="#beranda">Beranda</a>
+      <a href="#english" class="tab-eng">English · IELTS ✈</a>
       <a href="#kuliah">Kuliah &amp; Milestone</a>
       <a href="#mikir">Cara Mikir Dokter</a>
       <a href="#dasar">Anat · Histo · Fisio</a>
@@ -327,6 +395,7 @@ canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:50}
   </div>
 </header>
 <main class="wrap" id="app"></main>
+<div id="engBg" aria-hidden="true"></div>
 <canvas id="fx"></canvas>
 <div id="wsHost"></div>
 <div id="bannerHost"></div>
@@ -955,7 +1024,7 @@ function bladderSVG(stretched){
 /* ============================================================
    RENDER
    ============================================================ */
-const VIEWS = ["beranda","kuliah","mikir","dasar","rangkuman","latsol","nonton","progres","pustaka"];
+const VIEWS = ["beranda","kuliah","mikir","dasar","rangkuman","latsol","nonton","progres","pustaka","english"];
 let view = "beranda";
 let ui = {kOn:{}, kFocus:"fascia", nFocus:"pct", dasarTab:"atlas", sumId:null, quizId:null, caseId:"c1", caseStage:{}, caseSel:{}, bladder:false, speaking:false, labels:true};
 
@@ -971,8 +1040,9 @@ function paintTop(){
 function render(){
   paintTop();
   document.querySelectorAll("#tabs a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href")==="#"+view ? "page" : "false"));
-  const fn = {beranda:vBeranda, kuliah:vKuliah, mikir:vMikir, dasar:vDasar, rangkuman:vRangkuman, latsol:vLatsol, nonton:vNonton, progres:vProgres, pustaka:vPustaka}[view];
+  const fn = {beranda:vBeranda, kuliah:vKuliah, mikir:vMikir, dasar:vDasar, rangkuman:vRangkuman, latsol:vLatsol, nonton:vNonton, progres:vProgres, pustaka:vPustaka, english:vEnglish}[view];
   $("#app").innerHTML = '<section class="view" id="v-'+view+'">'+fn()+'</section>';
+  engBgPaint();
   const host = $("#wsHost"); const keepScroll = host.querySelector(".ws-body") ? host.querySelector(".ws-body").scrollTop : 0;
   host.innerHTML = ui.ws ? vWS() : ""; document.body.style.overflow = ui.ws ? "hidden" : "";
   if (ui.ws && keepScroll) host.querySelector(".ws-body").scrollTop = keepScroll;
@@ -1012,6 +1082,7 @@ function vBeranda(){
     '</div>'+
     '<div class="quote"><span class="eyebrow">Kalimat hari ini</span><blockquote>'+esc(q)+'</blockquote><a class="btn ghost tiny" href="#nonton">Lagi jenuh? Buka Nonton &amp; Semangat</a></div>'+
   '</div>'+
+  engHomeCard()+
   downloadsCard()+
   '<div class="stack"><div class="row" style="justify-content:space-between"><h3>Milestone hari ini</h3><span class="small muted">'+(b.tentative?'Tanggal KUL masih perkiraan, nanti diganti jadwal asli':'')+'</span></div>'+
     (todays.length ? todays.map(x => taskRow(x,false)).join("") : '<div class="empty">Tidak ada milestone yang jatuh tempo hari ini. Kejar yang tertunda atau latsol santai.</div>')+
@@ -1835,6 +1906,891 @@ function confetti(){
   const cols = ["#FF4F8B","#5B6CFF","#FFC83D","#11B3A3","#9B5CF6"]; const P = Array.from({length:90}, () => ({x:innerWidth/2, y:innerHeight*0.35, vx:(Math.random()-.5)*12, vy:Math.random()*-11-3, s:Math.random()*6+4, c:cols[Math.floor(Math.random()*5)], r:Math.random()*6}));
   let f = 0; (function tick(){ x.clearRect(0,0,c.width,c.height); P.forEach(p => { p.x += p.vx; p.y += p.vy; p.vy += .35; p.r += .2; x.save(); x.translate(p.x,p.y); x.rotate(p.r); x.fillStyle = p.c; x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2); x.restore(); }); if (++f < 90) requestAnimationFrame(tick); else x.clearRect(0,0,c.width,c.height); })();
 }
+
+/* ============================================================
+   ENGLISH · IELTS 9.0 — DATA (materi semua dibuat sendiri)
+   ============================================================ */
+const ENG_START = "2026-10-29";
+const ENG_PLACES = {
+  brienz:{nm:"Danau Brienz", cc:"Swiss", f:"brienz", cr:"Carsten Steger, CC BY-SA 4.0"},
+  zermatt:{nm:"Matterhorn, Zermatt", cc:"Swiss", f:"zermatt", cr:"Roy Egloff, CC BY-SA 4.0"},
+  lauterbrunnen:{nm:"Lembah Lauterbrunnen", cc:"Swiss", f:"lauterbrunnen", cr:"Chensiyuan, CC BY-SA 4.0"},
+  luzern:{nm:"Kapellbrücke, Lucerne", cc:"Swiss", f:"luzern", cr:"Godot13, CC BY-SA 4.0"},
+  speicherstadt:{nm:"Speicherstadt, Hamburg", cc:"Jerman", f:"speicherstadt", cr:"Dietmar Rabich, CC BY-SA 4.0"},
+  elbphilharmonie:{nm:"Elbphilharmonie, Hamburg", cc:"Jerman", f:"elbphilharmonie", cr:"Evgenii Salganik, CC BY 4.0"},
+  brugge:{nm:"Bruges dari menara Belfort", cc:"Belgia", f:"brugge", cr:"Zairon, CC BY-SA 4.0"},
+  brussel:{nm:"Grand-Place, Brussels", cc:"Belgia", f:"brussel", cr:"Celuici, CC BY-SA 4.0"},
+  gent:{nm:"Graslei, Ghent", cc:"Belgia", f:"gent", cr:"Michiel Hendryckx, CC BY-SA 4.0"},
+  hallstatt:{nm:"Hallstatt", cc:"Austria", f:"hallstatt", cr:"C.Stadler/Bwag, CC BY-SA 4.0"},
+  chillon:{nm:"Château de Chillon, Danau Jenewa", cc:"Swiss", f:"chillon", cr:"Giles Laurent, CC BY-SA 4.0"}
+};
+const BBC6 = "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/";
+
+/* 10 hari. Tiap hari maks 2 task. k = jenis task, id = materi. */
+const ENG_DAYS = [
+  {place:"zermatt", title:"Kenal medan + Listening Part 1", skill:"Listening",
+   why:"Hari pertama: kenalan dulu sama format IELTS dan langsung coba Listening Part 1 (isi formulir). Part 1 itu bagian 'paling ramah', cocok buat pemanasan dan ngukur titik awal.",
+   tasks:[{k:"listen", id:"L1", min:25}, {k:"vocab", id:"V1", min:10}],
+   yt:[["Strategi Listening Part 1 (form completion)","IELTS listening part 1 form completion tips"],["Coba full test asli (opsional)","Cambridge IELTS 19 listening test 1 with answers"]],
+   bbc:["ep-260910","Can apps teach you a language?"]},
+  {place:"lauterbrunnen", title:"Reading: True / False / Not Given", skill:"Reading",
+   why:"TFNG adalah tipe soal yang paling sering bikin skor reading jatuh. Hari ini kita latih cara bedain FALSE (teks bilang kebalikannya) vs NOT GIVEN (teks gak bilang apa-apa).",
+   tasks:[{k:"read", id:"R1", min:25}, {k:"gram", id:"G1", min:12}],
+   yt:[["Cara jawab True/False/Not Given","IELTS reading true false not given strategy"]],
+   bbc:["ep-260917","Is rejection good for us?"]},
+  {place:"luzern", title:"Speaking Part 1 + kosakata kesehatan", skill:"Speaking",
+   why:"Speaking Part 1 = pertanyaan ringan tentang dirimu. Kuncinya: jawab langsung, kasih alasan, kasih contoh (2–4 kalimat). Kita juga shadowing jawaban model biar intonasi makin natural.",
+   tasks:[{k:"speak", id:"S1", min:20}, {k:"vocab", id:"V2", min:10}],
+   yt:[["Contoh Speaking Part 1 band 9","IELTS speaking part 1 band 9 sample"]],
+   bbc:["ep-261022","What should you eat for a better night's sleep?"]},
+  {place:"speicherstadt", title:"Writing Task 2: intro + 1 body", skill:"Writing",
+   why:"Belum langsung full essay. Hari ini fokus fondasi band tinggi: membaca soal dengan benar, posisi yang jelas di intro, dan satu body paragraph yang berkembang penuh (ide → penjelasan → contoh).",
+   tasks:[{k:"write", id:"W1", min:30}, {k:"gram", id:"G2", min:12}],
+   yt:[["Struktur opinion essay","IELTS writing task 2 opinion essay structure band 9"]],
+   bbc:null},
+  {place:"elbphilharmonie", title:"Listening Part 3 (diskusi akademik)", skill:"Listening",
+   why:"Hari pertama Blok Repro, jadi tugasnya dibuat ringan. Part 3 = diskusi mahasiswa dan dosen, pilihan gandanya penuh jebakan (opini yang berubah, 'tapi', 'sebenarnya').",
+   tasks:[{k:"listen", id:"L2", min:25}, {k:"vocab", id:"V3", min:10}],
+   yt:[["Strategi Listening Part 3","IELTS listening part 3 multiple choice tips"]],
+   bbc:["ep-260903","Climate change and extreme weather"]},
+  {place:"brugge", title:"Writing Task 1: line graph", skill:"Writing",
+   why:"Task 1 Academic = melaporkan data, bukan beropini. Kuncinya overview yang jelas (tren utama) + angka yang dipilih dengan cerdas dan dibandingkan.",
+   tasks:[{k:"write", id:"W2", min:25}, {k:"review", id:"RV1", min:10}],
+   yt:[["Contoh Task 1 line graph","IELTS writing task 1 line graph band 9 sample answer"]],
+   bbc:null},
+  {place:"brussel", title:"Reading: Matching Headings + Speaking Part 2", skill:"Reading",
+   why:"Matching headings melatih kamu menangkap IDE UTAMA paragraf, bukan kata kunci. Lalu Speaking Part 2: bicara 2 menit tanpa berhenti, pakai catatan 1 menit.",
+   tasks:[{k:"read", id:"R2", min:22}, {k:"speak", id:"S2", min:15}],
+   yt:[["Strategi matching headings","IELTS reading matching headings strategy"],["Contoh Part 2 band 9","IELTS speaking part 2 band 9 sample describe a place"]],
+   bbc:null},
+  {place:"gent", title:"Writing Task 2: full essay 40 menit", skill:"Writing",
+   why:"Sekarang full essay dengan waktu ujian asli. Habis nulis, nilai pakai rubrik 4 kriteria dan bandingkan dengan model band 9.",
+   tasks:[{k:"write", id:"W3", min:45}, {k:"gram", id:"G3", min:12}],
+   yt:[["Discussion essay (discuss both views)","IELTS writing task 2 discuss both views band 9"]],
+   bbc:null},
+  {place:"hallstatt", title:"Listening Part 4 + Speaking Part 3", skill:"Listening",
+   why:"Part 4 = kuliah monolog tanpa jeda, paling mirip dengar dosen di kampus. Speaking Part 3 = diskusi abstrak: di sini band 8–9 dibedakan oleh kemampuan menimbang, memberi contoh, dan 'hedging'.",
+   tasks:[{k:"listen", id:"L3", min:25}, {k:"speak", id:"S3", min:15}],
+   yt:[["Strategi Listening Part 4","IELTS listening part 4 note completion tips"],["Contoh Speaking Part 3","IELTS speaking part 3 band 9 sample answers"]],
+   bbc:["ep-260806","How do climate scientists make predictions?"]},
+  {place:"chillon", title:"Mini mock Reading + evaluasi 10 hari", skill:"Reading",
+   why:"Hari terakhir: reading passage 3 berwaktu (tipe paling sulit), lalu evaluasi semua yang sudah dikerjakan supaya rencana 10 hari berikutnya pas sasaran.",
+   tasks:[{k:"read", id:"R3", min:25}, {k:"eval", id:"E1", min:10}],
+   yt:[["Full listening test asli (bonus akhir pekan)","Cambridge IELTS 19 listening test 2 with answers"]],
+   bbc:null}
+];
+
+const ENG_STRATEGY = [
+  ["Pahami cara nilainya dulu","Writing & Speaking dinilai 4 kriteria yang bobotnya sama: Writing = Task Response/Achievement, Coherence & Cohesion, Lexical Resource, Grammatical Range & Accuracy. Speaking = Fluency & Coherence, Lexical Resource, Grammatical Range & Accuracy, Pronunciation. Band 9 artinya keempatnya 9: ide berkembang penuh, kohesi 'tidak terasa', kosakata luas dan natural, tata bahasa bervariasi dengan kesalahan yang sangat jarang. Listening & Reading: band 9 ≈ 39–40 benar dari 40."],
+  ["Tes diri > baca ulang (retrieval practice)","Riset memori (mis. Roediger & Karpicke, 2006) menunjukkan mengingat-ingat lewat kuis bikin ilmu lebih nempel daripada membaca ulang. Makanya tiap materi di sini selalu ditutup dengan soal, dan jawaban salah otomatis masuk 'Buku Kesalahan'."],
+  ["Spaced repetition untuk kosakata","Kata diulang dengan jarak makin panjang (1 → 2 → 4 → 7 hari) tepat sebelum lupa. Di tab ini pakai sistem kotak Leitner: kalau ingat, kata naik kotak dan baru muncul lagi nanti; kalau lupa, balik ke kotak 1."],
+  ["Kolokasi, bukan kata tunggal","Lexical Resource band tinggi dinilai dari pasangan kata yang natural ('alleviate symptoms', bukan 'reduce symptoms' terus-menerus). Semua kosakata di sini diajarkan dalam frasa + contoh kalimat."],
+  ["Shadowing untuk listening & pronunciation","Beberapa studi eksperimen pada pelajar EFL menemukan shadowing (menirukan audio sedetik di belakangnya) meningkatkan skor listening. Tiap jawaban model speaking dan transkrip listening bisa diputar untuk kamu tiru."],
+  ["Latihan sengaja + umpan balik","Tulis → nilai pakai rubrik (atau minta Claude menilai) → perbaiki → tulis ulang. Band naik bukan dari banyaknya esai, tapi dari memperbaiki pola kesalahan yang sama."],
+  ["Bertahap: dari tanpa waktu ke waktu ujian","Hari awal fokus teknik, lalu pelan-pelan pakai timer sesuai ujian asli (Writing Task 2 = 40 menit, Reading = 20 menit per passage)."],
+  ["Kecil tapi tiap hari","1–2 tugas (±30–45 menit) tiap hari lebih efektif daripada maraton seminggu sekali. Tambahan 6 menit dengar BBC 6 Minute English sambil jalan = input harian."]
+];
+const ENG_FORMAT = [
+  ["Listening","4 bagian, 40 soal, ±30 menit. Audio diputar SEKALI. Part 1 percakapan sehari-hari, Part 2 monolog umum, Part 3 diskusi akademik, Part 4 kuliah."],
+  ["Reading (Academic)","3 teks panjang, 40 soal, 60 menit (±20 menit per teks). Teks makin sulit dari 1 ke 3."],
+  ["Writing (Academic)","Task 1: deskripsi grafik/diagram ≥150 kata, ±20 menit. Task 2: esai ≥250 kata, ±40 menit, bobotnya 2× Task 1."],
+  ["Speaking","11–14 menit tatap muka. Part 1 tanya jawab ringan, Part 2 bicara 2 menit dari kartu (1 menit persiapan), Part 3 diskusi abstrak."]
+];
+const ENG_QUOTES = [
+  "Small steps every day add up to big results.",
+  "You don't have to be great to start, but you have to start to be great.",
+  "A different language is a different vision of life. — Federico Fellini",
+  "The limits of my language mean the limits of my world. — Ludwig Wittgenstein",
+  "Practice isn't the thing you do once you're good. It's the thing you do that makes you good. — Malcolm Gladwell",
+  "Mistakes are proof that you are trying.",
+  "One language sets you in a corridor for life. Two languages open every door along the way. — Frank Smith",
+  "Success is the sum of small efforts, repeated day in and day out. — Robert Collier",
+  "Learning never exhausts the mind. — Leonardo da Vinci",
+  "Fall in love with the process, and the results will come."
+];
+
+/* ---------------- LISTENING (diputar pakai suara browser, en-GB) ---------------- */
+const ENG_LISTEN = {
+ L1:{title:"Part 1 · Booking a hostel in Lucerne", part:1,
+  instr:"Complete the form below. Write ONE WORD AND/OR A NUMBER for each answer.",
+  strat:["Sebelum audio diputar, baca semua soal dan tebak jenis jawabannya (nama? angka? benda?).","Hati-hati jawaban yang DIKOREKSI pembicara: 'the 12th… oh no, sorry, the 14th'. Yang dihitung jawaban terakhir.","Ejaan harus benar. Nama yang dieja huruf per huruf hampir pasti jadi soal.","Angka & harga: dengarkan sampai kalimat selesai, sering ada dua angka yang disebut."],
+  speakers:{R:"Receptionist",C:"Caller"},
+  script:[
+   ["R","Good afternoon, Lakeside Youth Hostel in Lucerne, Marco speaking. How can I help you?"],
+   ["C","Oh, hello. I'd like to book a bed for next month, please."],
+   ["R","Of course. Can I start with your name?"],
+   ["C","Yes, it's Amelia Hartley."],
+   ["R","Could you spell your surname for me?"],
+   ["C","Sure. That's H, A, R, T, L, E, Y."],
+   ["R","Thank you, Amelia. And when would you like to arrive?"],
+   ["C","I was originally planning to come on the twelfth of November, but my train ticket is actually for the fourteenth, so the fourteenth, please."],
+   ["R","The fourteenth of November. And how many nights will you be staying?"],
+   ["C","Three, I think. Hmm, actually, could you make it four? I'd like a full day in the mountains."],
+   ["R","Four nights, no problem. Now, what kind of room are you looking for? We don't have single rooms, I'm afraid, but we have private twin rooms and dormitories."],
+   ["C","How much is the twin room?"],
+   ["R","The twin is ninety-five francs per night. A bed in our female dormitory is thirty-eight francs."],
+   ["C","I'm on a student budget, so I'll take the female dormitory."],
+   ["R","Good choice, it's got a lovely view of the lake. Would you like breakfast? It isn't included in the price."],
+   ["C","How much does it cost?"],
+   ["R","It used to be twelve francs, but this season it's nine. It's served from seven until ten in the café on the ground floor."],
+   ["C","Nine francs is fine. Yes, please add breakfast."],
+   ["R","Lovely. Could I have a contact phone number?"],
+   ["C","Yes, it's zero seven nine, three four six, eight one five two."],
+   ["R","Zero seven nine, three four six, eight one five two. And may I ask how you heard about us? Was it through a website?"],
+   ["C","No, a friend of mine stayed with you last year and recommended you."],
+   ["R","That's nice to hear. Is there anything else we should know?"],
+   ["C","Yes, my train gets in quite late, around eleven at night. Is that a problem?"],
+   ["R","Reception closes at ten, but don't worry. We'll leave your key in a locker next to the main door, and we'll email you the code."],
+   ["C","Perfect. Thank you so much."]
+  ],
+  qs:[
+   {q:"Name: Amelia ________", a:["hartley"], why:"Dieja huruf per huruf: H-A-R-T-L-E-Y."},
+   {q:"Arrival date: ________ November", a:["14","14th","fourteenth","the 14th"], why:"Jebakan: 'originally the twelfth' → lalu dikoreksi jadi the fourteenth."},
+   {q:"Number of nights: ________", a:["4","four"], why:"'Three, I think… actually, could you make it four?' Jawaban terakhir yang dihitung."},
+   {q:"Type of room: female ________", a:["dormitory","dorm"], why:"Twin room disebut duluan (distraktor), tapi dia memilih female dormitory."},
+   {q:"Price per night: CHF ________", a:["38","thirty-eight","thirty eight"], why:"95 = harga twin room (distraktor). Dormitory = 38."},
+   {q:"Breakfast costs CHF ________", a:["9","nine"], why:"'It used to be twelve… but this season it's nine.'"},
+   {q:"Breakfast is served in the ________", a:["cafe","café"], why:"'served… in the café on the ground floor.'"},
+   {q:"Phone number: 079 ________", a:["3468152","346 8152","346-8152","3468 152"], why:"zero seven nine, three four six, eight one five two."},
+   {q:"Heard about the hostel from a ________", a:["friend"], why:"Website disebut oleh receptionist (distraktor), tapi jawabannya 'a friend of mine'."},
+   {q:"Late arrival: key will be left in a ________", a:["locker"], why:"'We'll leave your key in a locker next to the main door.'"}
+  ]},
+ L2:{title:"Part 3 · Planning a research project on hospital noise", part:3,
+  instr:"Questions 1–6: choose the correct letter, A, B or C. Questions 7–10: what do the students decide about each data source? Choose A, B or C.",
+  strat:["Di Part 3 orang sering berubah pikiran. Tunggu sampai mereka SEPAKAT.","Ketiga pilihan biasanya disebut di audio. Yang benar adalah yang dikonfirmasi, bukan yang pertama terdengar.","Dengar kata sinyal: 'actually', 'but', 'I'm not sure that's…', 'that's a good point'."],
+  speakers:{T:"Dr Price (tutor)",H:"Hana",M:"Tom"},
+  script:[
+   ["T","So, Hana and Tom, you wanted to talk about your research project for the public health module. Remind me of your topic."],
+   ["H","We're looking at noise on hospital wards at night and how it affects patients' sleep. At first we wanted to compare three hospitals, but we realised that was far too ambitious, so we're going to focus on two wards in the same hospital."],
+   ["T","Sensible. Which wards?"],
+   ["M","A surgical ward and a medical ward. We considered the children's ward, but getting consent would take months."],
+   ["T","Right. And what made you choose the topic in the first place?"],
+   ["H","Well, people assume it was because of an article we read, and we did read a few, but honestly it was Tom's grandfather. He spent a week in hospital last year and said he barely slept because of the alarms."],
+   ["M","He wasn't exaggerating, either. When I visited, the machines were beeping constantly."],
+   ["T","Personal motivation is fine, as long as the method is objective. How will you measure the noise?"],
+   ["M","We'll use a sound level meter app on a phone. We know a professional meter would be more accurate, but the department can't lend us one until December."],
+   ["T","An app is acceptable for a pilot study, provided you calibrate it. What will you say is the main source of noise?"],
+   ["H","We expected it to be equipment alarms, but the pilot night we did suggested that staff conversations at the nurses' station were actually louder and more frequent."],
+   ["T","Interesting. Now, how will you assess sleep?"],
+   ["M","We thought about wrist devices that track sleep, but they're expensive and patients might find them uncomfortable. So we'll use a short questionnaire that patients fill in each morning."],
+   ["T","Good. Let's talk about other data sources. Hospital complaint records?"],
+   ["H","We looked at them, but most complaints are about food and parking, so they won't really help us. We'll leave them out."],
+   ["T","What about interviews with night nurses?"],
+   ["M","Definitely. They know exactly when the ward is noisiest. We'll interview four of them."],
+   ["T","And published data from other countries?"],
+   ["H","We'll use it, but only in the discussion, to compare with our results. Not as part of our main data."],
+   ["T","And patients' medical notes?"],
+   ["M","We'd love to, but the ethics committee said no. We can't access them."],
+   ["T","That's a pity, but understandable. Overall, it sounds like a solid plan."]
+  ],
+  qs:[
+   {q:"1. How many hospitals will the study include?", o:["A three","B two","C one"], a:2, why:"Awalnya tiga ('too ambitious'), lalu 'two wards in the SAME hospital' → satu rumah sakit. 'Two' adalah jebakan (itu jumlah bangsal)."},
+   {q:"2. Why did they NOT choose the children's ward?", o:["A Consent would take too long.","B It is too quiet at night.","C The tutor advised against it."], a:0, why:"'getting consent would take months'."},
+   {q:"3. What originally inspired the topic?", o:["A a newspaper article","B a relative's experience","C a lecture on public health"], a:1, why:"'people assume it was because of an article… but honestly it was Tom's grandfather'."},
+   {q:"4. Why will they use a phone app to measure noise?", o:["A It is more accurate.","B The tutor recommended it.","C A professional meter is not available yet."], a:2, why:"'the department can't lend us one until December'. Akurasi justru milik alat profesional."},
+   {q:"5. According to the pilot night, the main source of noise was", o:["A equipment alarms.","B staff conversations.","C patients' visitors."], a:1, why:"'We expected… alarms, but… staff conversations… were actually louder.'"},
+   {q:"6. How will they assess patients' sleep?", o:["A wrist devices","B a morning questionnaire","C nurses' observations"], a:1, why:"Wrist devices ditolak (mahal, tidak nyaman) → questionnaire tiap pagi."},
+   {q:"7. Hospital complaint records", o:["A use as main data","B use only for comparison","C not use"], a:2, why:"'We'll leave them out.'"},
+   {q:"8. Interviews with night nurses", o:["A use as main data","B use only for comparison","C not use"], a:0, why:"'Definitely… We'll interview four of them.'"},
+   {q:"9. Published data from other countries", o:["A use as main data","B use only for comparison","C not use"], a:1, why:"'only in the discussion, to compare with our results'."},
+   {q:"10. Patients' medical notes", o:["A use as main data","B use only for comparison","C not use"], a:2, why:"'the ethics committee said no'."}
+  ]},
+ L3:{title:"Part 4 · Lecture: the Speicherstadt, Hamburg", part:4,
+  instr:"Complete the notes below. Write ONE WORD ONLY for each answer.",
+  strat:["Part 4 tidak ada jeda di tengah. Baca semua catatan dulu, tandai kata sebelum & sesudah titik-titik.","Soal mengikuti urutan kuliah. Kalau ketinggalan satu, langsung lompat ke soal berikutnya.","Jawaban harus pas secara grammar dengan catatan (tunggal/jamak!)."],
+  speakers:{L:"Lecturer"},
+  script:[
+   ["L","Good morning, everyone. Today I'm going to talk about a remarkable example of industrial architecture: the Speicherstadt in Hamburg, which is the largest warehouse district in the world built on timber-pile foundations."],
+   ["L","The story begins in 1888, when Hamburg joined the German customs union. The city needed a free port, an area where goods could be stored without paying tax, and so a whole new district was planned on a group of islands in the river Elbe."],
+   ["L","This came at a cost to local people. Around twenty thousand residents were moved out of their homes to make space for the warehouses, which is something guidebooks rarely mention."],
+   ["L","The buildings stand on thousands of oak piles driven deep into the mud. Oak was chosen because it does not rot as long as it remains under water, so the water level has to be watched carefully even today."],
+   ["L","Architecturally, the warehouses are built from red brick in a neo-Gothic style, with towers and decorative details that make them look almost like churches or castles rather than storage buildings."],
+   ["L","Each warehouse had two sides: one facing a street, for carts and later lorries, and one facing a canal, where small boats delivered goods directly. Sacks were lifted from the boats with winches fixed at the top of each building."],
+   ["L","And what was stored there? Mainly coffee, tea and spices, but the district also became famous for oriental carpets. In fact, for a time it held the largest stock of carpets anywhere in the world."],
+   ["L","The work itself was physical. The men who handled and checked the goods were known locally as 'quartiersleute', and they were respected for their skill in judging quality, especially of coffee, which they could assess simply by its smell."],
+   ["L","The Second World War badly damaged around half of the district, but much of it was carefully reconstructed in the original style during the 1950s."],
+   ["L","Today the warehouses have new uses. Many have become offices and museums, including a very popular miniature railway exhibition. In 2015, the Speicherstadt was given UNESCO World Heritage status, together with the neighbouring office district."],
+   ["L","For our next session, I'd like you to think about how cities can protect historic buildings like these while still making them useful in the present."]
+  ],
+  qs:[
+   {q:"Built after Hamburg joined the customs union in ________", a:["1888"], why:"'The story begins in 1888…'"},
+   {q:"A free ________ was needed so goods could be stored without tax", a:["port"], why:"'The city needed a free port'."},
+   {q:"About 20,000 ________ had to leave their homes", a:["residents","people"], why:"'Around twenty thousand residents were moved out'."},
+   {q:"Foundations: piles made of ________", a:["oak"], why:"'thousands of oak piles'. Oak tidak membusuk selama tetap di bawah air."},
+   {q:"Walls made of red ________", a:["brick"], why:"'built from red brick in a neo-Gothic style'."},
+   {q:"Goods arrived by boat on the ________ side", a:["canal"], why:"'one facing a canal, where small boats delivered goods'."},
+   {q:"Sacks were lifted with ________", a:["winches","winch"], why:"'lifted from the boats with winches'."},
+   {q:"Famous for the world's largest stock of ________", a:["carpets","carpet"], why:"'the largest stock of carpets anywhere in the world'."},
+   {q:"Workers could judge coffee quality by its ________", a:["smell"], why:"'simply by its smell'."},
+   {q:"Received UNESCO status in ________", a:["2015"], why:"'In 2015, the Speicherstadt was given UNESCO World Heritage status'."}
+  ]}
+};
+
+/* ---------------- READING ---------------- */
+const ENG_READ = {
+ R1:{title:"The Spacing Effect: Why Cramming Fails", time:20,
+  paras:[
+   ["A","In 1885, the German psychologist Hermann Ebbinghaus published the results of an unusual experiment in which he was both researcher and subject. For months he memorised lists of meaningless syllables, such as 'DAX' and 'BUP', and then measured how quickly he forgot them. The resulting 'forgetting curve' showed that memory declines steeply in the first hours after learning and then levels off. More importantly for students, Ebbinghaus noticed that lists he reviewed over several days were retained far better than lists he studied the same number of times in a single session."],
+   ["B","This phenomenon, now known as the spacing effect, has since been confirmed in hundreds of studies. A large analysis published in 2006 by Nicholas Cepeda and colleagues reviewed over 300 experiments and concluded that spreading study sessions out improves long-term recall in almost every situation tested. The ideal gap between sessions, they found, depends on how long the information needs to be remembered: the further away the test, the longer the interval should be."],
+   ["C","Why should spacing help? One explanation is that when we return to material after a delay, we have partly forgotten it, and the effort of retrieving it strengthens the memory. Psychologists Robert and Elizabeth Bjork call such obstacles 'desirable difficulties'. Learning that feels easy, such as rereading notes several times in a row, creates a sense of familiarity that students often mistake for genuine understanding."],
+   ["D","Despite the evidence, cramming remains common. Surveys of university students consistently show that the majority prepare for exams by studying intensively in the final days. Part of the reason is that cramming does work in the short term: a student who studies all night may perform reasonably well the next morning. The problem is that most of that knowledge disappears within weeks, which matters greatly in subjects such as medicine, where later courses build directly on earlier ones."],
+   ["E","Technology has made spacing easier to apply. Flashcard programs based on spaced repetition algorithms schedule each item for review just before the learner is likely to forget it. Language learners in particular have adopted these tools, although critics point out that memorising isolated words is not the same as being able to use them in conversation."],
+   ["F","Researchers are now investigating whether the spacing effect applies to complex skills as well as facts. Early findings from studies of surgical training suggest that it does: trainee surgeons who practised a procedure in weekly sessions outperformed those who completed the same practice in one day. If these results are confirmed, they could change how professional training is organised."]
+  ],
+  groups:[
+   {type:"tfng", instr:"Questions 1–6. Do the following statements agree with the information in the passage? Write TRUE, FALSE or NOT GIVEN.", qs:[
+     {q:"1. Ebbinghaus used words from everyday German in his experiment.", a:"FALSE", why:"Paragraf A: dia memakai 'meaningless syllables' (suku kata tanpa arti). Teks bilang kebalikannya → FALSE."},
+     {q:"2. According to the forgetting curve, most forgetting happens soon after learning.", a:"TRUE", why:"'memory declines steeply in the first hours after learning and then levels off'."},
+     {q:"3. Cepeda's analysis found that the best interval between study sessions is always one week.", a:"FALSE", why:"Paragraf B: interval ideal TERGANTUNG jarak ke ujian. 'Always one week' bertentangan → FALSE."},
+     {q:"4. Students who reread their notes usually overestimate how well they understand them.", a:"TRUE", why:"Paragraf C: familiarity 'that students often mistake for genuine understanding' = parafrase dari overestimate."},
+     {q:"5. Most university students who cram fail their exams.", a:"FALSE", why:"Paragraf D: 'cramming does work in the short term… may perform reasonably well'. Bertentangan dengan 'fail' → FALSE. (Bukan NG, karena teks membahas performanya.)"},
+     {q:"6. Spaced repetition apps were first designed for language learners.", a:"NOT GIVEN", why:"Teks hanya bilang pelajar bahasa 'have adopted these tools'. Siapa yang pertama kali dirancang untuk mereka tidak disebut → NOT GIVEN."}
+   ]},
+   {type:"gap", instr:"Questions 7–10. Complete the summary. Choose NO MORE THAN TWO WORDS from the passage for each answer.", qs:[
+     {q:"7. When we retrieve partly forgotten information, the ________ involved makes the memory stronger.", a:["effort"], why:"Paragraf C: 'the effort of retrieving it strengthens the memory'."},
+     {q:"8. The Bjorks describe these obstacles as ________.", a:["desirable difficulties"], why:"'call such obstacles desirable difficulties'."},
+     {q:"9. Forgetting after cramming is a serious problem in fields like ________.", a:["medicine"], why:"Paragraf D: 'in subjects such as medicine'."},
+     {q:"10. Early research suggests spacing also improves the learning of ________ skills, such as surgery.", a:["complex"], why:"Paragraf F: 'applies to complex skills as well as facts'."}
+   ]}
+  ]},
+ R2:{title:"Why Cities Need Green Spaces", time:20,
+  paras:[
+   ["A","For most of the twentieth century, parks were regarded by city planners as a pleasant extra: something to be added once housing, roads and offices had been built. That view is changing rapidly. As more than half of the world's population now lives in urban areas, green spaces are increasingly treated as essential infrastructure, as important to a city's functioning as its water supply or its transport network."],
+   ["B","Some of the strongest evidence concerns physical health. Long-term studies in several European countries have found that people who live within walking distance of a park are more physically active and have lower rates of obesity and heart disease. Crucially, the benefit appears to be greatest among low-income groups, suggesting that access to green space could help to reduce health inequalities."],
+   ["C","The effects on mental health are equally striking. In one well-known Danish study, researchers used satellite images to measure how much greenery almost one million people had grown up near. Those who spent their childhood with the least access to green space had a significantly higher risk of developing a psychiatric disorder later in life, even after differences in income and family history were taken into account."],
+   ["D","Green spaces also protect cities from extreme weather. Concrete and asphalt absorb heat during the day and release it at night, making urban areas several degrees warmer than the surrounding countryside. Trees reduce this 'heat island' effect by providing shade and releasing water vapour. Parks and green roofs also absorb rainwater, lowering the risk of flash floods, which have become more frequent as rainfall patterns change."],
+   ["E","Yet creating new parks in crowded cities is far from simple. Land in city centres is extremely expensive, and there is constant pressure to use it for housing. Moreover, when a run-down neighbourhood receives an attractive new park, property prices often rise, and the very residents the park was meant to benefit may be forced to move away, a process sometimes called 'green gentrification'."],
+   ["F","Some cities have found creative solutions. Hamburg, for example, has developed a 'Green Network' plan to link existing parks, cemeteries and sports fields through continuous green corridors, allowing people to walk or cycle across the city without using a road. Elsewhere, unused railway lines and car parks have been turned into public gardens, showing that green space can be added without demolishing existing buildings."]
+  ],
+  headingList:["i The economic cost of building parks","ii A change in how planners view parks","iii Benefits for the body, especially for poorer residents","iv Linking and reusing spaces in new ways","v Long-term psychological effects","vi How greenery protects against heat and flooding","vii Why tourists prefer green cities","viii Unintended social consequences of new parks"],
+  groups:[
+   {type:"head", instr:"Questions 1–6. Choose the correct heading for each paragraph from the list of headings. (Ada 2 heading yang tidak terpakai.)", qs:[
+     {q:"Paragraph A", a:"ii", why:"Dulu taman = 'pleasant extra', sekarang 'essential infrastructure' → perubahan cara pandang perencana kota."},
+     {q:"Paragraph B", a:"iii", why:"Physical health + 'greatest among low-income groups'."},
+     {q:"Paragraph C", a:"v", why:"Masa kecil dekat hijau → risiko gangguan psikiatri saat dewasa = efek psikologis jangka panjang."},
+     {q:"Paragraph D", a:"vi", why:"Heat island + flash floods."},
+     {q:"Paragraph E", a:"viii", why:"Jebakan: heading i (economic cost) cuma menangkap kalimat pertama. Ide utama paragraf adalah green gentrification = akibat sosial yang tidak disengaja."},
+     {q:"Paragraph F", a:"iv", why:"Green Network menghubungkan ruang hijau + rel kereta & parkiran bekas dipakai ulang."}
+   ]},
+   {type:"mcq", instr:"Questions 7–10. Choose the correct letter, A, B, C or D.", qs:[
+     {q:"7. The Danish study mentioned in paragraph C", o:["A only included people from wealthy families.","B relied on satellite data to measure exposure to greenery.","C proved that parks cure psychiatric disorders.","D was carried out over a single year."], a:1, why:"'researchers used satellite images to measure how much greenery…'. C terlalu kuat ('cure', 'proved')."},
+     {q:"8. According to paragraph D, urban areas are warmer than the countryside because", o:["A there are fewer trees producing oxygen.","B buildings and roads store heat and release it later.","C cities produce more water vapour.","D rainfall is lower in cities."], a:1, why:"'Concrete and asphalt absorb heat during the day and release it at night'."},
+     {q:"9. What is meant by 'green gentrification'?", o:["A Wealthier people moving into a park's surrounding area and pushing out original residents.","B Replacing housing with parks.","C Painting old buildings green.","D Charging people to use public parks."], a:0, why:"Harga properti naik → penghuni asli terpaksa pindah."},
+     {q:"10. The writer mentions Hamburg as an example of a city that", o:["A has the largest park in Europe.","B demolished buildings to create parks.","C connects existing green areas into a network.","D banned cars from the city centre."], a:2, why:"'link existing parks… through continuous green corridors'. B kebalikan dari kalimat terakhir paragraf F."}
+   ]}
+  ]},
+ R3:{title:"The Bilingual Advantage: A Debate Revisited", time:20,
+  paras:[
+   ["A","For much of the twentieth century, bilingualism was viewed with suspicion. Educators warned that children exposed to two languages would become confused, and early studies appeared to confirm that bilingual children scored lower on intelligence tests. In retrospect, these studies were deeply flawed: many compared immigrant children who were still learning the language of the test with monolingual children from wealthier backgrounds."],
+   ["B","The pendulum swung dramatically in the opposite direction in the early 2000s. A series of influential experiments, many led by the Canadian psychologist Ellen Bialystok, reported that bilingual children and adults outperformed monolinguals on tasks requiring 'executive control', the mental ability to focus attention, ignore distractions and switch between tasks. The proposed explanation was intuitive: because bilinguals must constantly suppress one language while using the other, they effectively train their brains every time they speak."],
+   ["C","The idea attracted enormous media attention, partly because of claims that bilingualism might delay the onset of dementia by several years. For parents and policymakers, the message was irresistible: learning a second language was not only useful for communication but also a form of mental exercise."],
+   ["D","In the last decade, however, the 'bilingual advantage' has come under sustained criticism. Several large studies, some involving thousands of participants, have failed to find any consistent difference in executive control between bilinguals and monolinguals. Critics have also identified a publication bias: studies that found an advantage were far more likely to be published than those that did not, creating a misleadingly positive picture of the evidence."],
+   ["E","Defenders of the theory respond that 'bilingualism' is not a single experience. Someone who uses two languages every day in very different settings may differ greatly from someone who learned a second language at school and rarely uses it. Grouping such people together, they argue, may hide real effects that occur only under certain conditions."],
+   ["F","In my view, the most reasonable conclusion is a modest one. The cognitive benefits of bilingualism, if they exist, are probably smaller and less universal than once claimed. Yet this hardly weakens the case for learning languages, which rests on far more solid ground: access to other cultures, wider career opportunities and the ability to communicate with millions more people. Those reasons were valid long before anyone measured reaction times in a laboratory, and they remain valid today."]
+  ],
+  groups:[
+   {type:"ynng", instr:"Questions 1–5. Do the following statements agree with the views of the writer? Write YES, NO or NOT GIVEN.", qs:[
+     {q:"1. Early research on bilingual children was poorly designed.", a:"YES", why:"Paragraf A: 'In retrospect, these studies were deeply flawed'."},
+     {q:"2. Bialystok's experiments were deliberately misleading.", a:"NOT GIVEN", why:"Penulis mengkritik bias publikasi secara umum, tapi tidak pernah menuduh Bialystok sengaja menyesatkan."},
+     {q:"3. Publication bias exaggerated the evidence for a bilingual advantage.", a:"YES", why:"Paragraf D: 'creating a misleadingly positive picture of the evidence'."},
+     {q:"4. The debate about cognitive benefits makes learning languages less worthwhile.", a:"NO", why:"Paragraf F: 'this hardly weakens the case for learning languages'."},
+     {q:"5. Bilingual people earn higher salaries than monolingual people.", a:"NOT GIVEN", why:"Disebut 'wider career opportunities', tapi tidak ada klaim soal gaji lebih tinggi."}
+   ]},
+   {type:"mcq", instr:"Questions 6–8. Choose the correct letter, A, B, C or D.", qs:[
+     {q:"6. What explanation was given for the bilingual advantage?", o:["A Bilinguals tend to come from wealthier families.","B Controlling two languages constantly exercises attention.","C Bilinguals spend more time reading.","D Bilinguals start school earlier."], a:1, why:"'must constantly suppress one language… effectively train their brains'."},
+     {q:"7. Why did the theory become popular with the public?", o:["A It was supported by every study.","B It suggested benefits beyond communication, including for dementia.","C Governments paid for advertising.","D It was easy to test at home."], a:1, why:"Paragraf C: dementia + 'not only useful for communication but also… mental exercise'."},
+     {q:"8. Defenders of the theory argue that", o:["A the large studies used the wrong tests.","B all bilinguals benefit equally.","C different kinds of bilingual experience should not be grouped together.","D monolinguals were not tested properly."], a:2, why:"Paragraf E: 'Grouping such people together… may hide real effects'."}
+   ]},
+   {type:"ends", instr:"Questions 9–12. Complete each sentence with the correct ending, A–F.", endings:["A have produced no consistent results.","B was once believed to confuse children.","C are based on cultural and practical benefits.","D is used daily in different settings.","E was proven to prevent dementia.","F were only studied in Canada."], qs:[
+     {q:"9. Exposure to two languages in childhood…", a:"B", why:"Paragraf A: 'children exposed to two languages would become confused'."},
+     {q:"10. Several large-scale studies…", a:"A", why:"Paragraf D: 'failed to find any consistent difference'."},
+     {q:"11. The strongest reasons for learning languages…", a:"C", why:"Paragraf F: budaya, karier, komunikasi."},
+     {q:"12. Effects may be clearer when a second language…", a:"D", why:"Paragraf E: 'uses two languages every day in very different settings'. E jebakan: teks hanya bilang 'might delay'."}
+   ]}
+  ]}
+};
+
+/* ---------------- WRITING ---------------- */
+const ENG_WRITE = {
+ W1:{title:"Task 2 · Opinion essay (intro + 1 body)", time:25, minWords:150, type:"Task 2",
+  prompt:"Some people believe that studying online is just as effective as studying in a traditional classroom. To what extent do you agree or disagree?",
+  target:"Hari ini tulis INTRO + SATU BODY PARAGRAPH saja (±150–180 kata), 25 menit.",
+  steps:["Garis bawahi kata kunci soal: 'just as effective', 'to what extent'. Soal ini minta POSISIMU, dan posisi itu harus konsisten dari intro sampai kesimpulan.","Intro (2 kalimat): (1) parafrase soal, jangan copy; (2) thesis statement yang jelas, mis. 'I largely disagree, because…'.","Body: kalimat topik → jelaskan KENAPA → contoh spesifik → kaitkan balik ke posisimu.","Sisakan 3 menit untuk cek: artikel (a/the), -s jamak, subject-verb agreement."],
+  useful:["It is often argued that…","While online learning offers undeniable flexibility, …","I would argue that… largely because…","This is particularly evident in…","A case in point is…","Consequently, …","For this reason, …"],
+  model:`In recent years, the rapid expansion of internet-based courses has led some to claim that learning online is equally as effective as attending lessons in person. While I accept that digital learning has clear advantages in terms of flexibility, I largely disagree with this view, as face-to-face teaching remains superior for developing practical skills and sustaining motivation.
+
+The most compelling reason is that many forms of knowledge cannot be fully acquired through a screen. This is particularly evident in fields such as medicine, nursing or engineering, where students must practise physical procedures under direct supervision. A medical student, for instance, may watch dozens of videos on how to examine a patient's abdomen, yet only by doing so in a clinical setting, with a tutor correcting the position of their hands, will they master the technique. Moreover, classroom learning provides immediate, spontaneous interaction: a puzzled expression can prompt a teacher to rephrase an explanation, something that is far harder to detect in a video call with cameras switched off.
+
+A second consideration is motivation. Studying alone at home demands considerable self-discipline, and online courses are known for their high drop-out rates. In a physical classroom, by contrast, fixed timetables, peer pressure and the simple presence of classmates help learners to stay on track.
+
+Admittedly, online platforms are invaluable for revising theory, accessing world-class lecturers and fitting study around work or family commitments. However, these benefits make online learning a useful complement to traditional education rather than an equal substitute for it.
+
+In conclusion, although studying online is convenient and suitable for certain purposes, I believe that classroom learning remains more effective overall, particularly for practical subjects and for learners who need structure to remain motivated.`,
+  notes:["Thesis jelas di kalimat ke-2 intro → Task Response kuat dari awal.","Satu body = satu ide utama, dikembangkan penuh dengan contoh spesifik (medical student).","Kohesi tidak mencolok: 'Moreover', 'by contrast', 'Admittedly… However' dipakai seperlunya.","Kolokasi natural: 'clear advantages', 'sustaining motivation', 'high drop-out rates', 'a useful complement… rather than an equal substitute'."]},
+ W2:{title:"Task 1 · Line graph: overnight visitors", time:20, minWords:150, type:"Task 1", chart:true,
+  prompt:"The graph below shows the number of overnight visitors (in millions) to three European cities, Lucerne, Hamburg and Bruges, between 2000 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+  target:"Tulis minimal 150 kata dalam 20 menit.",
+  steps:["Paragraf 1: parafrase soal (apa, di mana, kapan). Jangan menyalin.","Paragraf 2 = OVERVIEW: 2 tren paling besar, TANPA angka detail. Ini syarat utama band 7 ke atas.","Paragraf 3–4: kelompokkan data (mis. Hamburg sendiri; Lucerne & Bruges berdua), pakai angka penting + perbandingan.","Jangan beropini atau menebak penyebab."],
+  useful:["rose steadily / climbed sharply","peaked at… in…","levelled off at around…","fell to a low of…","overtook…","remained relatively stable","By contrast, …","…, more than double the figure for…"],
+  data:{years:[2000,2005,2010,2015,2020], series:[["Hamburg",[4.0,5.5,8.0,12.5,7.0],"#5B6CFF"],["Lucerne",[2.0,2.5,3.0,4.5,2.5],"#FF4F8B"],["Bruges",[3.0,3.0,3.5,4.0,1.5],"#11B3A3"]]},
+  model:`The line graph illustrates how many tourists stayed overnight in three European cities, namely Hamburg, Lucerne and Bruges, over a twenty-year period from 2000 to 2020.
+
+Overall, Hamburg attracted by far the largest number of overnight visitors throughout the period, and its figures grew most dramatically. All three cities saw a sharp decline in the final five years, with Bruges ending the period at its lowest point.
+
+In 2000, Hamburg received 4 million overnight visitors, slightly more than Bruges (3 million) and double the figure for Lucerne (2 million). Over the following fifteen years, visitor numbers in Hamburg rose steadily and then more steeply, reaching a peak of 12.5 million in 2015, roughly three times its initial level.
+
+The two smaller cities followed a more modest pattern. Bruges remained relatively stable at around 3 to 4 million until 2015, while Lucerne climbed gradually and overtook Bruges in 2015, when it peaked at 4.5 million. Between 2015 and 2020, however, all three cities experienced a significant fall: Hamburg dropped to 7 million, Lucerne returned to 2.5 million, and Bruges plunged to just 1.5 million, half of its starting figure.`,
+  notes:["Overview tanpa angka, menyebut 2 fitur utama → ini yang paling membedakan band 6 vs 8+.","Data dikelompokkan (Hamburg vs dua kota kecil) bukan dibahas tahun per tahun.","Variasi bahasa tren: rose steadily, more steeply, peaked, overtook, plunged.","Tidak ada spekulasi penyebab (mis. pandemi) karena tidak ada di grafik."]},
+ W3:{title:"Task 2 · Discussion essay (full, 40 menit)", time:40, minWords:250, type:"Task 2",
+  prompt:"Some people think that the best way to improve public health is to increase the number of sports facilities. Others, however, believe that this would have little effect and that other measures are required. Discuss both views and give your own opinion.",
+  target:"Full essay ≥250 kata, 40 menit, pakai timer. Rencanakan 5 menit dulu.",
+  steps:["Tipe soal: 'Discuss both views AND give your opinion' → wajib 3 hal: pandangan 1, pandangan 2, opinimu (di intro DAN kesimpulan).","Rencana 5 menit: 1 body untuk tiap pandangan, tiap body 2 ide + contoh.","Pakai pengetahuan kedokteranmu (faktor risiko, preventif, determinan sosial kesehatan) sebagai contoh. Ini nilai plus untuk Task Response.","3 menit terakhir: cek artikel, jamak, tenses, dan pengulangan kata."],
+  useful:["Proponents of this view argue that…","On the other hand, critics contend that…","There is some merit in this argument, since…","However, this overlooks the fact that…","Tackling the root causes of…","In my view, a combination of… is required."],
+  model:`Public health has become a pressing concern in many countries, as rates of obesity, diabetes and heart disease continue to rise. While some argue that building more sports facilities is the most effective solution, others maintain that such investment would achieve little on its own. In my view, sports facilities are beneficial but insufficient, and they must form part of a wider strategy.
+
+Those who favour sports facilities point out that a sedentary lifestyle is one of the leading risk factors for chronic illness. If people have convenient access to swimming pools, cycling lanes and affordable gyms, they are more likely to exercise regularly, which helps to prevent weight gain, lower blood pressure and improve mental well-being. Community sports centres can also bring people together, reducing the social isolation that is itself associated with poor health.
+
+However, critics rightly argue that availability does not guarantee use. Many people with the poorest health are prevented from exercising not by a lack of facilities but by long working hours, financial pressure or limited health awareness. Moreover, physical activity alone cannot compensate for an unhealthy diet, smoking or untreated conditions such as hypertension. For this reason, measures such as taxing sugary drinks, restricting tobacco advertising, offering free health screening and teaching nutrition in schools are likely to have a greater impact on the population as a whole.
+
+In my opinion, the most effective approach addresses both the opportunity to be active and the underlying causes of illness. Sports facilities should therefore be built where they are most needed, such as in low-income areas, but they should be combined with preventive healthcare and education.
+
+In conclusion, while additional sports facilities can certainly contribute to a healthier population, they are unlikely to transform public health unless they are accompanied by broader policies that tackle diet, addiction and access to care.`,
+  notes:["Opini muncul di intro dan kesimpulan, konsisten ('beneficial but insufficient').","Kedua pandangan dibahas adil, lalu penulis memberi sintesis di paragraf sendiri.","Contoh dari dunia kesehatan spesifik: sedentary lifestyle, hypertension, sugar tax, screening.","Range grammar: conditional ('If people have…'), passive, relative clause, participle ('accompanied by')."]}
+};
+
+/* ---------------- SPEAKING ---------------- */
+const ENG_SPEAK = {
+ S1:{title:"Part 1 · About you", part:1,
+  tips:["Jawab 2–4 kalimat: jawaban langsung → alasan → contoh/detail. Jangan cuma 'Yes, I do.'","Jangan menghafal kalimat panjang; examiner bisa membedakan jawaban hafalan.","Boleh pakai filler alami: 'Well, …', 'To be honest, …', 'I'd say…'.","Shadowing: putar jawaban model, tirukan sambil menempel 1 detik di belakang suaranya. Fokus ke tekanan kata dan intonasi naik-turun."],
+  qs:[
+   {q:"Do you work or are you a student?", m:"I'm a medical student, currently in my pre-clinical years. It's demanding, to be honest, because we cover a huge amount of material every week, but I find it genuinely rewarding, especially when a topic I've studied in theory suddenly makes sense in a real clinical case."},
+   {q:"Why did you choose to study medicine?", m:"Mainly because I've always been drawn to working with children. I'm hoping to specialise in paediatrics eventually. I think there's something special about helping a child recover and seeing the relief on the parents' faces."},
+   {q:"Where is your hometown?", m:"I'm from Indonesia, from a fairly busy city in East Java. It's not particularly famous among tourists, but it has a really lively food scene, and there are mountains within driving distance, so it's easy to escape the heat at the weekend."},
+   {q:"How do you usually spend your weekends?", m:"It depends on my exam schedule, really. During busy weeks I spend most of the weekend catching up on lectures, but when I have some free time, I like to go out for brunch with friends or just stay in and watch a film to recharge."},
+   {q:"Do you like reading?", m:"Yes, although these days most of my reading is for university, so it's textbooks rather than novels. Whenever I'm on holiday, though, I try to read something completely unrelated to medicine, like a mystery novel, just to switch off."},
+   {q:"What kind of weather do you prefer?", m:"I'd say cool, crisp weather, like a sunny autumn day. Where I live it's hot and humid most of the year, so I'm quite curious about experiencing proper seasons, and seeing snow in the Alps is actually on my bucket list."},
+   {q:"Do you use your phone a lot?", m:"Probably more than I should! Apart from messaging, I use it a lot for studying, for example flashcard apps and recorded lectures. I've started putting it on 'do not disturb' while I study, because otherwise I get distracted far too easily."},
+   {q:"Would you like to learn another language in the future?", m:"Definitely. Once my English is where I want it to be, I'd love to pick up some German. I've always been fascinated by cities like Hamburg, and I think being able to chat with locals in their own language would make travelling there far more meaningful."}
+  ],
+  phrases:["I'm drawn to… (tertarik pada…)","It depends on…, really.","…is on my bucket list","to recharge / to switch off (istirahat dari pikiran)","to catch up on (mengejar ketinggalan)","Probably more than I should!"]},
+ S2:{title:"Part 2 · Cue card: a place you'd like to visit", part:2,
+  card:{topic:"Describe a place in another country that you would like to visit.", points:["where it is","how you know about it","what you would do there","and explain why you would like to visit this place."]},
+  tips:["1 menit persiapan: tulis KATA KUNCI saja (bukan kalimat) untuk tiap poin di kartu.","Bicara terus sampai examiner menghentikanmu di 2 menit. Kalau ide habis, ceritakan detail (warna, suara, perasaan), atau pengalaman pribadi.","Pakai tenses beragam: present (it is), past (I first saw it), future/conditional (I would…, if I…).","Bagian 'explain why' paling penting: di situ kosakata dan kedalaman ide paling terlihat."],
+  m:`The place I'd really love to visit is Lauterbrunnen, a small village in the Swiss Alps, not far from Interlaken.
+
+I first came across it a couple of years ago, when a photo of the valley appeared on my social media feed. To be honest, I thought it had been edited, because it looked almost too perfect: a deep green valley with enormous rock walls on both sides and dozens of waterfalls pouring down from the cliffs. Later I found out that there are actually more than seventy waterfalls there, and the most famous one, Staubbach Falls, drops right behind the village.
+
+If I had the chance to go, I'd spend at least three or four days there. I'd start by hiking along the valley floor and then take the cable car up to one of the car-free mountain villages, like Mürren, where you can see the snow-capped peaks up close. I'd also love to try Swiss chocolate and cheese fondue, which I know is a bit of a cliché, but I think it's part of the experience.
+
+As for why I want to go, I think there are two main reasons. Firstly, I grew up in a tropical country, so I've never experienced a landscape like that, with snow, glaciers and cold, fresh air. Secondly, and perhaps more importantly, it's become a kind of personal goal. Medical school can be exhausting, and whenever I feel overwhelmed, looking at pictures of places like Lauterbrunnen reminds me why I'm working so hard on my English and my studies. So for me, visiting it one day would feel like a reward for all those late nights.`,
+  phrases:["I first came across it…","It looked almost too perfect.","snow-capped peaks","…is a bit of a cliché, but…","As for why…","It would feel like a reward for…"]},
+ S3:{title:"Part 3 · Travel, tourism & languages", part:3,
+  tips:["Part 3 menilai kemampuan membahas ide abstrak. Struktur aman: posisi → alasan → contoh → (opsional) sisi lain.","Hedging = tanda bahasa tingkat tinggi: 'I'd argue that…', 'It largely depends on…', 'To some extent…'.","Bandingkan masa lalu–sekarang–masa depan, atau kelompok berbeda (orang muda vs tua, kota vs desa).","Kalau tidak tahu faktanya, berpendapat saja dengan alasan logis. Yang dinilai bahasanya, bukan kebenaran faktanya."],
+  qs:[
+   {q:"Why do you think international travel has become so popular?", m:"I'd say there are several factors. The most obvious one is cost: budget airlines have made flying affordable for people who could never have travelled abroad a generation ago. Social media has also played a huge role, because people constantly see photos of beautiful places and feel they're missing out. And on a deeper level, I think many people travel to escape the pressure of work and to experience something genuinely different."},
+   {q:"What are the negative effects of mass tourism on local communities?", m:"The most visible problem is overcrowding. In places like Hallstatt in Austria, the number of daily visitors can be many times the local population, which makes ordinary life quite difficult for residents. There's also an economic side: when too many flats are rented out to tourists, housing becomes unaffordable for local people. So although tourism brings income, it can gradually change the character of a place."},
+   {q:"How could governments manage tourism better?", m:"I think a combination of measures is needed. Some cities have introduced tourist taxes or daily visitor limits, which can reduce pressure while raising money for maintenance. Another approach is to promote lesser-known destinations so that visitors are spread more evenly. Ideally, though, local residents should have a say in these decisions, since they're the ones most affected."},
+   {q:"Is it necessary to learn the local language before visiting a country?", m:"Necessary, probably not, since English and translation apps will get you quite far. But I'd argue it's extremely worthwhile to learn at least a few basic phrases. It shows respect, and in my experience people respond far more warmly when you make an effort, even if your pronunciation isn't perfect."},
+   {q:"Do you think children should start learning foreign languages at a young age?", m:"Generally, yes. Young children tend to pick up pronunciation more naturally, and they're less afraid of making mistakes than adults. That said, I don't think age is everything. What matters more is the quality and amount of exposure. A child who has one short lesson a week may not progress much, whereas an adult who studies consistently and uses the language every day can reach a very high level."},
+   {q:"Will people still need to learn languages in the future, given advances in translation technology?", m:"That's an interesting question. Translation tools will certainly become more accurate, and for practical things like ordering food or reading signs, they may be enough. However, I don't think they'll replace language learning altogether, because a language carries humour, culture and emotion that a machine struggles to convey. Building a genuine friendship, or comforting a patient, for example, requires more than an accurate translation."}
+  ],
+  phrases:["I'd say there are several factors.","On a deeper level, …","…have a say in… (punya suara/hak bicara)","Necessary, probably not, but…","That said, …","…will get you quite far"]}
+};
+
+/* ---------------- GRAMMAR ---------------- */
+const ENG_GRAM = {
+ G1:{title:"Kalimat kompleks: relative & participle clauses",
+  lesson:`<p><b>Kenapa penting?</b> Grammatical Range band 7+ butuh <i>variasi kalimat kompleks</i> yang tetap akurat. Dua alat paling praktis: relative clause dan participle clause.</p>
+<p><b>1. Defining relative clause</b> (tanpa koma) = informasi yang WAJIB untuk tahu siapa/apa yang dimaksud.<br><i>Students <u>who sleep well</u> remember more.</i></p>
+<p><b>2. Non-defining relative clause</b> (pakai koma) = info tambahan. Tidak boleh pakai <i>that</i>.<br><i>Hamburg, <u>which</u> is Germany's second-largest city, has a huge port.</i> (BUKAN <i>, that is…</i>)</p>
+<p><b>3. Whose / where / in which</b>: <i>a doctor <u>whose</u> patients trust her</i> · <i>the hospital <u>where</u> I trained</i> · <i>the way <u>in which</u> cities grow</i>.</p>
+<p><b>4. Participle clause</b> = versi ringkas.<br>Aktif → -ing: <i>Patients <u>living</u> near parks exercise more.</i> (= who live)<br>Pasif → V3: <i>The data <u>collected</u> in 2020 were incomplete.</i> (= which were collected)<br>Di awal kalimat, subjeknya harus SAMA: <i><u>Having finished</u> the essay, I checked the grammar.</i> (bukan "the grammar was checked")</p>`,
+  ex:[
+   {q:"My sister, ____ lives in Surabaya, is a nurse.", o:["that","who","which","whom"], a:1, why:"Non-defining (ada koma) untuk orang → who. 'That' tidak boleh setelah koma."},
+   {q:"The city ____ I would most like to live in is Hamburg.", o:["where","which","what","whose"], a:1, why:"Ada 'in' di akhir → which (… live in). 'Where' hanya kalau tanpa 'in': the city where I would like to live."},
+   {q:"Choose the correct sentence.", o:["Lucerne, that is famous for its bridge, attracts many tourists.","Lucerne which is famous for its bridge attracts many tourists.","Lucerne, which is famous for its bridge, attracts many tourists.","Lucerne, which it is famous for its bridge, attracts many tourists."], a:2, why:"Non-defining → koma di kedua sisi + which, tanpa pengulangan subjek 'it'."},
+   {q:"Students ____ in groups often perform better.", o:["study","studied","studying","are studying"], a:2, why:"Participle aktif: students who study → students studying."},
+   {q:"The vaccines ____ last year were highly effective.", o:["developing","developed","which developed","were developed"], a:1, why:"Pasif: the vaccines which were developed → developed."},
+   {q:"____ the results, the researchers published their paper.", o:["Analysed","Having analysed","Being analysed","To analysing"], a:1, why:"'Having + V3' = setelah melakukan. Subjeknya the researchers (yang menganalisis)."},
+   {q:"Which sentence has a dangling participle (salah)?", o:["Walking along the canal, I saw the old warehouses.","Walking along the canal, the old warehouses looked beautiful.","While walking along the canal, I took photos.","I saw swans walking along the canal."], a:1, why:"'Walking…' harus dilakukan oleh subjek kalimat. Warehouses tidak bisa berjalan → dangling participle."},
+   {q:"This is the doctor ____ advice changed my life.", o:["who","whom","whose","which"], a:2, why:"Kepemilikan (advice milik doctor) → whose."}
+  ]},
+ G2:{title:"Artikel, jamak & subject-verb agreement",
+  lesson:`<p><b>Kenapa ini dulu?</b> Bahasa Indonesia tidak punya artikel, jamak wajib, atau perubahan kata kerja per subjek. Akibatnya tiga hal ini adalah kesalahan paling sering penutur Indonesia, dan examiner menghitungnya di <i>Grammatical Accuracy</i>. Band 9 = kesalahan seperti ini hampir tidak ada.</p>
+<p><b>1. a / an</b> = benda tunggal yang bisa dihitung, disebut pertama kali / tidak spesifik: <i>She is <u>a</u> doctor.</i> (WAJIB, jangan "She is doctor").<br><b>the</b> = spesifik/sudah diketahui/satu-satunya: <i><u>the</u> internet, <u>the</u> government, <u>the</u> elderly</i>.<br><b>Tanpa artikel</b> = makna umum dengan jamak/uncountable: <i><u>Exercise</u> improves <u>health</u>. <u>Doctors</u> work long hours.</i></p>
+<p><b>2. Uncountable</b> (tidak pernah +s, tidak pakai a): <i>information, advice, research, evidence, knowledge, equipment, homework, traffic, furniture</i>. Pakai <i>a piece of advice, much research</i>.</p>
+<p><b>3. Subject-verb agreement</b>: cari subjek INTI, abaikan frasa di tengah.<br><i>The number of tourists <u>has</u> increased.</i> (subjek = the number)<br><i>A number of tourists <u>have</u> complained.</i> (= many tourists)<br><i>One of the main reasons <u>is</u>…</i> · <i>Everyone <u>has</u>…</i></p>`,
+  ex:[
+   {q:"My mother is ____ paediatrician.", o:["—","a","the","an"], a:1, why:"Profesi tunggal → a. 'paediatrician' dibaca /piː/ (bunyi konsonan) → a."},
+   {q:"____ is one of the most important inventions in history.", o:["Internet","An internet","The internet","Internets"], a:2, why:"The internet (satu-satunya, selalu pakai the)."},
+   {q:"The professor gave us some useful ____.", o:["advices","advice","an advice","advise"], a:1, why:"Advice uncountable. 'Advise' = kata kerja."},
+   {q:"There ____ a lot of evidence for the spacing effect.", o:["are","is","have","were"], a:1, why:"Evidence uncountable → is."},
+   {q:"The number of overnight visitors ____ every year until 2015.", o:["rise","rises","rose","were rising"], a:2, why:"Subjek inti 'the number' (tunggal) + lampau → rose. 'Were rising' salah karena jamak."},
+   {q:"One of the biggest problems in cities ____ traffic congestion.", o:["are","is","were","be"], a:1, why:"Subjek inti 'One' → is."},
+   {q:"Choose the correct sentence.", o:["Elderly needs more healthcare.","The elderly need more healthcare.","The elderly needs more healthcares.","Elderlies need more healthcare."], a:1, why:"'The + adjective' = kelompok orang (jamak) → the elderly need. Healthcare uncountable."},
+   {q:"____ plays an important role in preventing heart disease.", o:["The exercise","An exercise","Exercise","Exercises"], a:2, why:"Makna umum, uncountable → tanpa artikel."},
+   {q:"Each of the students ____ to submit an essay.", o:["have","has","are having","were"], a:1, why:"Each (of) → tunggal → has."},
+   {q:"Governments should invest more in ____.", o:["a public transport","public transports","the public transport","public transport"], a:3, why:"Public transport uncountable, makna umum → tanpa artikel, tanpa -s."}
+  ]},
+ G3:{title:"Conditionals & inversion (range band 8–9)",
+  lesson:`<p><b>Kenapa?</b> Band 9 grammar = 'wide range of structures with full flexibility'. Conditional campuran dan inversion menunjukkan kontrol tinggi, asal dipakai secara natural, jangan dipaksakan di setiap kalimat.</p>
+<p><b>Zero</b> (fakta): <i>If you heat ice, it melts.</i><br><b>First</b> (mungkin terjadi): <i>If cities build more parks, residents <u>will</u> be healthier.</i><br><b>Second</b> (hipotesis sekarang): <i>If I <u>lived</u> in Hamburg, I <u>would</u> cycle everywhere.</i><br><b>Third</b> (masa lalu, tidak terjadi): <i>If I <u>had studied</u> earlier, I <u>would have passed</u>.</i><br><b>Mixed</b> (masa lalu → efek sekarang): <i>If I <u>had learned</u> German as a child, I <u>would be</u> fluent now.</i></p>
+<p><b>Alternatif 'if'</b>: <i>unless, provided that, as long as, otherwise</i>.<br><b>Inversion</b> (formal): <i><u>Had I known</u>, I would have come.</i> (= If I had known) · <i><u>Should you</u> need help, call me.</i> · <i><u>Not only does</u> exercise improve fitness, <u>but it also</u> reduces stress.</i> · <i><u>Rarely do</u> we see such results.</i></p>`,
+  ex:[
+   {q:"If governments ____ sugary drinks, obesity rates would probably fall.", o:["tax","taxed","will tax","had taxed"], a:1, why:"Second conditional: If + past, would + V1."},
+   {q:"If she had revised more, she ____ the exam.", o:["would pass","will pass","would have passed","passed"], a:2, why:"Third conditional: had + V3 → would have + V3."},
+   {q:"If I had taken that job in Zurich, I ____ in Switzerland now.", o:["would live","would be living","will live","had lived"], a:1, why:"Mixed: masa lalu (had taken) → keadaan sekarang (would be living / would live). 'Would be living' paling tepat karena 'now'."},
+   {q:"____ I known about the strike, I would have taken a different train.", o:["If","Had","Have","Should"], a:1, why:"Inversion third conditional: Had I known = If I had known."},
+   {q:"Not only ____ green spaces improve health, but they also reduce flooding.", o:["do","are","that","can't"], a:0, why:"Not only + auxiliary + subject: Not only do green spaces improve…"},
+   {q:"You won't improve your writing ____ you get feedback.", o:["if","unless","provided","as long as"], a:1, why:"Unless = if not."},
+   {q:"Rarely ____ such a dramatic increase in tourism.", o:["we have seen","have we seen","we saw","did we saw"], a:1, why:"Rarely di depan → inversion: have we seen."},
+   {q:"____ you require further information, please contact the reception.", o:["Should","Would","Had","Were"], a:0, why:"Should + subject = If you (happen to) require, gaya formal."}
+  ]}
+};
+
+/* ---------------- VOCAB (kolokasi + arti + contoh) ---------------- */
+const ENG_VOCAB = {
+ V1:{title:"Education & learning", words:[
+  ["acquire a skill","menguasai keterampilan","It takes years of practice to acquire the skills of a surgeon."],
+  ["a steep learning curve","proses belajar yang berat/cepat di awal","Starting clinical rotations involves a steep learning curve."],
+  ["rote learning","belajar hafalan","Rote learning may help in the short term, but it rarely leads to deep understanding."],
+  ["retain information","mengingat (menyimpan) informasi","Spaced repetition helps students retain information for longer."],
+  ["grasp a concept","memahami suatu konsep","Once I grasped the concept of osmosis, the rest of the chapter was easy."],
+  ["fall behind","tertinggal","If you skip lectures, it is easy to fall behind."],
+  ["keep up with","mengikuti (agar tidak tertinggal)","I read medical news daily to keep up with new research."],
+  ["hands-on experience","pengalaman praktik langsung","Medical students need hands-on experience with real patients."],
+  ["lifelong learning","belajar sepanjang hayat","Medicine is a field that demands lifelong learning."],
+  ["broaden one's horizons","memperluas wawasan","Studying abroad can broaden your horizons."],
+  ["academic performance","prestasi akademik","Lack of sleep can harm academic performance."],
+  ["a well-rounded education","pendidikan yang menyeluruh/seimbang","Arts and sport are part of a well-rounded education."]]},
+ V2:{title:"Health & medicine", words:[
+  ["a sedentary lifestyle","gaya hidup kurang gerak","A sedentary lifestyle increases the risk of heart disease."],
+  ["a chronic condition","penyakit kronis","Diabetes is a chronic condition that requires lifelong management."],
+  ["preventive measures","langkah pencegahan","Vaccination is one of the most effective preventive measures."],
+  ["alleviate symptoms","meredakan gejala","Paracetamol can alleviate symptoms such as fever."],
+  ["life expectancy","angka harapan hidup","Life expectancy has risen steadily over the past century."],
+  ["be prone to","rentan terhadap","Young children are prone to ear infections."],
+  ["place a strain on","membebani","An ageing population places a strain on the healthcare system."],
+  ["mental well-being","kesejahteraan mental","Spending time in nature benefits mental well-being."],
+  ["undergo treatment","menjalani pengobatan","She underwent treatment for six months."],
+  ["detrimental to","merugikan bagi","Smoking is detrimental to almost every organ in the body."],
+  ["access to healthcare","akses ke layanan kesehatan","Rural communities often have limited access to healthcare."],
+  ["raise awareness of","meningkatkan kesadaran tentang","Campaigns can raise awareness of the dangers of smoking."]]},
+ V3:{title:"Environment, cities & travel", words:[
+  ["carbon footprint","jejak karbon","Taking the train instead of flying reduces your carbon footprint."],
+  ["urban sprawl","perluasan kota yang tak terkendali","Urban sprawl has destroyed much of the surrounding farmland."],
+  ["green spaces","ruang terbuka hijau","Green spaces help to cool cities in summer."],
+  ["mitigate the effects of","mengurangi dampak","Trees can mitigate the effects of heatwaves."],
+  ["renewable energy","energi terbarukan","Switzerland generates most of its electricity from renewable energy."],
+  ["overtourism","pariwisata berlebihan","Hallstatt has struggled with overtourism in recent years."],
+  ["preserve heritage","melestarikan warisan budaya","UNESCO status helps to preserve the heritage of historic districts."],
+  ["traffic congestion","kemacetan lalu lintas","Traffic congestion costs cities billions every year."],
+  ["a pressing issue","masalah yang mendesak","Climate change is one of the most pressing issues of our time."],
+  ["biodiversity","keanekaragaman hayati","Urban parks can support surprising biodiversity."],
+  ["sustainable development","pembangunan berkelanjutan","Sustainable development meets present needs without harming future generations."],
+  ["take its toll on","berdampak buruk pada","Mass tourism has taken its toll on the old town."]]}
+};
+const ENG_VSETS = ["V1","V2","V3"];
+const ENG_LINKS = [
+  ["BBC Learning English · 6 Minute English","https://www.bbc.co.uk/learningenglish/english/features/6-minute-english","Podcast 6 menit + transkrip + kosakata. Untuk input harian & shadowing."],
+  ["IELTS.org · Sample test questions","https://ielts.org/take-a-test/preparation-resources/sample-test-questions","Contoh soal resmi keempat skill dari penyelenggara IELTS."],
+  ["IELTS.org · Preparation resources","https://ielts.org/take-a-test/preparation-resources","Kumpulan materi persiapan resmi (gratis)."],
+  ["YouTube · Cambridge IELTS listening tests","https://www.youtube.com/results?search_query=Cambridge+IELTS+19+listening+test+with+answers","Rekaman tes listening dari buku Cambridge (paling mirip ujian asli)."],
+  ["YouTube · IELTS Liz","https://www.youtube.com/results?search_query=IELTS+Liz","Mantan examiner; tips semua skill, sangat jelas."],
+  ["YouTube · E2 IELTS","https://www.youtube.com/results?search_query=E2+IELTS","Strategi per tipe soal + full mock test."]
+];
+
+/* ---------- ENGLISH · IELTS 9.0 ---------- */
+function E(){ if (!S.eng) S.eng = {}; const e = S.eng; ["done","sc","ans","chk","txt","ai","vb","ack","ev","sb"].forEach(k => { if (!e[k] || typeof e[k] !== "object") e[k] = {}; }); if (!Array.isArray(e.err)) e.err = []; if (!e.time) e.time = "19:30"; return e; }
+const ENG_KIND = {listen:"Listening", read:"Reading", write:"Writing", speak:"Speaking", gram:"Grammar", vocab:"Vocab", review:"Review vocab", eval:"Evaluasi"};
+const ENG_KCOL = {listen:"peri", read:"aqua", write:"pop", speak:"grape", gram:"sun", vocab:"aqua", review:"peri", eval:"pop"};
+const ENG_BOX = [0,1,2,4,7,14];
+function engDayNo(t){ return diffDays(ENG_START, t||todayISO()) + 1; }
+function engCur(){ return Math.min(ENG_DAYS.length, Math.max(1, engDayNo())); }
+function engDate(d){ return addDays(ENG_START, d-1); }
+function engKey(d, i){ return d+"-"+i; }
+function engDone(d, i){ return !!E().done[engKey(d,i)]; }
+function engDayDone(d){ return ENG_DAYS[d-1].tasks.every((_, i) => engDone(d, i)); }
+function engImg(p, small){ return "img/eng/"+ENG_PLACES[p].f+(small?"-s":"")+".jpg"; }
+function engTaskTitle(t){
+  if (t.k === "listen") return ENG_LISTEN[t.id].title;
+  if (t.k === "read") return ENG_READ[t.id].title;
+  if (t.k === "write") return ENG_WRITE[t.id].title;
+  if (t.k === "speak") return ENG_SPEAK[t.id].title;
+  if (t.k === "gram") return ENG_GRAM[t.id].title;
+  if (t.k === "vocab") return "12 kolokasi: "+ENG_VOCAB[t.id].title;
+  if (t.k === "review") return "Ulang kosakata set 1–3 (spaced repetition)";
+  return "Evaluasi 10 hari & rencana berikutnya";
+}
+function engMark(d, i){
+  const e = E(), k = engKey(d,i); if (e.done[k]) return;
+  e.done[k] = todayISO(); save();
+  confetti(); toast(engDayDone(d) ? "Day "+d+" beres! Proud of you, Nadia." : "Task selesai! Satu lagi ya.");
+}
+function engStreak(){
+  const days = new Set(Object.values(E().done)); let n = 0, d = todayISO(); if (!days.has(d)) d = addDays(d,-1);
+  while (days.has(d)) { n++; d = addDays(d,-1); } return n;
+}
+function engTotals(){ let all = 0, done = 0; ENG_DAYS.forEach((D, j) => D.tasks.forEach((_, i) => { all++; if (engDone(j+1, i)) done++; })); return {all, done}; }
+function engBand(pct, kind){
+  const s = Math.round(pct*40), T = kind === "read" ? [[39,9],[37,8.5],[35,8],[33,7.5],[30,7],[27,6.5],[23,6],[19,5.5],[15,5],[13,4.5],[10,4]] : [[39,9],[37,8.5],[35,8],[32,7.5],[30,7],[26,6.5],[23,6],[18,5.5],[16,5],[13,4.5],[10,4]];
+  for (const [m, b] of T) if (s >= m) return b; return 3.5;
+}
+function engMastered(){ return Object.values(E().vb).filter(v => v.b >= 3).length; }
+function engDue(){ const t = todayISO(); return Object.keys(E().vb).filter(w => E().vb[w].due <= t); }
+function engWord(w){ for (const id of ENG_VSETS) { const x = ENG_VOCAB[id].words.find(r => r[0] === w); if (x) return x; } return null; }
+function engVbSet(w, ok){ const e = E(), v = e.vb[w] || {b:0}; v.b = ok ? Math.min(5, (v.b||0)+1) : 1; v.due = addDays(todayISO(), ok ? ENG_BOX[v.b] : 0); e.vb[w] = v; }
+
+/* suara bahasa Inggris (browser) */
+let engAudio = {on:false, id:null, tok:0};
+function engVoices(){ try { const vs = speechSynthesis.getVoices().filter(v => /^en(-|_)/i.test(v.lang)); const gb = vs.filter(v => /GB/i.test(v.lang)); return gb.concat(vs.filter(v => !/GB/i.test(v.lang))); } catch(e){ return []; } }
+function engSay(text, opt){
+  opt = opt || {}; const ss = window.speechSynthesis; if (!ss) { toast("Browser ini belum mendukung suara"); return; }
+  const u = new SpeechSynthesisUtterance(text); u.lang = "en-GB"; u.rate = opt.rate || 0.95; u.pitch = opt.pitch || 1;
+  const vs = engVoices(); if (vs.length) u.voice = vs[(opt.v||0) % vs.length];
+  if (opt.end) u.onend = opt.end; ss.speak(u);
+}
+function engStop(){ try { speechSynthesis.cancel(); } catch(e){} engAudio.on = false; engAudio.tok++; document.querySelectorAll("[data-act=engplay]").forEach(b => b.textContent = b.dataset.lbl); }
+function engPlay(id, btn){
+  if (engAudio.on) { const same = engAudio.id === id; engStop(); if (same) return; }
+  const L = ENG_LISTEN[id], spk = Object.keys(L.speakers); const tok = ++engAudio.tok; engAudio.on = true; engAudio.id = id;
+  if (btn) btn.textContent = "■ Stop";
+  let i = 0; const next = () => {
+    if (tok !== engAudio.tok) return;
+    if (i >= L.script.length) { engAudio.on = false; if (btn) btn.textContent = btn.dataset.lbl; E().sb[id] = true; save(); toast("Audio selesai. Lengkapi jawaban lalu cek."); return; }
+    const [s, t] = L.script[i++]; const k = spk.indexOf(s);
+    engSay(t, {v:k, pitch:[1,1.15,0.85][k%3], end:() => setTimeout(next, 450)});
+  };
+  next();
+}
+
+/* ---------- tampilan utama ---------- */
+function vEnglish(){
+  if (ui.engOpen) return engTaskView(ui.engOpen.d, ui.engOpen.i);
+  if (ui.engRev) return engReviewView();
+  const e = E(), t = todayISO(), n = engDayNo(), cur = engCur(), D = ENG_DAYS[cur-1], P = ENG_PLACES[D.place];
+  const before = n < 1, after = n > ENG_DAYS.length, tot = engTotals();
+  const late = []; for (let d = 1; d < Math.min(n, ENG_DAYS.length+1); d++) ENG_DAYS[d-1].tasks.forEach((_, i) => { if (!engDone(d,i)) late.push([d,i]); });
+  const q = ENG_QUOTES[(Math.max(cur,1)-1) % ENG_QUOTES.length];
+  const due = engDue().length;
+  const head = before ? 'Mulai '+fmt(ENG_START)+'. Intip dulu Day 1-nya.' : after ? '10 hari pertama sudah lewat. Kejar yang tertunda, lalu minta rencana berikutnya.' : (engDayDone(cur) ? 'Day '+cur+' beres. Istirahat, besok lanjut lagi.' : 'Day '+cur+'/10 · '+D.title);
+  return ''+
+  '<div class="eng-hero" style="background-image:url(\''+engImg(D.place)+'\')">'+
+    '<div class="eng-place">'+esc(P.nm)+' · '+esc(P.cc)+'</div>'+
+    '<span class="eyebrow" style="color:#EDE8FF">English rutin · target IELTS 9.0 · '+fmt(t)+'</span>'+
+    '<h2>'+esc(head)+'</h2>'+
+    '<p class="eng-why">'+esc(D.why)+'</p>'+
+    '<div class="count">'+
+      '<div><div class="n">'+tot.done+'<span style="font-size:1rem;color:#EDE8FF">/'+tot.all+'</span></div><div class="l">task selesai</div></div>'+
+      '<div><div class="n">'+engStreak()+'</div><div class="l">hari beruntun</div></div>'+
+      '<div><div class="n">'+engMastered()+'<span style="font-size:1rem;color:#EDE8FF">/36</span></div><div class="l">kolokasi dikuasai</div></div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="stack"><div class="row" style="justify-content:space-between"><h3>'+(before?'Tugas Day 1 ('+fmt(ENG_START)+')':'Tugas hari ini')+'</h3><span class="small muted">Cukup 1–2 task, ±'+D.tasks.reduce((a,x)=>a+x.min,0)+' menit</span></div>'+
+    D.tasks.map((x, i) => engTaskRow(cur, i)).join("")+
+    (D.bbc ? '<div class="task" style="grid-template-columns:auto 1fr auto"><span class="chip">Bonus</span><div class="t"><b>Dengar 6 menit: '+esc(D.bbc[1])+'</b><span>BBC 6 Minute English. Opsional, buat input harian & shadowing sambil jalan/makan.</span></div><a class="btn tiny" href="'+BBC6+D.bbc[0]+'" target="_blank" rel="noopener">Buka</a></div>' : '')+
+  '</div>'+
+  (late.length ? '<details class="more card"'+(engDayDone(cur)?' open':'')+'><summary>'+late.length+' task tertunda (boleh dikejar kapan saja)</summary><div class="stack" style="margin-top:10px">'+late.map(([d,i]) => engTaskRow(d,i,true)).join("")+'</div></details>' : '')+
+  '<div class="grid2">'+
+    '<div class="card stack"><div><span class="eyebrow">Pengingat harian</span><h3>Jam latihan English</h3></div>'+
+      '<div class="row"><input type="time" id="engTime" value="'+esc(e.time)+'" style="width:auto">'+['06:30','12:30','19:30','21:00'].map(h => '<button class="btn tiny" data-act="engtime" data-h="'+h+'">'+h+'</button>').join("")+'</div>'+
+      '<p class="small muted">Kalau web ini terbuka, jam '+esc(e.time)+' muncul pengingat. Biar tetap diingatkan walau web ditutup, masukkan jadwal 10 hari ke kalender HP (ada alarmnya).</p>'+
+      '<div class="row"><button class="btn tiny solid" data-act="engics">Tambah ke kalender HP (.ics)</button><button class="btn tiny" data-act="engnotif">Izinkan notifikasi</button></div></div>'+
+    '<div class="card stack"><div><span class="eyebrow">Spaced repetition</span><h3>Review kosakata</h3></div>'+
+      '<p class="small muted">'+(Object.keys(e.vb).length ? due+' kolokasi jatuh tempo hari ini. Kata yang kamu ingat baru muncul lagi 1 → 2 → 4 → 7 → 14 hari kemudian.' : 'Belum ada kata. Kosakata pertama dibuka di Day 1.')+'</p>'+
+      '<div class="row"><button class="btn tiny solid" data-act="engrev" data-src="due"'+(due?'':' disabled')+'>Mulai review ('+due+')</button></div>'+
+      '<blockquote class="eng-quote">'+esc(q)+'</blockquote></div>'+
+  '</div>'+
+  '<div class="stack"><h3>Jadwal 10 hari</h3><div class="eng-days">'+ENG_DAYS.map((Dd, j) => engDayCard(j+1)).join("")+'</div></div>'+
+  engProgress()+
+  '<details class="card"><summary><b>Strategi belajar (hasil riset) & format IELTS</b></summary><div class="stack" style="margin-top:12px">'+
+    ENG_STRATEGY.map((s, i) => '<div><b>'+(i+1)+'. '+esc(s[0])+'</b><p class="small muted" style="margin-top:2px">'+esc(s[1])+'</p></div>').join("")+
+    '<div class="grid2">'+ENG_FORMAT.map(f => '<div class="ms"><b>'+esc(f[0])+'</b><p class="small" style="margin:4px 0 0">'+esc(f[1])+'</p></div>').join("")+'</div></div></details>'+
+  '<div class="card stack"><h3>Sumber tambahan (gratis)</h3><div class="grid2">'+ENG_LINKS.map(l => '<a class="ms eng-link" href="'+l[1]+'" target="_blank" rel="noopener"><b>'+esc(l[0])+'</b><span class="small muted">'+esc(l[2])+'</span></a>').join("")+'</div></div>'+
+  '<p class="small muted" style="text-align:center">Ruang Belajar Nadia · English. Foto: Wikimedia Commons ('+Object.values(ENG_PLACES).map(p => esc(p.nm)+': '+esc(p.cr)).join("; ")+').</p>';
+}
+function engTaskRow(d, i, showDay){
+  const x = ENG_DAYS[d-1].tasks[i], dn = engDone(d,i), sc = E().sc[x.id];
+  return '<div class="task'+(dn?' eng-done':'')+'"><span class="chip eng-k '+ENG_KCOL[x.k]+'">'+ENG_KIND[x.k]+'</span><div class="t"><b>'+(showDay?'Day '+d+' · ':'')+esc(engTaskTitle(x))+'</b><span>±'+x.min+' menit'+(dn?' · selesai '+fmt(E().done[engKey(d,i)]):'')+(sc?' · skor '+sc.s+'/'+sc.t:'')+'</span></div><button class="btn tiny '+(dn?'':'solid')+'" data-act="engopen" data-d="'+d+'" data-i="'+i+'">'+(dn?'Buka lagi':'Mulai')+'</button></div>';
+}
+function engDayCard(d){
+  const D = ENG_DAYS[d-1], t = todayISO(), dt = engDate(d), done = engDayDone(d);
+  const st = done ? ['ok','Selesai'] : dt === t ? ['pop','Hari ini'] : dt < t ? ['warn','Tertunda'] : ['','Nanti'];
+  return '<div class="eng-day'+(dt===t?' today':'')+'"><img src="'+engImg(D.place,true)+'" alt="'+esc(ENG_PLACES[D.place].nm)+'" loading="lazy">'+
+    '<div class="eng-day-b"><div class="row" style="justify-content:space-between"><b>Day '+d+'</b><span class="chip small eng-st '+st[0]+'">'+st[1]+'</span></div>'+
+    '<span class="small muted">'+fmt(dt)+' · '+esc(ENG_PLACES[D.place].nm)+'</span><p class="small" style="margin:2px 0 4px"><b>'+esc(D.title)+'</b></p>'+
+    D.tasks.map((x, i) => '<button class="eng-tk'+(engDone(d,i)?' on':'')+'" data-act="engopen" data-d="'+d+'" data-i="'+i+'">'+(engDone(d,i)?'✓ ':'○ ')+ENG_KIND[x.k]+'</button>').join("")+'</div></div>';
+}
+function engProgress(){
+  const e = E(), avg = ids => { const a = ids.map(id => e.sc[id]).filter(Boolean); return a.length ? a.reduce((s, x) => s + x.s/x.t, 0)/a.length : null; };
+  const L = avg(["L1","L2","L3"]), R = avg(["R1","R2","R3"]), G = avg(["G1","G2","G3"]);
+  const wb = ["W1","W2","W3"].map(id => (e.ai[id]||{}).band).filter(Boolean), sb = ["S1","S2","S3"].map(id => (e.ai[id]||{}).band).filter(Boolean);
+  const mean = a => a.length ? Math.round(a.reduce((s,x)=>s+x,0)/a.length*2)/2 : null;
+  const row = (nm, pct, band, note) => '<div class="eng-bar"><div class="row" style="justify-content:space-between"><b>'+nm+'</b><span class="small mono">'+(band!=null?'≈ band '+band:'belum ada data')+'</span></div><div class="bar"><span style="width:'+(pct!=null?Math.round(pct*100):0)+'%"></span></div><span class="small muted">'+note+'</span></div>';
+  const errs = e.err.slice(-12).reverse();
+  return '<div class="card stack"><div><span class="eyebrow">Progres</span><h3>Perkiraan band per skill</h3><p class="small muted">Listening & Reading dihitung dari skor latihan yang diubah ke skala 40 soal (kasar, karena soalnya baru 10–12). Writing & Speaking dari penilaian Claude atau nilai yang kamu isi sendiri.</p></div>'+
+    '<div class="grid2">'+
+      row("Listening", L, L!=null?engBand(L,"listen"):null, L!=null?Math.round(L*100)+'% benar':'Mulai dari Day 1')+
+      row("Reading", R, R!=null?engBand(R,"read"):null, R!=null?Math.round(R*100)+'% benar':'Mulai dari Day 2')+
+      row("Writing", mean(wb)!=null?mean(wb)/9:null, mean(wb), wb.length+' tulisan dinilai')+
+      row("Speaking", mean(sb)!=null?mean(sb)/9:null, mean(sb), sb.length+' sesi dinilai')+
+      row("Grammar", G, null, G!=null?Math.round(G*100)+'% benar':'Mulai dari Day 2')+
+      row("Kosakata", engMastered()/36, null, engMastered()+' dari 36 kolokasi sudah di kotak 3+')+
+    '</div>'+
+    '<details'+(errs.length?' open':'')+'><summary><b>Buku kesalahan ('+e.err.length+')</b> <span class="small muted">otomatis terisi dari jawaban yang salah</span></summary>'+
+      (errs.length ? '<div class="stack" style="margin-top:8px">'+errs.map((x, k) => '<div class="eng-err"><div><span class="chip small">'+esc(x.src)+'</span> '+esc(x.q)+'</div><div class="small">Jawabanmu: <s>'+esc(x.your||"(kosong)")+'</s> → <b>'+esc(x.right)+'</b></div><div class="small muted">'+esc(x.why)+'</div><button class="btn tiny ghost" data-act="engerrdel" data-k="'+(e.err.length-1-k)+'">Sudah paham, hapus</button></div>').join("")+'</div>' : '<p class="small muted" style="margin-top:6px">Belum ada. Kesalahan bukan musuh: ini peta apa yang perlu diulang.</p>')+
+    '</details></div>';
+}
+
+/* ---------- ruang kerja task ---------- */
+function engTaskView(d, i){
+  const D = ENG_DAYS[d-1], x = D.tasks[i], P = ENG_PLACES[D.place], dn = engDone(d,i);
+  const body = {listen:engListenView, read:engReadView, write:engWriteView, speak:engSpeakView, gram:engGramView, vocab:engVocabView, review:engReviewIntro, eval:engEvalView}[x.k](x, d, i);
+  const vids = (D.yt||[]).map(v => '<a class="btn tiny ghost" href="'+yt(v[1])+'" target="_blank" rel="noopener">▶ '+esc(v[0])+'</a>').join("");
+  return '<div class="eng-strip" style="background-image:url(\''+engImg(D.place)+'\')"><button class="btn tiny" data-act="engback">← Jadwal</button><div><span class="eyebrow" style="color:#EDE8FF">Day '+d+' · '+fmt(engDate(d))+' · '+esc(P.nm)+'</span><h2>'+esc(engTaskTitle(x))+'</h2><span class="chip small eng-k '+ENG_KCOL[x.k]+'">'+ENG_KIND[x.k]+' · ±'+x.min+' menit</span>'+(dn?' <span class="chip small eng-st ok">Selesai</span>':'')+'</div></div>'+
+    body+
+    (vids ? '<div class="card stack"><b>Video pendukung (YouTube)</b><p class="small muted">Link mencari judul yang pas di YouTube, pilih video dari channel IELTS terpercaya (IELTS Liz, E2 IELTS, IELTS Advantage, Cambridge).</p><div class="row">'+vids+'</div></div>' : '')+
+    '<div class="row"><button class="btn" data-act="engback">← Kembali ke jadwal</button>'+(i+1 < D.tasks.length ? '<button class="btn solid" data-act="engopen" data-d="'+d+'" data-i="'+(i+1)+'">Task berikutnya →</button>' : '')+'</div>';
+}
+function engQ(mid, key, q, kind, opts){
+  const e = E(), a = (e.ans[mid]||{})[key], chk = e.chk[mid], R = engRight(q, kind, opts);
+  let inner = '';
+  if (kind === "gap") inner = '<input class="eng-in'+(chk?(engOk(q,kind,a)?' right':' wrong'):'')+'" data-eq="'+mid+'" data-k="'+key+'" value="'+esc(a||"")+'" placeholder="jawaban" autocomplete="off" autocapitalize="off" spellcheck="false"'+(chk?' readonly':'')+'>';
+  else { const O = opts || q.o; inner = '<div class="eng-opts">'+O.map((o, j) => { const v = kind === "mcq" ? j : (kind === "head" || kind === "ends") ? String(o).split(" ")[0] : o; const sel = a != null && String(a) === String(v); let cls = sel ? " sel" : ""; if (chk) { if (String(v) === String(R.v)) cls = " right"; else if (sel) cls = " wrong"; } return '<button class="opt'+cls+'" data-act="engpick" data-m="'+mid+'" data-k="'+key+'" data-v="'+esc(v)+'"'+(chk?' disabled':'')+'><span class="L">'+(kind==="mcq"?"ABCD"[j]:kind==="head"||kind==="ends"?esc(v):esc(String(o)[0]))+'</span><span>'+esc(kind==="mcq"?String(o).replace(/^[A-D] /,""):(kind==="head"||kind==="ends")?String(o).replace(/^\S+ /,""):o)+'</span></button>'; }).join("")+'</div>'; }
+  return '<div class="eng-q"><p>'+esc(q.q)+'</p>'+inner+(chk ? '<p class="small '+(engOk(q,kind,a)?'eng-ok':'eng-bad')+'">'+(engOk(q,kind,a)?'✓ Benar. ':'✗ Jawaban: <b>'+esc(R.t)+'</b>. ')+esc(q.why)+'</p>' : '')+'</div>';
+}
+function engRight(q, kind, opts){
+  if (kind === "gap") return {v:q.a[0], t:q.a.join(" / ")};
+  if (kind === "mcq") return {v:q.a, t:(q.o||opts)[q.a]};
+  return {v:q.a, t:q.a};
+}
+function engNorm(s){ return String(s==null?"":s).toLowerCase().replace(/[’']/g,"'").replace(/\s+/g," ").replace(/^(a|an|the) /,"").replace(/[.\s]+$/,"").trim().replace(/é/g,"e"); }
+function engOk(q, kind, a){
+  if (a == null || a === "") return false;
+  if (kind === "gap") return q.a.some(x => engNorm(x) === engNorm(a) || engNorm(x).replace(/\s/g,"") === engNorm(a).replace(/\s/g,""));
+  return String(a) === String(q.a);
+}
+function engGroups(mid){
+  if (ENG_LISTEN[mid]) { const L = ENG_LISTEN[mid]; return [{type:L.qs[0].o?"mcq":"gap", qs:L.qs, instr:L.instr}]; }
+  if (ENG_READ[mid]) return ENG_READ[mid].groups;
+  if (ENG_GRAM[mid]) return [{type:"mcq", qs:ENG_GRAM[mid].ex}];
+  return [];
+}
+function engOptsFor(mid, g){ const T = g.type; if (T === "tfng") return ["TRUE","FALSE","NOT GIVEN"]; if (T === "ynng") return ["YES","NO","NOT GIVEN"]; if (T === "head") return ENG_READ[mid].headingList; if (T === "ends") return g.endings; return null; }
+function engKindOf(g){ return g.type === "gap" ? "gap" : g.type === "mcq" ? "mcq" : g.type; }
+function engQuizHTML(mid){
+  const e = E(), G = engGroups(mid), chk = e.chk[mid], sc = e.sc[mid];
+  return G.map((g, gi) => '<div class="stack">'+(g.instr?'<p class="small"><b>'+esc(g.instr)+'</b></p>':'')+
+    (g.type === "head" ? '<div class="ms small">'+ENG_READ[mid].headingList.map(h => esc(h)).join("<br>")+'</div>' : '')+
+    (g.type === "ends" ? '<div class="ms small">'+g.endings.map(h => esc(h)).join("<br>")+'</div>' : '')+
+    g.qs.map((q, qi) => engQ(mid, gi+"-"+qi, q, engKindOf(g), engOptsFor(mid, g))).join("")+'</div>').join("")+
+    '<div class="row">'+(chk ? '<span class="chip pop mono">Skor '+sc.s+'/'+sc.t+(ENG_GRAM[mid]?'':' · ≈ band '+engBand(sc.s/sc.t, ENG_READ[mid]?"read":"listen"))+'</span><button class="btn tiny" data-act="engretry" data-m="'+mid+'">Ulangi dari nol</button>' : '<button class="btn solid" data-act="engcheck" data-m="'+mid+'">Cek jawaban</button>')+'</div>';
+}
+function engCheck(mid){
+  const e = E(), G = engGroups(mid), ans = e.ans[mid]||{}; let s = 0, t = 0;
+  G.forEach((g, gi) => g.qs.forEach((q, qi) => { const k = gi+"-"+qi, kind = engKindOf(g), ok = engOk(q, kind, ans[k]); t++; if (ok) s++; else { const R = engRight(q, kind, engOptsFor(mid,g)); const your = kind === "mcq" && ans[k] != null ? (q.o[ans[k]]||"") : ans[k]; e.err.push({src:mid, q:q.q, your:your==null?"":String(your), right:String(R.t), why:q.why, at:todayISO()}); } }));
+  if (e.err.length > 200) e.err = e.err.slice(-200);
+  e.sc[mid] = {s, t, at:todayISO()}; e.chk[mid] = true;
+}
+function engListenView(x){
+  const L = ENG_LISTEN[x.id], e = E(), chk = e.chk[x.id], played = e.sb[x.id];
+  return '<div class="card stack"><b>Strategi sebelum dengar</b><ul class="eng-ul">'+L.strat.map(s => '<li>'+esc(s)+'</li>').join("")+'</ul>'+
+    '<p class="small muted">Audio dibacakan suara bahasa Inggris (British) dari browsermu. Di ujian asli audio cuma diputar SEKALI, jadi coba jawab sambil mendengar, jangan di-pause. Pakai headset biar fokus.</p>'+
+    '<div class="row"><button class="btn solid" data-act="engplay" data-id="'+x.id+'" data-lbl="'+(played?'▶ Putar lagi':'▶ Putar audio')+'">'+(played?'▶ Putar lagi':'▶ Putar audio')+'</button><span class="small muted">'+L.script.length+' bagian dialog · '+Object.values(L.speakers).join(", ")+'</span></div></div>'+
+    '<div class="card stack">'+engQuizHTML(x.id)+'</div>'+
+    (chk ? '<div class="card stack"><b>Transkrip + shadowing</b><p class="small muted">Sekarang tirukan: klik ▶ tiap baris, ucapkan ulang menempel di belakang suaranya (shadowing). Perhatikan bagian yang tadi kamu salah dengar.</p>'+L.script.map((r, k) => '<div class="eng-line"><button class="speak" data-act="engline" data-id="'+x.id+'" data-k="'+k+'">▶</button><span><b>'+esc(L.speakers[r[0]])+':</b> '+esc(r[1])+'</span></div>').join("")+'</div>' : '');
+}
+function engReadView(x){
+  const R = ENG_READ[x.id];
+  return '<div class="card row" style="justify-content:space-between"><span class="small">Waktu ujian: <b>'+R.time+' menit</b> untuk teks ini. Nyalakan timer, kerjakan tanpa kamus.</span><span class="row"><span class="mono" id="timerDisp">'+timerText()+'</span><button class="btn tiny solid" data-act="timer" data-m="'+R.time+'">Mulai '+R.time+' menit</button><button class="btn tiny" data-act="timerstop">Stop</button></span></div>'+
+    '<div class="eng-read"><article class="card eng-passage"><h3>'+esc(R.title)+'</h3>'+R.paras.map(p => '<p><b class="eng-pl">'+p[0]+'</b> '+esc(p[1])+'</p>').join("")+'</article><div class="card stack">'+engQuizHTML(x.id)+'</div></div>';
+}
+function engGramView(x){
+  const G = ENG_GRAM[x.id];
+  return '<div class="card stack eng-lesson">'+G.lesson+'</div><div class="card stack"><b>Latihan</b>'+engQuizHTML(x.id)+'</div>';
+}
+function engChart(dt){
+  const W = 560, H = 300, l = 44, r = 90, tp = 16, b = 34, max = 14, X = i => l + i*(W-l-r)/(dt.years.length-1), Y = v => tp + (H-tp-b)*(1 - v/max);
+  let s = '<svg viewBox="0 0 '+W+' '+H+'" class="eng-chart" role="img" aria-label="Line graph of overnight visitors">';
+  for (let v = 0; v <= max; v += 2) s += '<line x1="'+l+'" x2="'+(W-r)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="#E7DEF8"/><text x="'+(l-8)+'" y="'+(Y(v)+4)+'" text-anchor="end" font-size="11" fill="#6C6590">'+v+'</text>';
+  dt.years.forEach((y, i) => s += '<text x="'+X(i)+'" y="'+(H-12)+'" text-anchor="middle" font-size="11" fill="#6C6590">'+y+'</text>');
+  dt.series.forEach(([nm, vals, c]) => { s += '<polyline fill="none" stroke="'+c+'" stroke-width="2.5" points="'+vals.map((v, i) => X(i)+','+Y(v)).join(" ")+'"/>'+vals.map((v, i) => '<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="3.5" fill="'+c+'"/>').join("")+'<text x="'+(W-r+8)+'" y="'+(Y(vals[vals.length-1])+4)+'" font-size="12" font-weight="700" fill="'+c+'">'+nm+'</text>'; });
+  return s + '<text x="12" y="'+(tp+ (H-tp-b)/2)+'" font-size="11" fill="#6C6590" transform="rotate(-90 12 '+(tp+(H-tp-b)/2)+')" text-anchor="middle">millions</text></svg>';
+}
+let ENG_SAMPLE = null;
+if (window.claude && window.claude.use) window.claude.use("sample").then(s => { ENG_SAMPLE = s; }).catch(() => {});
+function engWc(t){ return (String(t||"").trim().match(/\S+/g)||[]).length; }
+function engPrompt(id){
+  const e = E();
+  if (ENG_WRITE[id]) { const W = ENG_WRITE[id], txt = e.txt[id]||"";
+    return "You are a strict, experienced IELTS examiner. Assess this IELTS Academic Writing "+W.type+" response against the official public band descriptors ("+(W.type==="Task 1"?"Task Achievement":"Task Response")+", Coherence and Cohesion, Lexical Resource, Grammatical Range and Accuracy). Be honest and precise; do not inflate the score. The candidate is an Indonesian medical student aiming for band 9."+(id==="W1"?" NOTE: for this exercise she wrote only the introduction and ONE body paragraph, so judge the quality of what is there and say what band it would reach if the rest matched it.":"")+"\n\nTASK:\n"+W.prompt+"\n\nRESPONSE ("+engWc(txt)+" words):\n"+txt+"\n\nReply in casual but clear Indonesian (keep all English examples in English), in exactly this format:\nOVERALL: <band, e.g. 6.5>\n"+(W.type==="Task 1"?"TA":"TR")+": <band> — <alasan singkat>\nCC: <band> — <alasan>\nLR: <band> — <alasan>\nGRA: <band> — <alasan>\n\n5 PERBAIKAN PRIORITAS\n(kutip kalimatnya → versi perbaikan → kenapa)\n\nYANG SUDAH BAGUS\n\nVERSI BAND 9 DARI SATU PARAGRAFMU\n\nLATIHAN BESOK\n(satu kebiasaan spesifik yang harus dilatih)";
+  }
+  const Sp = ENG_SPEAK[id], a = e.txt[id]||"";
+  return "You are a strict, experienced IELTS Speaking examiner. Below is a transcript (typed or dictated) of an Indonesian medical student's answers to IELTS Speaking Part "+Sp.part+" questions. Assess Fluency and Coherence, Lexical Resource and Grammatical Range and Accuracy using the official public band descriptors (pronunciation cannot be judged from text, so skip it). Be honest; she is aiming for band 9.\n\n"+(Sp.card?"CUE CARD: "+Sp.card.topic+" ("+Sp.card.points.join("; ")+")":"QUESTIONS:\n"+Sp.qs.map((q,i)=>(i+1)+". "+q.q).join("\n"))+"\n\nTRANSCRIPT:\n"+a+"\n\nReply in casual but clear Indonesian (keep English examples in English), in exactly this format:\nOVERALL: <band>\nFC: <band> — <alasan>\nLR: <band> — <alasan>\nGRA: <band> — <alasan>\n\n5 PERBAIKAN PRIORITAS (kutip → versi lebih natural → kenapa)\n\nKOSAKATA/IDIOM YANG BISA DIPAKAI\n\nCONTOH JAWABAN UPGRADE (untuk 1 jawaban)";
+}
+function engAIBox(id){
+  const e = E(), ai = e.ai[id];
+  return '<div class="card stack"><div><span class="eyebrow">Umpan balik</span><h3>Nilai tulisan/jawabanmu</h3></div>'+
+    '<p class="small muted">'+(ENG_SAMPLE ? 'Klik "Minta Claude menilai" (pakai akun Claude-mu, ±30–60 detik). ' : '')+'Atau salin prompt penilaian lalu tempel ke Claude/ChatGPT. Hasilnya: band per kriteria + 5 perbaikan prioritas.</p>'+
+    '<div class="row">'+(ENG_SAMPLE ? '<button class="btn solid" data-act="engai" data-id="'+id+'">Minta Claude menilai</button>' : '')+'<button class="btn" data-act="engcopy" data-id="'+id+'">Salin prompt penilaian</button></div>'+
+    '<div class="row small"><span>Atau isi band hasil penilaian sendiri:</span><select data-engband="'+id+'"><option value="">–</option>'+[4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9].map(b => '<option'+(ai&&ai.band==b?' selected':'')+'>'+b+'</option>').join("")+'</select></div>'+
+    '<div id="engAiOut" class="eng-ai"'+(ai&&ai.text?'':' hidden')+'>'+esc(ai&&ai.text||"")+'</div></div>';
+}
+function engWriteView(x, d, i){
+  const W = ENG_WRITE[x.id], e = E(), txt = e.txt[x.id]||"", wc = engWc(txt);
+  return '<div class="card stack"><span class="eyebrow">Soal · '+W.type+'</span><p class="eng-prompt">'+esc(W.prompt)+'</p>'+(W.chart?engChart(W.data):'')+'<p class="small"><b>Target hari ini:</b> '+esc(W.target)+'</p></div>'+
+    '<div class="grid2"><div class="card stack"><b>Langkah</b><ol class="eng-ul">'+W.steps.map(s => '<li>'+esc(s)+'</li>').join("")+'</ol></div><div class="card stack"><b>Frasa yang bisa dipakai</b><div class="row">'+W.useful.map(u => '<span class="chip small">'+esc(u)+'</span>').join("")+'</div></div></div>'+
+    '<div class="card stack"><div class="row" style="justify-content:space-between"><b>Tulis di sini</b><span class="row"><span class="mono" id="timerDisp">'+timerText()+'</span><button class="btn tiny solid" data-act="timer" data-m="'+W.time+'">Timer '+W.time+' menit</button><button class="btn tiny" data-act="timerstop">Stop</button></span></div>'+
+      '<textarea id="engTxt" data-engtxt="'+x.id+'" rows="14" placeholder="Mulai menulis... (tersimpan otomatis)">'+esc(txt)+'</textarea>'+
+      '<div class="row" style="justify-content:space-between"><span class="small mono" id="engWc">'+wc+' kata (min. '+W.minWords+')</span>'+(engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai selesai</button>')+'</div></div>'+
+    engAIBox(x.id)+
+    '<details class="card"><summary><b>Jawaban model band 9</b> <span class="small muted">(buka SETELAH kamu menulis)</span></summary><div class="stack" style="margin-top:10px"><div class="eng-model">'+esc(W.model).replace(/\n\n/g,"</p><p>").replace(/^/,"<p>")+'</p></div><b>Kenapa ini band 9</b><ul class="eng-ul">'+W.notes.map(n => '<li>'+esc(n)+'</li>').join("")+'</ul></div></details>';
+}
+function engSpeakView(x, d, i){
+  const Sp = ENG_SPEAK[x.id], e = E();
+  const qs = Sp.card ? '<div class="card stack eng-cue"><span class="eyebrow">Cue card</span><h3>'+esc(Sp.card.topic)+'</h3><p class="small">You should say:</p><ul class="eng-ul">'+Sp.card.points.map(p => '<li>'+esc(p)+'</li>').join("")+'</ul>'+
+      '<div class="row"><span class="mono" id="timerDisp">'+timerText()+'</span><button class="btn tiny solid" data-act="timer" data-m="1">1 menit persiapan</button><button class="btn tiny solid" data-act="timer" data-m="2">2 menit bicara</button><button class="btn tiny" data-act="timerstop">Stop</button></div>'+
+      '<p class="small muted">Rekam suaramu pakai perekam di HP, lalu dengarkan: cari jeda panjang, "ehm", dan kata yang diulang-ulang.</p>'+
+      '<details><summary><b>Jawaban model band 9</b></summary><div class="stack" style="margin-top:8px"><button class="speak" data-act="engsp" data-id="'+x.id+'" data-k="-1">▶ Dengarkan & shadowing</button><div class="eng-model"><p>'+esc(Sp.m).replace(/\n\n/g,"</p><p>")+'</p></div></div></details></div>'
+    : '<div class="card stack"><b>Pertanyaan</b><p class="small muted">Klik ▶ untuk mendengar pertanyaan seperti dari examiner, jawab KERAS-KERAS dulu (rekam pakai HP kalau bisa), baru buka jawaban model dan shadowing.</p>'+Sp.qs.map((q, k) => '<div class="eng-q"><div class="row"><button class="speak" data-act="engsq" data-id="'+x.id+'" data-k="'+k+'">▶</button><b>'+(k+1)+'. '+esc(q.q)+'</b></div><details><summary class="small">Jawaban model</summary><div class="row" style="align-items:flex-start;margin-top:6px"><button class="speak" data-act="engsp" data-id="'+x.id+'" data-k="'+k+'">▶ Shadow</button><p class="small" style="flex:1">'+esc(q.m)+'</p></div></details></div>').join("")+'</div>';
+  return '<div class="card stack"><b>Tips</b><ul class="eng-ul">'+Sp.tips.map(t => '<li>'+esc(t)+'</li>').join("")+'</ul></div>'+qs+
+    '<div class="card stack"><b>Frasa natural untuk dicuri</b><div class="row">'+Sp.phrases.map(p => '<span class="chip small">'+esc(p)+'</span>').join("")+'</div></div>'+
+    '<div class="card stack"><b>Transkrip jawabanmu (opsional)</b><p class="small muted">Ketik, atau pakai tombol mikrofon di keyboard HP (dikte) supaya yang tertulis = yang kamu ucapkan. Lalu minta penilaian di bawah.</p><textarea data-engtxt="'+x.id+'" rows="8" placeholder="Jawabanku…">'+esc(e.txt[x.id]||"")+'</textarea>'+
+      '<div class="row">'+(engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai selesai</button>')+'</div></div>'+
+    engAIBox(x.id);
+}
+function engVocabView(x, d, i){
+  const V = ENG_VOCAB[x.id], e = E(), qk = "Q"+x.id, chk = e.chk[qk];
+  const cards = '<div class="eng-cards">'+V.words.map((w, k) => { const on = (ui.engFlip||{})[x.id+k]; return '<button class="eng-card'+(on?' on':'')+'" data-act="engflip" data-k="'+x.id+k+'">'+(on ? '<span class="small muted">'+esc(w[1])+'</span><span class="small"><i>'+esc(w[2])+'</i></span>' : '<b>'+esc(w[0])+'</b><span class="small muted">klik untuk lihat arti</span>')+'</button>'; }).join("")+'</div>';
+  const qs = V.words.map((w, k) => { const others = [1,4,7].map(o => V.words[(k+o)%12][0]); const o = [w[0]].concat(others); const r = k % 4; const opts = o.slice(4-r).concat(o.slice(0, 4-r)); return {q:(k+1)+'. "'+w[1]+'"', o:opts, a:opts.indexOf(w[0]), why:w[2]}; });
+  ui.engVq = ui.engVq || {}; ui.engVq[qk] = qs;
+  return '<div class="card stack"><b>Cara belajar</b><ul class="eng-ul"><li>Baca frasa (bukan cuma katanya), klik kartu untuk lihat arti + contoh, klik ▶ untuk dengar pengucapan.</li><li>Ucapkan contoh kalimatnya keras-keras, lalu buat 1 kalimat sendiri tentang hidupmu (mis. tentang kuliah kedokteran).</li><li>Tutup kartu, kerjakan kuis. Semua kata otomatis masuk jadwal review spaced repetition.</li></ul></div>'+
+    '<div class="card stack"><div class="row" style="justify-content:space-between"><b>'+esc(V.title)+'</b><button class="btn tiny" data-act="engsayall" data-id="'+x.id+'">▶ Dengar semua</button></div>'+cards+'</div>'+
+    '<div class="card stack"><b>Kuis: pilih frasa yang artinya pas</b>'+qs.map((q, k) => engQ(qk, "0-"+k, q, "mcq")).join("")+
+      '<div class="row">'+(chk ? '<span class="chip pop mono">Skor '+e.sc[qk].s+'/12</span><button class="btn tiny" data-act="engretry" data-m="'+qk+'">Ulangi</button>' : '<button class="btn solid" data-act="engvcheck" data-id="'+x.id+'" data-d="'+d+'" data-i="'+i+'">Cek jawaban</button>')+'</div></div>';
+}
+function engReviewIntro(x, d, i){
+  const learned = Object.keys(E().vb).length;
+  return '<div class="card stack"><b>Kenapa review sekarang?</b><p class="small">Kolokasi dari Day 1, 3 dan 5 sudah mulai terlupa. Mengingatnya kembali pas di titik mau lupa adalah inti spaced repetition: ini yang bikin kata pindah ke memori jangka panjang.</p><p class="small muted">Caranya: lihat arti bahasa Indonesia, coba ucapkan frasa Inggrisnya dalam kepala, baru buka. Jujur ya pas pilih "Ingat" atau "Lupa".</p>'+
+    '<div class="row"><button class="btn solid" data-act="engrev" data-src="all" data-d="'+d+'" data-i="'+i+'">Mulai review ('+(learned||36)+' kata)</button></div></div>';
+}
+function engReviewView(){
+  const R = ui.engRev, w = R.list[R.i];
+  if (!w) return '<div class="card stack" style="text-align:center"><h2>Review selesai!</h2><p>'+R.ok+' ingat · '+(R.list.length-R.ok)+' perlu diulang (muncul lagi besok).</p><div class="row" style="justify-content:center"><button class="btn solid" data-act="engrevend">Kembali</button></div></div>';
+  const W = engWord(w), v = E().vb[w];
+  return '<div class="row" style="justify-content:space-between"><button class="btn tiny" data-act="engrevend">← Selesai dulu</button><span class="small mono">'+(R.i+1)+'/'+R.list.length+' · kotak '+((v&&v.b)||0)+'</span></div>'+
+    '<div class="card eng-flash stack"><span class="eyebrow">Arti</span><h2>'+esc(W[1])+'</h2>'+
+    (R.show ? '<h3 style="color:var(--peri)">'+esc(W[0])+'</h3><p><i>'+esc(W[2])+'</i></p><div class="row" style="justify-content:center"><button class="speak" data-act="engsayw" data-w="'+esc(w)+'">▶ Dengar</button></div><div class="row" style="justify-content:center"><button class="btn" data-act="engrevans" data-ok="0">✗ Lupa</button><button class="btn solid" data-act="engrevans" data-ok="1">✓ Ingat</button></div>'
+      : '<p class="small muted">Ucapkan frasa bahasa Inggrisnya dulu…</p><div class="row" style="justify-content:center"><button class="btn solid" data-act="engrevshow">Lihat jawaban</button></div>')+'</div>';
+}
+function engEvalView(x, d, i){
+  const e = E(), ev = e.ev, sk = ["Listening","Reading","Writing","Speaking"];
+  const sum = engSummary();
+  return '<div class="card stack"><b>Ringkasan 10 hari</b><pre class="eng-ai" id="engSum">'+esc(sum)+'</pre></div>'+
+    '<div class="card stack"><b>Nilai dirimu sendiri</b><div class="grid2">'+sk.map(s => '<label class="small">'+s+' (perasaanmu sekarang)<br><select data-engev="'+s+'"><option value="">–</option>'+[4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9].map(b => '<option'+(ev[s]==b?' selected':'')+'>'+b+'</option>').join("")+'</select></label>').join("")+'</div>'+
+      '<label class="small">Bagian paling sulit selama 10 hari ini?<textarea data-engev="sulit" rows="3">'+esc(ev.sulit||"")+'</textarea></label>'+
+      '<label class="small">Mau fokus apa di 10 hari berikutnya? (mis. lebih banyak listening, writing tiap hari, persiapan tes bulan X)<textarea data-engev="fokus" rows="3">'+esc(ev.fokus||"")+'</textarea></label>'+
+      '<p class="small muted">Kirim ringkasan ini ke aku (Claude) di chat project, nanti aku buatkan 10 hari berikutnya yang lebih menantang dan pas sama kelemahanmu.</p>'+
+      '<div class="row"><button class="btn" data-act="engcopysum">Salin ringkasan</button>'+(engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai selesai</button>')+'</div></div>';
+}
+function engSummary(){
+  const e = E(), lines = ["Ringkasan English 10 hari (Ruang Belajar Nadia)", "Task selesai: "+engTotals().done+"/"+engTotals().all+" · streak "+engStreak()+" hari · kolokasi dikuasai "+engMastered()+"/36"];
+  Object.keys(e.sc).sort().forEach(k => lines.push(k+": "+e.sc[k].s+"/"+e.sc[k].t));
+  Object.keys(e.ai).forEach(k => { if (e.ai[k].band) lines.push(k+" band: "+e.ai[k].band); });
+  ["Listening","Reading","Writing","Speaking"].forEach(s => { if (e.ev[s]) lines.push("Self-rating "+s+": "+e.ev[s]); });
+  const src = {}; e.err.forEach(x => src[x.src] = (src[x.src]||0)+1); if (e.err.length) lines.push("Kesalahan per materi: "+Object.entries(src).map(([k,v]) => k+" "+v).join(", "));
+  if (e.ev.sulit) lines.push("Paling sulit: "+e.ev.sulit); if (e.ev.fokus) lines.push("Fokus berikutnya: "+e.ev.fokus);
+  return lines.join("\n");
+}
+
+/* kalender .ics (alarm tetap bunyi walau web ditutup) */
+function engICS(){
+  const e = E(), [hh, mm] = e.time.split(":"), pad = n => String(n).padStart(2,"0");
+  const ev = ENG_DAYS.map((D, j) => { const dt = engDate(j+1).replace(/-/g,""), st = dt+"T"+pad(hh)+pad(mm)+"00", endM = (+hh)*60 + (+mm) + 45, en = dt+"T"+pad(Math.floor(endM/60)%24)+pad(endM%60)+"00";
+    return ["BEGIN:VEVENT","UID:eng-"+dt+"@ruang-belajar-nadia","DTSTAMP:"+dt+"T000000Z","DTSTART:"+st,"DTEND:"+en,"SUMMARY:English Day "+(j+1)+": "+D.title,"DESCRIPTION:"+D.tasks.map(t => ENG_KIND[t.k]+" - "+engTaskTitle(t)).join(" | ").replace(/[,;]/g," ")+" — buka tab English di Ruang Belajar Nadia","BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:Waktunya English!","TRIGGER:-PT0M","END:VALARM","END:VEVENT"].join("\r\n"); });
+  return ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Ruang Belajar Nadia//English//ID","CALSCALE:GREGORIAN"].concat(ev, ["END:VCALENDAR"]).join("\r\n");
+}
+async function engDownload(name, text, type){
+  const blob = new Blob([text], {type});
+  if (DLNS) { try { await DLNS.save({filename:name, data:blob}); } catch(err){ if (!(err && err.code === "declined")) toast("Gagal mengunduh"); } return; }
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+}
+function engCopy(text, okMsg){ try { navigator.clipboard.writeText(text).then(() => toast(okMsg||"Disalin"), () => engCopyFallback(text)); } catch(err){ engCopyFallback(text); } }
+function engCopyFallback(text){ const t = document.createElement("textarea"); t.value = text; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); toast("Disalin"); } catch(e){ toast("Tidak bisa menyalin otomatis"); } t.remove(); }
+
+/* kartu kecil di Beranda */
+function engHomeCard(){
+  const n = engDayNo(), cur = engCur(), D = ENG_DAYS[cur-1];
+  if (n > ENG_DAYS.length + 3) return "";
+  const left = D.tasks.filter((_, i) => !engDone(cur, i)).length;
+  return '<a class="eng-home" href="#english" style="background-image:url(\''+engImg(D.place,true)+'\')"><span><span class="eyebrow" style="color:#EDE8FF">English · IELTS 9.0</span><b>'+(n < 1 ? 'Mulai besok: Day 1' : 'Day '+cur+' · '+esc(D.title))+'</b><span class="small">'+(n >= 1 && !left ? 'Hari ini sudah beres ✓' : D.tasks.map(t => ENG_KIND[t.k]).join(" + ")+' · jam '+esc(E().time))+'</span></span><span class="btn tiny">Buka</span></a>';
+}
+function engBgPaint(){ const bg = $("#engBg"); if (!bg) return; if (view === "english") { bg.style.backgroundImage = "url('"+engImg(ENG_DAYS[engCur()-1].place)+"')"; bg.classList.add("on"); } else bg.classList.remove("on"); }
+
+/* pengingat English */
+function checkEngReminder(){
+  const t = todayISO(), e = E(), n = engDayNo(); if (n < 1 || n > ENG_DAYS.length || e.ack[t] || engDayDone(n)) return;
+  const now = new Date(), hm = String(now.getHours()).padStart(2,"0")+":"+String(now.getMinutes()).padStart(2,"0");
+  if (hm >= e.time && !$("#bannerHost").innerHTML) {
+    const D = ENG_DAYS[n-1];
+    $("#bannerHost").innerHTML = '<div class="banner" role="alert"><div style="flex:1"><b>Jam '+esc(e.time)+': waktunya English, Nadia!</b><div class="small" style="color:#CFC8F0">Day '+n+' · '+esc(D.title)+'</div></div><button class="btn tiny" data-act="engsnooze">15 menit lagi</button><button class="btn tiny" data-act="engbanner">Buka</button></div>';
+    try { if (window.Notification && Notification.permission === "granted") new Notification("Waktunya English, Nadia", {body:"Day "+n+": "+D.title}); } catch(err){}
+  }
+}
+setInterval(checkEngReminder, 30000); setTimeout(checkEngReminder, 2500);
+
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-act]"); if (!el || !/^eng/.test(el.dataset.act)) return;
+  const a = el.dataset.act, X = E();
+  const H = {
+    engopen(){ engStop(); ui.engOpen = {d:+el.dataset.d, i:+el.dataset.i}; if (view !== "english") go("english"); else { render(); window.scrollTo({top:0}); } },
+    engback(){ engStop(); ui.engOpen = null; render(); window.scrollTo({top:0}); },
+    engplay(){ engPlay(el.dataset.id, el); },
+    engline(){ engStop(); const L = ENG_LISTEN[el.dataset.id], r = L.script[+el.dataset.k]; engSay(r[1], {v:Object.keys(L.speakers).indexOf(r[0]), rate:0.9}); },
+    engsq(){ engStop(); engSay(ENG_SPEAK[el.dataset.id].qs[+el.dataset.k].q, {v:1}); },
+    engsp(){ engStop(); const Sp = ENG_SPEAK[el.dataset.id], k = +el.dataset.k; engSay(k < 0 ? Sp.m : Sp.qs[k].m, {rate:0.92}); },
+    engsayw(){ engStop(); const W = engWord(el.dataset.w); engSay(W[0]+". "+W[2]); },
+    engsayall(){ engStop(); ENG_VOCAB[el.dataset.id].words.forEach(w => engSay(w[0], {rate:0.85})); },
+    engpick(){ const m = el.dataset.m; X.ans[m] = X.ans[m]||{}; X.ans[m][el.dataset.k] = el.dataset.v; save(); el.parentNode.querySelectorAll(".opt").forEach(b => b.classList.toggle("sel", b === el)); },
+    engcheck(){ engCheck(el.dataset.m); const o = ui.engOpen; if (o) engMark(o.d, o.i); save(); render(); },
+    engvcheck(){ const qk = "Q"+el.dataset.id, qs = ui.engVq[qk], ans = X.ans[qk]||{}; let s = 0; qs.forEach((q, k) => { const ok = String(ans["0-"+k]) === String(q.a); if (ok) s++; else X.err.push({src:el.dataset.id, q:q.q, your:ans["0-"+k]!=null?q.o[ans["0-"+k]]:"", right:q.o[q.a], why:q.why, at:todayISO()}); engVbSet(q.o[q.a], ok); });
+      X.sc[qk] = {s, t:qs.length, at:todayISO()}; X.chk[qk] = true; engMark(+el.dataset.d, +el.dataset.i); save(); render(); },
+    engretry(){ const m = el.dataset.m; X.ans[m] = {}; X.chk[m] = false; save(); render(); },
+    engfin(){ const o = ui.engOpen, x = ENG_DAYS[o.d-1].tasks[o.i]; if (x.k === "write" && engWc(X.txt[x.id]) < ENG_WRITE[x.id].minWords*0.6 && el.dataset.sure !== "1") { el.dataset.sure = "1"; el.textContent = "Tulisannya masih pendek. Yakin? Klik lagi"; return; } engMark(+el.dataset.d, +el.dataset.i); render(); },
+    engflip(){ ui.engFlip = ui.engFlip||{}; ui.engFlip[el.dataset.k] = !ui.engFlip[el.dataset.k]; if (ui.engFlip[el.dataset.k]) { const id = el.dataset.k.slice(0,2), w = ENG_VOCAB[id].words[+el.dataset.k.slice(2)]; engSay(w[0], {rate:0.9}); } render(); },
+    engrev(){ let list; if (el.dataset.src === "due") list = engDue(); else { list = []; ENG_VSETS.forEach(id => ENG_VOCAB[id].words.forEach(w => list.push(w[0]))); }
+      for (let k = list.length-1; k > 0; k--) { const j = Math.floor(Math.random()*(k+1)); [list[k], list[j]] = [list[j], list[k]]; }
+      ui.engRev = {list, i:0, show:false, ok:0, task:el.dataset.d ? {d:+el.dataset.d, i:+el.dataset.i} : null}; ui.engOpen = null; render(); window.scrollTo({top:0}); },
+    engrevshow(){ ui.engRev.show = true; render(); },
+    engrevans(){ const R = ui.engRev, ok = el.dataset.ok === "1"; engVbSet(R.list[R.i], ok); if (ok) R.ok++; R.i++; R.show = false; if (R.i >= R.list.length && R.task) engMark(R.task.d, R.task.i); save(); render(); },
+    engrevend(){ ui.engRev = null; render(); },
+    engtime(){ X.time = el.dataset.h; X.ack[todayISO()] = false; save(); render(); toast("Pengingat English jam "+el.dataset.h); },
+    engics(){ engDownload("Jadwal-English-Nadia.ics", engICS(), "text/calendar"); },
+    engnotif(){ try { if (!window.Notification) { toast("Browser ini tidak mendukung notifikasi"); return; } Notification.requestPermission().then(p => toast(p === "granted" ? "Notifikasi aktif" : "Notifikasi tidak diizinkan")); } catch(err){ toast("Notifikasi tidak tersedia di sini"); } },
+    engerrdel(){ X.err.splice(+el.dataset.k, 1); save(); render(); },
+    engcopy(){ engCopy(engPrompt(el.dataset.id), "Prompt penilaian disalin. Tempel ke Claude/ChatGPT."); },
+    engcopysum(){ engCopy(engSummary(), "Ringkasan disalin"); },
+    engai(){ const id = el.dataset.id, txt = X.txt[id]||""; if (engWc(txt) < 30) { toast("Tulis/isi jawabanmu dulu ya"); return; } const out = $("#engAiOut"); out.hidden = false; out.textContent = "Claude lagi membaca jawabanmu… (biasanya 30–60 detik)"; el.disabled = true;
+      ENG_SAMPLE(engPrompt(id), {onText:({text}) => { out.textContent = text; }, cache:false}).then(r => { const m = /OVERALL:\s*([0-9](?:\.[05])?)/i.exec(r.text); X.ai[id] = {text:r.text, at:todayISO(), band:m ? +m[1] : (X.ai[id]||{}).band}; save(); el.disabled = false; toast(m ? "Perkiraan band: "+m[1] : "Penilaian selesai"); })
+        .catch(err => { el.disabled = false; out.textContent = err && err.code === "not_granted" ? "Izin ke Claude tidak diberikan. Pakai tombol \"Salin prompt penilaian\" ya." : "Gagal menilai ("+((err&&err.code)||"error")+"). Coba lagi sebentar atau pakai Salin prompt."; }); },
+    engbanner(){ X.ack[todayISO()] = true; save(); $("#bannerHost").innerHTML = ""; ui.engOpen = null; go("english"); },
+    engsnooze(){ const d = new Date(Date.now()+15*60000); X.time = String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"); save(); $("#bannerHost").innerHTML = ""; toast("Diingatkan lagi 15 menit"); }
+  };
+  if (H[a]) { e.preventDefault(); H[a](); }
+});
+document.addEventListener("input", e => {
+  const t = e.target; if (!t.dataset) return;
+  if (t.dataset.eq) { const X = E(); X.ans[t.dataset.eq] = X.ans[t.dataset.eq]||{}; X.ans[t.dataset.eq][t.dataset.k] = t.value; save(); }
+  if (t.dataset.engtxt) { E().txt[t.dataset.engtxt] = t.value; save(); const w = $("#engWc"); if (w && ENG_WRITE[t.dataset.engtxt]) w.textContent = engWc(t.value)+" kata (min. "+ENG_WRITE[t.dataset.engtxt].minWords+")"; }
+  if (t.dataset.engev && t.tagName === "TEXTAREA") { E().ev[t.dataset.engev] = t.value; save(); }
+});
+document.addEventListener("change", e => {
+  const t = e.target; if (!t.dataset) return;
+  if (t.id === "engTime" && t.value) { E().time = t.value; E().ack[todayISO()] = false; save(); render(); toast("Pengingat English jam "+t.value); }
+  if (t.dataset.engband) { const X = E(), id = t.dataset.engband; X.ai[id] = Object.assign({}, X.ai[id], {band: t.value ? +t.value : null}); save(); }
+  if (t.dataset.engev && t.tagName === "SELECT") { E().ev[t.dataset.engev] = t.value; save(); const s = $("#engSum"); if (s) s.textContent = engSummary(); }
+});
+document.addEventListener("click", e => { const a = e.target.closest && e.target.closest('#tabs a[href="#english"]'); if (a) { ui.engOpen = null; ui.engRev = null; engStop(); } }, true);
 
 /* routing */
 function go(v){ if (location.hash !== "#"+v) location.hash = v; else { view = v; render(); window.scrollTo({top:0}); } }
