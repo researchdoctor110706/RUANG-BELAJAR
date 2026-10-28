@@ -305,13 +305,13 @@ canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:50}
 .eng-hero>*{position:relative}
 nav.tabs a.tab-eng{color:#B0124A;background:var(--pop-soft)}
 nav.tabs a.tab-eng[aria-current="page"]{color:#fff;background:var(--pop)}
-@media (max-width:560px){.eng-place{position:static!important;justify-self:start}}
 .eng-hero h2{font-size:clamp(1.5rem,4vw,2.2rem);color:#fff;max-width:28ch}
 .eng-hero .eng-why{max-width:70ch;color:#EDE8FF;font-size:.95rem}
 .eng-hero .count{display:flex;gap:22px;flex-wrap:wrap}
 .eng-hero .count .n{font-size:1.9rem;font-weight:800;line-height:1}
 .eng-hero .count .l{font-size:.78rem;color:#EDE8FF}
 .eng-place{position:absolute!important;top:14px;right:14px;font-size:.78rem;font-weight:700;background:rgba(255,255,255,.2);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.35);padding:4px 10px;border-radius:999px}
+@media (max-width:560px){.eng-place{position:static!important;justify-self:start;display:inline-block;margin-bottom:8px}}
 .eng-strip{position:relative;border-radius:18px;overflow:hidden;background:#241B4B center/cover;color:#fff;padding:16px;display:grid;gap:10px;grid-template-columns:auto 1fr;align-items:end;min-height:150px}
 .eng-strip::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,50,.15),rgba(20,16,50,.85))}
 .eng-strip>*{position:relative}
@@ -382,7 +382,6 @@ nav.tabs a.tab-eng[aria-current="page"]{color:#fff;background:var(--pop)}
     </div>
     <nav class="tabs" id="tabs" aria-label="Menu">
       <a href="#beranda">Beranda</a>
-      <a href="#english" class="tab-eng">English · IELTS ✈</a>
       <a href="#kuliah">Kuliah &amp; Milestone</a>
       <a href="#mikir">Cara Mikir Dokter</a>
       <a href="#dasar">Anat · Histo · Fisio</a>
@@ -1032,13 +1031,14 @@ function paintTop(){
   const b = block(); const t = todayISO();
   const dl = b.uab ? diffDays(t, b.uab) : null;
   $("#topRight").innerHTML =
-    '<select id="blockSel" aria-label="Pilih blok">'+S.blocks.map(x => '<option value="'+x.id+'"'+(x.id===S.activeBlock?" selected":"")+'>Blok '+esc(x.name)+'</option>').join("")+'</select>'+
-    (dl!=null ? '<span class="chip pop mono">UAB '+(dl>0?"H-"+dl:dl===0?"HARI INI":"lewat")+'</span>' : '')+
+    '<select id="blockSel" aria-label="Pilih blok">'+S.blocks.map(x => '<option value="'+x.id+'"'+(view!=="english"&&x.id===S.activeBlock?" selected":"")+'>Blok '+esc(x.name)+'</option>').join("")+'<option value="__english"'+(view==="english"?" selected":"")+'>English · IELTS ✈</option></select>'+
+    (dl!=null && view!=="english" ? '<span class="chip pop mono">UAB '+(dl>0?"H-"+dl:dl===0?"HARI INI":"lewat")+'</span>' : '')+
     '<span class="chip small sync-chip" title="Status penyimpanan">'+esc(syncLabel)+'</span>';
 }
 
 function render(){
   paintTop();
+  $("#tabs").hidden = view === "english";
   document.querySelectorAll("#tabs a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href")==="#"+view ? "page" : "false"));
   const fn = {beranda:vBeranda, kuliah:vKuliah, mikir:vMikir, dasar:vDasar, rangkuman:vRangkuman, latsol:vLatsol, nonton:vNonton, progres:vProgres, pustaka:vPustaka, english:vEnglish}[view];
   $("#app").innerHTML = '<section class="view" id="v-'+view+'">'+fn()+'</section>';
@@ -1861,7 +1861,7 @@ document.addEventListener("change", e => {
   if (e.target.dataset && e.target.dataset.wschk != null && ui.ws) { const d = wsData(ui.ws.lid, ui.ws.n); d.chk[e.target.dataset.wschk] = e.target.checked; save(); render(); return; }
   const sl = e.target.dataset && e.target.dataset.slide;
   if (sl) { const lid = e.target.dataset.l, n = e.target.dataset.n; S.slides = S.slides||{}; S.slides[lid] = S.slides[lid]||{}; S.slides[lid][n] = Object.assign({}, S.slides[lid][n], {[sl]: Math.max(0, parseInt(e.target.value,10)||0)}); const b = S.slides[lid][n]; save(); if (sl === "at" && b.total && b.at >= b.total && !stepOf(lid, +n).done) markStep(lid, +n, true); else toast("Penanda slide disimpan"); render(); return; }
-  if (e.target.id === "blockSel") { S.activeBlock = e.target.value; save(); render(); }
+  if (e.target.id === "blockSel") { const v = e.target.value; if (v === "__english") { ui.engOpen = null; ui.engRev = null; engStop(); go("english"); } else { S.activeBlock = v; save(); if (view === "english") go("beranda"); else render(); } }
   if (e.target.id === "todayTime" && e.target.value) { S.times[todayISO()] = e.target.value; S.ack[todayISO()] = false; save(); render(); toast("Pengingat jam "+e.target.value); }
 });
 function selectPrompt(){ const p = $("#promptBox"); if (!p) return; const r = document.createRange(); r.selectNodeContents(p); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Teks terpilih, tekan salin"); }
