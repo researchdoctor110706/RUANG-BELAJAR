@@ -327,6 +327,22 @@ nav.tabs a.tab-eng[aria-current="page"]{color:#fff;background:var(--pop)}
 .eng-day.today{border-color:var(--pop);box-shadow:0 0 0 3px var(--pop-soft)}
 .eng-day img{width:100%;height:96px;object-fit:cover;display:block}
 .eng-day-b{padding:10px;display:grid;gap:4px}
+.eng-rw{position:fixed;inset:0;z-index:60;background:rgba(20,16,50,.6);display:grid;place-items:center;padding:16px;overflow:auto}
+.eng-rw-c{background:#fff;border-radius:24px;overflow:hidden;max-width:520px;width:100%;box-shadow:0 20px 60px rgba(20,16,50,.4);animation:engPop .35s ease-out}
+@keyframes engPop{from{transform:scale(.9);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.eng-rw-c{animation:none}}
+.eng-rw-img{position:relative;height:210px;background:#241B4B center/cover;display:grid;align-content:end;padding:16px;color:#fff}
+.eng-rw-img::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,50,0),rgba(20,16,50,.8))}
+.eng-rw-img>*{position:relative}
+.eng-rw-img .big{font-size:clamp(1.3rem,5vw,1.7rem);font-weight:800;line-height:1.15;letter-spacing:.01em}
+.eng-rw-b{padding:18px;display:grid;gap:12px}
+.eng-rw-b ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.eng-rw-mot{background:var(--pop-soft);border-radius:14px;padding:12px 14px;font-weight:600;color:#7A1240}
+.eng-stamps{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(92px,1fr))}
+.eng-stamp{border:2px dashed var(--line);border-radius:14px;padding:8px;display:grid;gap:4px;justify-items:center;text-align:center;font-size:.75rem;background:rgba(255,255,255,.9);color:var(--muted);font:inherit;font-size:.75rem;cursor:default}
+.eng-stamp img{width:56px;height:56px;border-radius:50%;object-fit:cover;filter:grayscale(1);opacity:.45}
+.eng-stamp.on{border:2px solid var(--pop);color:var(--ink);cursor:pointer;transform:rotate(-2deg)}
+.eng-stamp.on img{filter:none;opacity:1}
 .eng-tk{border:1.5px solid var(--line);background:var(--paper);border-radius:8px;padding:4px 8px;font-size:.8rem;font-weight:600;text-align:left}
 .eng-tk.on{background:#E3F8F0;border-color:transparent;color:var(--ok)}
 .eng-quote{margin:0;font-style:italic;color:var(--muted);border-left:3px solid var(--pop);padding-left:10px}
@@ -2425,7 +2441,7 @@ function engTaskTitle(t){
 function engMark(d, i){
   const e = E(), k = engKey(d,i); if (e.done[k]) return;
   e.done[k] = todayISO(); save();
-  confetti(); toast(engDayDone(d) ? "Day "+d+" beres! Proud of you, Nadia." : "Task selesai! Satu lagi ya.");
+  confetti(); if (engDayDone(d)) setTimeout(() => engReward(d), 400); else toast("Task selesai! Satu lagi ya.");
 }
 function engStreak(){
   const days = new Set(Object.values(E().done)); let n = 0, d = todayISO(); if (!days.has(d)) d = addDays(d,-1);
@@ -2465,6 +2481,80 @@ function engPlay(id, btn){
 }
 
 /* ---------- tampilan utama ---------- */
+/* Reward: oleh-oleh tiap kali satu hari beres */
+const ENG_FUN = {
+  zermatt:{hi:"Grüezi! (salam orang Swiss-Jerman)", f:[
+    "Zermatt bebas mobil bensin. Yang lewat di jalanan cuma mobil listrik kecil, kereta kuda, dan pejalan kaki.",
+    "Matterhorn tingginya 4.478 m. Pendakian pertamanya 14 Juli 1865 oleh tim Edward Whymper, dan 4 dari 7 pendaki jatuh saat turun.",
+    "Gunung segitiga di logo cokelat Toblerone sering disebut terinspirasi dari Matterhorn."],
+    m:"Day 1 beres! Langkah pertama itu yang paling berat, dan kamu udah lewatin. Band 9 dibangun dari hari-hari kecil kayak gini."},
+  lauterbrunnen:{hi:"Grüezi mitenand! (halo semuanya)", f:[
+    "Lembah ini punya 72 air terjun. Staubbach jatuh bebas hampir 300 m dari tebing.",
+    "Goethe nulis puisi \"Gesang der Geister über den Wassern\" (1779) setelah lihat Staubbach.",
+    "Tolkien pernah hiking ke sini tahun 1911, dan lembah ini sering disebut inspirasi Rivendell di The Lord of the Rings."],
+    m:"Reading + grammar hari ini itu fondasi. Pelan-pelan, tapi airnya terus ngalir kayak air terjun di sini."},
+  luzern:{hi:"Grüezi! Merci vielmal (makasih banyak)", f:[
+    "Kapellbrücke dibangun abad ke-14 dan disebut jembatan kayu beratap tertua di Eropa.",
+    "Tahun 1993 sebagian besar jembatan ini terbakar, lalu dibangun ulang mirip aslinya.",
+    "Di atap jembatan ada lukisan segitiga dari abad ke-17 tentang sejarah kota Lucerne."],
+    m:"Hari ini kamu ngomong bahasa Inggris pakai suaramu sendiri. Itu berani! Speaking naik karena dilatih, bukan karena bakat."},
+  speicherstadt:{hi:"Moin! (salam khas Hamburg, dipakai pagi sampai malam)", f:[
+    "Speicherstadt adalah kompleks gudang terbesar di dunia yang berdiri di atas tiang-tiang kayu ek.",
+    "Sejak 2015 kawasan ini jadi Warisan Dunia UNESCO bareng Chilehaus di sebelahnya.",
+    "Miniatur Wunderland, model kereta api terbesar di dunia, ada di salah satu gudangnya."],
+    m:"Essay pertamamu jadi! Writing itu skill yang paling cepat naik kalau rajin nulis dan revisi. Kamu udah mulai."},
+  elbphilharmonie:{hi:"Moin moin!", f:[
+    "Elbphilharmonie dibuka Januari 2017 dan dibangun di atas gudang tua bernama Kaispeicher A.",
+    "Dinding aula besarnya dilapisi sekitar 10.000 panel gipsum yang bentuknya beda-beda, biar suaranya merata.",
+    "Ada teras Plaza setinggi 37 m yang bisa dikunjungi siapa saja buat lihat pelabuhan Hamburg."],
+    m:"Telingamu makin terlatih. Listening itu kayak konser: makin sering dengar, makin jelas tiap nadanya."},
+  brugge:{hi:"Hallo! Dank je wel (makasih, bahasa Belanda-Flemish)", f:[
+    "Pusat kota Bruges jadi Warisan Dunia UNESCO sejak 2000 dan dijuluki \"Venesia dari Utara\".",
+    "Menara Belfort tingginya 83 m. Ada 366 anak tangga sampai puncaknya, dan di dalamnya ada carillon 47 lonceng.",
+    "Bruges terkenal sama renda (lace) buatan tangan dan cokelat Belgia."],
+    m:"Setengah perjalanan! 6 dari 10 kota udah kamu datengin. Review hari ini bikin kata-kata lama nempel lebih lama."},
+  brussel:{hi:"Bonjour! / Goeiedag! (Brussels resmi dua bahasa)", f:[
+    "Grand-Place jadi Warisan Dunia UNESCO sejak 1998 dan sering disebut alun-alun tercantik di dunia.",
+    "Tiap dua tahun di bulan Agustus, lantai alun-alun ini ditutup karpet bunga raksasa dari ratusan ribu begonia.",
+    "Belgia punya tiga bahasa resmi: Belanda, Prancis, dan Jerman."],
+    m:"Reading panjang + speaking cue card di hari yang sama itu combo berat, dan kamu tuntasin. Keren banget!"},
+  gent:{hi:"Hallo! Tot ziens (sampai jumpa)", f:[
+    "Graslei dulunya pelabuhan abad pertengahan, tempat kapal bongkar muat gandum.",
+    "Di Ghent ada lukisan altar karya Van Eyck (1432), salah satu karya seni yang paling sering dicuri dalam sejarah.",
+    "Kastil Gravensteen di tengah kota dibangun tahun 1180."],
+    m:"Essay ketiga! Bandingin sama essay pertamamu, pasti udah kerasa bedanya. Progress itu nyata."},
+  hallstatt:{hi:"Servus! (salam khas Austria)", f:[
+    "Tambang garam di Hallstatt disebut salah satu yang tertua di dunia, sudah ditambang sekitar 7.000 tahun.",
+    "Ada Beinhaus, rumah tulang berisi ratusan tengkorak yang dicat dan diberi nama.",
+    "Saking terkenalnya, Hallstatt pernah dibuatkan replika di Tiongkok tahun 2012."],
+    m:"Sembilan hari berturut-turut! Kebiasaan udah mulai kebentuk. Besok hari terakhir, gas!"},
+  chillon:{hi:"Bonjour! (Swiss bagian Prancis)", f:[
+    "Château de Chillon berdiri di atas pulau batu di tepi Danau Jenewa, dekat Montreux.",
+    "Lord Byron nulis puisi \"The Prisoner of Chillon\" (1816) dan mengukir namanya di salah satu pilar penjaranya.",
+    "Kastil ini termasuk monumen bersejarah yang paling banyak dikunjungi di Swiss."],
+    m:"10 HARI SELESAI! 10 kota, 4 negara, semua skill IELTS udah kamu sentuh. Ini baru awal perjalanan ke band 9. Proud of you, Nadia!"}
+};
+function engReward(d){
+  const D = ENG_DAYS[d-1], P = ENG_PLACES[D.place], F = ENG_FUN[D.place]; if (!F) return;
+  const old = document.getElementById("engRw"); if (old) old.remove();
+  const w = document.createElement("div"); w.id = "engRw"; w.className = "eng-rw"; w.setAttribute("role","dialog"); w.setAttribute("aria-modal","true"); w.setAttribute("aria-label","Reward Day "+d);
+  w.innerHTML = '<div class="eng-rw-c"><div class="eng-rw-img" style="background-image:url(\''+engImg(D.place)+'\')"><span class="small" style="opacity:.9">Day '+d+' selesai · '+esc(P.cc)+'</span><div class="big">CONGRATS! Kamu udah jalan-jalan ke '+esc(P.nm)+' ✈</div></div>'+
+    '<div class="eng-rw-b"><div><span class="eyebrow">Sapa warga lokal</span><p style="margin:2px 0 0"><b>'+esc(F.hi)+'</b></p></div>'+
+    '<div><span class="eyebrow">Fun fact</span><ul>'+F.f.map(x => '<li class="small">'+esc(x)+'</li>').join("")+'</ul></div>'+
+    '<div class="eng-rw-mot">'+esc(F.m)+'</div>'+
+    '<p class="small muted" style="margin:0">Stempel '+esc(P.nm)+' udah masuk ke paspor kamu ('+engVisited().length+'/'+ENG_DAYS.length+' kota).</p>'+
+    '<div class="row"><button class="btn solid" data-act="engrwclose">Lanjut</button></div></div></div>';
+  document.body.appendChild(w); w.querySelector("button").focus();
+}
+document.addEventListener("keydown", e => { if (e.key === "Escape") { const w = document.getElementById("engRw"); if (w) w.remove(); } });
+document.addEventListener("click", e => { if (e.target.id === "engRw") e.target.remove(); });
+function engVisited(){ return ENG_DAYS.map((_, j) => j+1).filter(engDayDone); }
+function engPassport(){
+  const v = engVisited();
+  return '<div class="card stack"><div class="row" style="justify-content:space-between"><div><span class="eyebrow">Paspor perjalanan</span><h3>'+v.length+'/'+ENG_DAYS.length+' kota dikunjungi</h3></div><span class="small muted">Selesaikan semua task sehari buat dapat stempel</span></div>'+
+    '<div class="eng-stamps">'+ENG_DAYS.map((D, j) => { const on = engDayDone(j+1), P = ENG_PLACES[D.place];
+      return '<button class="eng-stamp'+(on?' on':'')+'"'+(on?' data-act="engreward" data-d="'+(j+1)+'"':' disabled')+' title="'+esc(P.nm)+'"><img src="'+engImg(D.place,true)+'" alt="" loading="lazy"><span>Day '+(j+1)+'<br>'+esc(on?P.nm.split(",")[0]:"???")+'</span></button>'; }).join("")+'</div></div>';
+}
 function vEnglish(){
   if (ui.engOpen) return engTaskView(ui.engOpen.d, ui.engOpen.i);
   if (ui.engRev) return engReviewView();
@@ -2501,6 +2591,7 @@ function vEnglish(){
       '<div class="row"><button class="btn tiny solid" data-act="engrev" data-src="due"'+(due?'':' disabled')+'>Mulai review ('+due+')</button></div>'+
       '<blockquote class="eng-quote">'+esc(q)+'</blockquote></div>'+
   '</div>'+
+  engPassport()+
   '<div class="stack"><h3>Jadwal 10 hari</h3><div class="eng-days">'+ENG_DAYS.map((Dd, j) => engDayCard(j+1)).join("")+'</div></div>'+
   engProgress()+
   '<details class="card"><summary><b>Strategi belajar (hasil riset) & format IELTS</b></summary><div class="stack" style="margin-top:12px">'+
@@ -2743,6 +2834,8 @@ document.addEventListener("click", e => {
   const el = e.target.closest("[data-act]"); if (!el || !/^eng/.test(el.dataset.act)) return;
   const a = el.dataset.act, X = E();
   const H = {
+    engreward(){ engReward(+el.dataset.d); },
+    engrwclose(){ const w = document.getElementById("engRw"); if (w) w.remove(); },
     engopen(){ engStop(); ui.engOpen = {d:+el.dataset.d, i:+el.dataset.i}; if (view !== "english") go("english"); else { render(); window.scrollTo({top:0}); } },
     engback(){ engStop(); ui.engOpen = null; render(); window.scrollTo({top:0}); },
     engplay(){ engPlay(el.dataset.id, el); },
