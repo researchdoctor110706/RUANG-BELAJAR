@@ -338,6 +338,12 @@ nav.tabs a.tab-eng[aria-current="page"]{color:#fff;background:var(--pop)}
 .eng-rw-b{padding:18px;display:grid;gap:12px}
 .eng-rw-b ul{margin:0;padding-left:20px;display:grid;gap:6px}
 .eng-rw-mot{background:var(--pop-soft);border-radius:14px;padding:12px 14px;font-weight:600;color:#7A1240}
+.eng-sec{display:flex;gap:6px;flex-wrap:wrap}
+.eng-sec button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font:inherit;font-size:.82rem;font-weight:700;cursor:pointer;color:var(--ink)}
+.eng-sec button.on{background:var(--pop);border-color:var(--pop);color:#fff}
+.eng-stiff{border-radius:12px;background:rgba(255,255,255,.7);border:1px dashed var(--line);padding:8px 12px}
+.eng-stiff p{margin:2px 0}.eng-stiff .bad{color:#C0392B;font-weight:700}.eng-stiff .good{color:#0E8A7E;font-weight:700}
+.eng-lvl{color:#B0124A;font-weight:700}
 .eng-stamps{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(92px,1fr))}
 .eng-stamp{border:2px dashed var(--line);border-radius:14px;padding:8px;display:grid;gap:4px;justify-items:center;text-align:center;font-size:.75rem;background:rgba(255,255,255,.9);color:var(--muted);font:inherit;font-size:.75rem;cursor:default}
 .eng-stamp img{width:56px;height:56px;border-radius:50%;object-fit:cover;filter:grayscale(1);opacity:.45}
@@ -1942,57 +1948,62 @@ const ENG_PLACES = {
 };
 const BBC6 = "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/";
 
-/* 10 hari. Tiap hari maks 2 task. k = jenis task, id = materi. */
+/* 11 hari (Kam 29 Okt – Min 8 Nov). Tiap Minggu = mini test. Tiap hari maks 2 task. k = jenis task, id = materi. */
 const ENG_DAYS = [
-  {place:"zermatt", title:"Kenal medan + Listening Part 1", skill:"Listening",
+  {place:"zermatt", lvl:"Level 1 · Dasar", title:"Kenal medan + Listening Part 1", skill:"Listening",
    why:"Hari pertama: kenalan dulu sama format IELTS dan langsung coba Listening Part 1 (isi formulir). Part 1 itu bagian 'paling ramah', cocok buat pemanasan dan ngukur titik awal.",
    tasks:[{k:"listen", id:"L1", min:25}, {k:"vocab", id:"V1", min:10}],
    yt:[["Strategi Listening Part 1 (form completion)","IELTS listening part 1 form completion tips"],["Coba full test asli (opsional)","Cambridge IELTS 19 listening test 1 with answers"]],
    bbc:["ep-260910","Can apps teach you a language?"]},
-  {place:"lauterbrunnen", title:"Reading: True / False / Not Given", skill:"Reading",
+  {place:"lauterbrunnen", lvl:"Level 1 · Dasar", title:"Reading: True / False / Not Given", skill:"Reading",
    why:"TFNG adalah tipe soal yang paling sering bikin skor reading jatuh. Hari ini kita latih cara bedain FALSE (teks bilang kebalikannya) vs NOT GIVEN (teks gak bilang apa-apa).",
    tasks:[{k:"read", id:"R1", min:25}, {k:"gram", id:"G1", min:12}],
    yt:[["Cara jawab True/False/Not Given","IELTS reading true false not given strategy"]],
    bbc:["ep-260917","Is rejection good for us?"]},
-  {place:"luzern", title:"Speaking Part 1 + kosakata kesehatan", skill:"Speaking",
+  {place:"luzern", lvl:"Level 1 · Dasar", title:"Speaking Part 1 + kosakata kesehatan", skill:"Speaking",
    why:"Speaking Part 1 = pertanyaan ringan tentang dirimu. Kuncinya: jawab langsung, kasih alasan, kasih contoh (2–4 kalimat). Kita juga shadowing jawaban model biar intonasi makin natural.",
    tasks:[{k:"speak", id:"S1", min:20}, {k:"vocab", id:"V2", min:10}],
    yt:[["Contoh Speaking Part 1 band 9","IELTS speaking part 1 band 9 sample"]],
    bbc:["ep-261022","What should you eat for a better night's sleep?"]},
-  {place:"speicherstadt", title:"Writing Task 2: intro + 1 body", skill:"Writing",
-   why:"Belum langsung full essay. Hari ini fokus fondasi band tinggi: membaca soal dengan benar, posisi yang jelas di intro, dan satu body paragraph yang berkembang penuh (ide → penjelasan → contoh).",
-   tasks:[{k:"write", id:"W1", min:30}, {k:"gram", id:"G2", min:12}],
-   yt:[["Struktur opinion essay","IELTS writing task 2 opinion essay structure band 9"]],
+  {place:"brienz", lvl:"Mini test #1", title:"Minggu: Mini test IELTS #1", skill:"Mini test",
+   why:"Hari Minggu = mini test. Semua bagian IELTS (listening, reading, writing, speaking) dalam versi pendek, ±50 menit. Hasilnya jadi titik awal yang nanti dibandingkan dengan mini test berikutnya.",
+   tasks:[{k:"test", id:"T1", min:50}],
+   yt:[["Gambaran hari tes IELTS","IELTS test day what to expect full format"]],
    bbc:null},
-  {place:"elbphilharmonie", title:"Listening Part 3 (diskusi akademik)", skill:"Listening",
+  {place:"elbphilharmonie", lvl:"Level 2 · Menengah", title:"Listening Part 3 (diskusi akademik)", skill:"Listening",
    why:"Hari pertama Blok Repro, jadi tugasnya dibuat ringan. Part 3 = diskusi mahasiswa dan dosen, pilihan gandanya penuh jebakan (opini yang berubah, 'tapi', 'sebenarnya').",
    tasks:[{k:"listen", id:"L2", min:25}, {k:"vocab", id:"V3", min:10}],
    yt:[["Strategi Listening Part 3","IELTS listening part 3 multiple choice tips"]],
    bbc:["ep-260903","Climate change and extreme weather"]},
-  {place:"brugge", title:"Writing Task 1: line graph", skill:"Writing",
+  {place:"speicherstadt", lvl:"Level 2 · Menengah", title:"Writing Task 2: intro + 1 body", skill:"Writing",
+   why:"Belum langsung full essay. Hari ini fokus fondasi band tinggi: membaca soal dengan benar, posisi yang jelas di intro, dan satu body paragraph yang berkembang penuh (ide → penjelasan → contoh).",
+   tasks:[{k:"write", id:"W1", min:30}, {k:"gram", id:"G2", min:12}],
+   yt:[["Struktur opinion essay","IELTS writing task 2 opinion essay structure band 9"]],
+   bbc:null},
+  {place:"brugge", lvl:"Level 2 · Menengah", title:"Writing Task 1: line graph", skill:"Writing",
    why:"Task 1 Academic = melaporkan data, bukan beropini. Kuncinya overview yang jelas (tren utama) + angka yang dipilih dengan cerdas dan dibandingkan.",
    tasks:[{k:"write", id:"W2", min:25}, {k:"review", id:"RV1", min:10}],
    yt:[["Contoh Task 1 line graph","IELTS writing task 1 line graph band 9 sample answer"]],
    bbc:null},
-  {place:"brussel", title:"Reading: Matching Headings + Speaking Part 2", skill:"Reading",
+  {place:"brussel", lvl:"Level 3 · Lanjut", title:"Reading: Matching Headings + Speaking Part 2", skill:"Reading",
    why:"Matching headings melatih kamu menangkap IDE UTAMA paragraf, bukan kata kunci. Lalu Speaking Part 2: bicara 2 menit tanpa berhenti, pakai catatan 1 menit.",
    tasks:[{k:"read", id:"R2", min:22}, {k:"speak", id:"S2", min:15}],
    yt:[["Strategi matching headings","IELTS reading matching headings strategy"],["Contoh Part 2 band 9","IELTS speaking part 2 band 9 sample describe a place"]],
    bbc:null},
-  {place:"gent", title:"Writing Task 2: full essay 40 menit", skill:"Writing",
+  {place:"gent", lvl:"Level 3 · Lanjut", title:"Writing Task 2: full essay 40 menit", skill:"Writing",
    why:"Sekarang full essay dengan waktu ujian asli. Habis nulis, nilai pakai rubrik 4 kriteria dan bandingkan dengan model band 9.",
    tasks:[{k:"write", id:"W3", min:45}, {k:"gram", id:"G3", min:12}],
    yt:[["Discussion essay (discuss both views)","IELTS writing task 2 discuss both views band 9"]],
    bbc:null},
-  {place:"hallstatt", title:"Listening Part 4 + Speaking Part 3", skill:"Listening",
+  {place:"hallstatt", lvl:"Level 3 · Lanjut", title:"Listening Part 4 + Speaking Part 3", skill:"Listening",
    why:"Part 4 = kuliah monolog tanpa jeda, paling mirip dengar dosen di kampus. Speaking Part 3 = diskusi abstrak: di sini band 8–9 dibedakan oleh kemampuan menimbang, memberi contoh, dan 'hedging'.",
    tasks:[{k:"listen", id:"L3", min:25}, {k:"speak", id:"S3", min:15}],
    yt:[["Strategi Listening Part 4","IELTS listening part 4 note completion tips"],["Contoh Speaking Part 3","IELTS speaking part 3 band 9 sample answers"]],
    bbc:["ep-260806","How do climate scientists make predictions?"]},
-  {place:"chillon", title:"Mini mock Reading + evaluasi 10 hari", skill:"Reading",
-   why:"Hari terakhir: reading passage 3 berwaktu (tipe paling sulit), lalu evaluasi semua yang sudah dikerjakan supaya rencana 10 hari berikutnya pas sasaran.",
-   tasks:[{k:"read", id:"R3", min:25}, {k:"eval", id:"E1", min:10}],
-   yt:[["Full listening test asli (bonus akhir pekan)","Cambridge IELTS 19 listening test 2 with answers"]],
+  {place:"chillon", lvl:"Mini test #2", title:"Minggu: Mini test IELTS #2 + evaluasi", skill:"Mini test",
+   why:"Mini test kedua, levelnya lebih tinggi: listening Part 4, reading passage 3, essay problem–solution, speaking Part 3 lebih dalam. Setelah itu evaluasi semuanya supaya rencana berikutnya pas sasaran.",
+   tasks:[{k:"test", id:"T2", min:55}, {k:"eval", id:"E1", min:10}],
+   yt:[["Full listening test asli (bonus)","Cambridge IELTS 19 listening test 2 with answers"]],
    bbc:null}
 ];
 
@@ -2418,8 +2429,8 @@ const ENG_LINKS = [
 
 /* ---------- ENGLISH · IELTS 9.0 ---------- */
 function E(){ if (!S.eng) S.eng = {}; const e = S.eng; ["done","sc","ans","chk","txt","ai","vb","ack","ev","sb"].forEach(k => { if (!e[k] || typeof e[k] !== "object") e[k] = {}; }); if (!Array.isArray(e.err)) e.err = []; if (!e.time) e.time = "19:30"; return e; }
-const ENG_KIND = {listen:"Listening", read:"Reading", write:"Writing", speak:"Speaking", gram:"Grammar", vocab:"Vocab", review:"Review vocab", eval:"Evaluasi"};
-const ENG_KCOL = {listen:"peri", read:"aqua", write:"pop", speak:"grape", gram:"sun", vocab:"aqua", review:"peri", eval:"pop"};
+const ENG_KIND = {listen:"Listening", read:"Reading", write:"Writing", speak:"Speaking", gram:"Grammar", vocab:"Vocab", review:"Review vocab", eval:"Evaluasi", test:"Mini test"};
+const ENG_KCOL = {listen:"peri", read:"aqua", write:"pop", speak:"grape", gram:"sun", vocab:"aqua", review:"peri", eval:"pop", test:"pop"};
 const ENG_BOX = [0,1,2,4,7,14];
 function engDayNo(t){ return diffDays(ENG_START, t||todayISO()) + 1; }
 function engCur(){ return Math.min(ENG_DAYS.length, Math.max(1, engDayNo())); }
@@ -2436,7 +2447,8 @@ function engTaskTitle(t){
   if (t.k === "gram") return ENG_GRAM[t.id].title;
   if (t.k === "vocab") return "12 kolokasi: "+ENG_VOCAB[t.id].title;
   if (t.k === "review") return "Ulang kosakata set 1–3 (spaced repetition)";
-  return "Evaluasi 10 hari & rencana berikutnya";
+  if (t.k === "test") return ENG_TEST[t.id].title;
+  return "Evaluasi & rencana berikutnya";
 }
 function engMark(d, i){
   const e = E(), k = engKey(d,i); if (e.done[k]) return;
@@ -2481,8 +2493,258 @@ function engPlay(id, btn){
 }
 
 /* ---------- tampilan utama ---------- */
+/* ---------------- MINI TEST MINGGUAN (tiap hari Minggu) ---------------- */
+ENG_LISTEN.T1L = {title:"Mini test 1 · Listening (Part 2 style)", part:2,
+  instr:"Complete the notes below. Write ONE WORD AND/OR A NUMBER for each answer.",
+  strat:["Baca semua soal dulu (±30 detik) dan tebak jenis jawabannya: angka, nama, benda.","Jawaban muncul berurutan sesuai soal. Kalau ketinggalan satu, langsung fokus ke soal berikutnya.","Waspada distraktor: angka atau tempat yang disebut duluan lalu diganti."],
+  speakers:{G:"Guide"},
+  script:[
+   ["G","Good morning, everyone, and welcome to the Lake Brienz day tour. My name's Lukas, and I'll be your guide today. Before we set off, let me run through the plan."],
+   ["G","Our boat leaves at a quarter past nine from pier number four. Pier two is for the ferry to Interlaken, so please don't get on that one by mistake."],
+   ["G","The crossing takes about forty minutes. On the way, you'll notice that the water is a bright turquoise colour. People often assume that's because of algae, but it's actually caused by tiny particles of rock, which the glaciers grind down and carry into the lake."],
+   ["G","Our first stop is the Giessbach Falls. There's a historic funicular railway that takes you up to the hotel at the top. A return ticket normally costs twelve francs, but with your tour pass it's only eight."],
+   ["G","After that, we'll visit a woodcarving workshop in Brienz village. Brienz is home to Switzerland's school of woodcarving, and the students there train for four years. You'll be able to try carving a small piece yourself, so wear clothes you don't mind getting a bit dusty."],
+   ["G","Lunch is at a lakeside restaurant called Seeblick. That's S, E, E, B, L, I, C, K. The set menu includes fish from the lake, but there are vegetarian options if you let me know by ten o'clock."],
+   ["G","One last thing: the weather in the mountains can change very quickly, so please bring a waterproof jacket. We should be back in Interlaken at around half past five."]
+  ],
+  qs:[
+   {q:"1. The boat leaves from pier ________", a:["4","four"], why:"'pier number four'. Pier two = ferry ke Interlaken (distraktor)."},
+   {q:"2. The lake's colour is caused by tiny particles of ________", a:["rock"], why:"'People often assume… algae, but it's actually caused by tiny particles of rock'. Algae = jebakan."},
+   {q:"3. Funicular return ticket with tour pass: ________ francs", a:["8","eight"], why:"Normalnya 12, tapi 'with your tour pass it's only eight'."},
+   {q:"4. Woodcarving students train for ________ years", a:["4","four"], why:"'the students there train for four years'."},
+   {q:"5. Name of the restaurant: ________", a:["seeblick"], why:"Dieja huruf per huruf: S-E-E-B-L-I-C-K."},
+   {q:"6. Tell the guide about vegetarian food by ________ o'clock", a:["10","ten"], why:"'if you let me know by ten o'clock'."},
+   {q:"7. Bring a ________ jacket", a:["waterproof"], why:"'please bring a waterproof jacket'."}
+  ]};
+ENG_READ.T1R = {title:"The Science of the Afternoon Nap", time:10,
+  paras:[
+   ["A","For centuries, napping in the afternoon was regarded in many industrialised societies as a sign of laziness. Yet in large parts of the world, from Spain to Indonesia, a short rest after lunch has long been part of daily life. Scientists are now paying closer attention to this habit, and much of the evidence suggests that a well-timed nap can sharpen the mind."],
+   ["B","One of the best-known studies was carried out by NASA in the 1990s. Pilots on long-haul flights who were given a planned rest period of 40 minutes, during which they slept for an average of 26 minutes, showed a 34 per cent improvement in performance and a 54 per cent improvement in alertness compared with colleagues who stayed awake. Later laboratory research found that even ten minutes of sleep could reduce tiredness for up to two and a half hours."],
+   ["C","However, longer is not always better. Naps lasting more than about 30 minutes allow the brain to enter deep sleep, and waking from this stage often leads to 'sleep inertia', a groggy feeling that can last for half an hour or more. For this reason, many sleep researchers recommend keeping naps short, or else sleeping for a full cycle of roughly 90 minutes. They also warn that napping late in the afternoon may make it harder to fall asleep at night, particularly for people who already suffer from insomnia."]
+  ],
+  groups:[
+   {type:"tfng", instr:"Questions 1–4. Do the following statements agree with the information in the passage? Write TRUE, FALSE or NOT GIVEN.", qs:[
+     {q:"1. Afternoon naps have traditionally been common in Indonesia.", a:"TRUE", why:"Paragraf A: 'from Spain to Indonesia, a short rest after lunch has long been part of daily life'."},
+     {q:"2. The NASA pilots slept for the whole of their 40-minute rest period.", a:"FALSE", why:"Paragraf B: rata-rata cuma tidur 26 menit dari 40 menit. Teks bilang kebalikannya → FALSE."},
+     {q:"3. The NASA study was later repeated with astronauts.", a:"NOT GIVEN", why:"Teks tidak menyebut astronot sama sekali. Jangan menebak dari pengetahuan umum."},
+     {q:"4. Waking up from deep sleep can make a person feel groggy.", a:"TRUE", why:"Paragraf C: 'waking from this stage often leads to sleep inertia, a groggy feeling'."}
+   ]},
+   {type:"mcq", instr:"Questions 5–6. Choose the correct letter, A, B, C or D.", qs:[
+     {q:"5. According to paragraph B, a ten-minute nap", o:["A has no measurable effect.","B can reduce tiredness for up to two and a half hours.","C is more effective than a 40-minute rest.","D improves alertness by 54 per cent."], a:1, why:"'even ten minutes of sleep could reduce tiredness for up to two and a half hours'. D = angka milik studi NASA (jebakan)."},
+     {q:"6. What do researchers say about people with insomnia?", o:["A They should take long naps.","B They should sleep for 90 minutes every afternoon.","C Late-afternoon naps may make their night-time sleep worse.","D They should never nap at all."], a:2, why:"Paragraf C: napping late 'may make it harder to fall asleep at night, particularly for people who already suffer from insomnia'. D terlalu ekstrem."}
+   ]}
+  ]};
+ENG_WRITE.T1W = {title:"Mini test · Writing Task 2 (intro + 1 body)", time:20, minWords:120, type:"Task 2",
+  prompt:"Some people think that cooking should be taught as a compulsory subject at school. To what extent do you agree or disagree?",
+  target:"Tulis INTRO + SATU BODY PARAGRAPH (±130–170 kata) dalam 20 menit. Ini tes, jadi jangan buka jawaban model sebelum selesai.",
+  steps:["2 menit pertama: tentukan posisimu (setuju/tidak/sebagian) dan SATU alasan terkuat.","Intro 2 kalimat: parafrase soal + thesis yang jelas.","Body: kalimat topik → penjelasan → contoh spesifik → dampak/kesimpulan kecil.","2 menit terakhir: cek artikel (a/an/the), subject-verb agreement, dan ejaan."],
+  useful:["It is sometimes suggested that…","I strongly agree with this proposal, since…","The most persuasive argument concerns…","not only… but also…","is far less likely to…","Over time, …"],
+  model:`It is sometimes suggested that cookery should be a compulsory part of the school curriculum. Although timetables are already crowded, I strongly agree with this proposal, since basic cooking skills have a direct impact on young people's health and independence.
+
+The most persuasive argument concerns public health. Many teenagers today rely heavily on processed snacks and fast food, partly because they have never learnt how to prepare a simple, balanced meal. Regular cooking lessons would teach them not only practical techniques but also how to read food labels and plan affordable menus. A student who can make a nutritious stir-fry in fifteen minutes is far less likely to depend on instant noodles when living alone at university. Over time, habits formed in these lessons could help to reduce rates of obesity and diet-related conditions such as type 2 diabetes, which place an enormous burden on healthcare systems.`,
+  notes:["Posisi langsung jelas di intro ('I strongly agree… since…').","Satu ide (kesehatan) dikembangkan dalam: masalah → solusi → contoh konkret → dampak jangka panjang.","Kolokasi natural: 'rely heavily on', 'balanced meal', 'place an enormous burden on'."]};
+ENG_SPEAK.T1S = {title:"Mini test · Speaking Part 1–3", part:"1, 2 & 3",
+  tips:["Anggap ini ujian beneran: jawab keras-keras, jangan berhenti untuk mencari kata yang 'sempurna'.","Rekam pakai HP dari awal sampai akhir (±11 menit), lalu dengarkan.","Part 1: 2–4 kalimat. Part 2: bicara terus 2 menit. Part 3: opini → alasan → contoh → sisi lain."],
+  qs:[
+   {p:1, q:"Do you enjoy cooking?", m:"I do, actually, although I don't get to cook as often as I'd like. During exam weeks I tend to survive on whatever's quick, but at the weekend I love making something a bit more ambitious, like a proper curry, mainly because it's a nice way to switch off from studying."},
+   {p:1, q:"What time of day do you feel most productive?", m:"Definitely in the morning. My head feels much clearer before lunch, so that's when I try to tackle the hardest topics. By the evening I'm usually running out of steam, so I save easier things, like reviewing flashcards, for later in the day."},
+   {p:1, q:"Do you prefer listening to music alone or with other people?", m:"Mostly alone, I'd say. I usually have my headphones on when I'm commuting or studying, and music helps me focus. That said, there's nothing quite like singing along with friends on a long car journey."},
+   {p:3, q:"Why do some people find it difficult to ask for help when they are learning something?", m:"I think pride plays a big part. A lot of people worry that asking questions makes them look less capable, especially in competitive environments like university. There's also a cultural element: in some education systems, students are taught to listen rather than question, so speaking up can feel uncomfortable. Ironically, though, the people who ask for help early usually learn the fastest."},
+   {p:3, q:"Do you think technology will replace teachers in the future?", m:"I doubt it, at least not completely. Technology is brilliant at delivering information and giving instant feedback, but good teachers do much more than that. They notice when a student is struggling or losing motivation, and they can adapt in a way that software still can't. So I'd expect the role of teachers to change, becoming more like coaches, rather than disappear."}
+  ],
+  card:{topic:"Describe a person who taught you something important.", points:["who this person is","what they taught you","how they taught it","and explain why it was important to you."]},
+  m:`I'd like to talk about a senior student at my faculty, who was in her final year when I started medical school.
+
+During my first semester, I was really struggling with anatomy. There was just so much to memorise, and I was trying to learn everything by reading the textbook over and over again, which wasn't working at all. She noticed I looked exhausted in the library one evening and asked how I was getting on.
+
+What she taught me, basically, was how to study rather than what to study. She showed me how to test myself with blank diagrams instead of re-reading, and how to space out my revision over several days. She didn't lecture me about it; she just sat with me for about an hour and went through one topic using her method, so I could see the difference for myself.
+
+The reason it was so important is that it completely changed how I approach learning. My grades improved, of course, but more than that, I stopped feeling overwhelmed. And now I try to do the same thing for the juniors in my faculty, so in a way, what she taught me keeps getting passed on.`,
+  phrases:["I don't get to… as often as I'd like","running out of steam","there's nothing quite like…","pride plays a big part","Ironically, though, …","I doubt it, at least not completely."]};
+
+ENG_LISTEN.T2L = {title:"Mini test 2 · Listening (Part 4 lecture)", part:4,
+  instr:"Complete the notes below. Write ONE WORD ONLY for each answer.",
+  strat:["Part 4 = kuliah tanpa jeda. Baca judul catatan dan semua soal dulu untuk menebak alur kuliahnya.","Kata di soal biasanya parafrase, bukan kata yang sama persis dengan audio.","ONE WORD ONLY: jawaban dua kata otomatis salah."],
+  speakers:{P:"Lecturer"},
+  script:[
+   ["P","Good morning. Today I want to look at one of the most puzzling phenomena in medicine: the placebo effect. A placebo is a treatment with no active ingredient, such as a sugar pill or a saline injection, and yet patients who receive one often report genuine improvements."],
+   ["P","The word itself comes from Latin and means 'I shall please'. It was used in a medical sense from the late eighteenth century, but placebos only became central to research after the Second World War, when the randomised controlled trial became the standard way of testing new drugs."],
+   ["P","In a modern trial, patients are randomly divided into two groups. One group receives the drug and the other receives a placebo, and ideally neither the patients nor the doctors know who is getting what. This is known as a double-blind design."],
+   ["P","Now, what's interesting is that placebo responses are not equally strong for every condition. They tend to be greatest for symptoms that depend heavily on the brain's interpretation, such as pain, nausea and fatigue. They're far weaker, or absent altogether, for things like infections or the growth of tumours."],
+   ["P","Researchers have also found that the details of the placebo matter. In several studies, taking two pills worked better than taking one, and capsules tended to be more effective than tablets."],
+   ["P","Perhaps the most surprising finding comes from research on so-called open-label placebos. In a study at Harvard in 2010, patients with irritable bowel syndrome were told openly that they were taking sugar pills, and yet they still improved more than patients who received no treatment at all. This suggests that the ritual of treatment, the attention and care of the doctor, may be as important as the pill itself."],
+   ["P","Of course, there's a darker side, which we call the nocebo effect. Here, negative expectations produce harmful symptoms. Patients who are warned about possible side effects sometimes develop them, even when they're taking a placebo."]
+  ],
+  qs:[
+   {q:"1. 'Placebo' comes from ________ and means 'I shall please'.", a:["latin"], why:"'The word itself comes from Latin'."},
+   {q:"2. Placebos became important after WWII with the randomised controlled ________", a:["trial","trials"], why:"'the randomised controlled trial became the standard way of testing new drugs'."},
+   {q:"3. Neither patients nor doctors know who gets the drug: a double-________ design", a:["blind"], why:"'This is known as a double-blind design'."},
+   {q:"4. Placebo responses are strongest for pain, nausea and ________", a:["fatigue"], why:"Daftar tiga gejala: 'pain, nausea and fatigue'. Infeksi & tumor = respons lemah (distraktor)."},
+   {q:"5. ________ tended to be more effective than tablets.", a:["capsules","capsule"], why:"'capsules tended to be more effective than tablets'."},
+   {q:"6. IBS patients improved even though they knew the pills contained ________", a:["sugar"], why:"'told openly that they were taking sugar pills'."},
+   {q:"7. Harmful symptoms caused by negative expectations: the ________ effect", a:["nocebo"], why:"'which we call the nocebo effect'. Ejaan: N-O-C-E-B-O."}
+  ]};
+ENG_READ.T2R = {title:ENG_READ.R3.title, time:13, paras:ENG_READ.R3.paras, groups:ENG_READ.R3.groups.slice(0,2)};
+ENG_WRITE.T2W = {title:"Mini test 2 · Writing Task 2 (problem & solution)", time:25, minWords:200, type:"Task 2",
+  prompt:"In many countries, people are living longer than ever before. What problems does this cause for society, and what solutions can you suggest?",
+  target:"Tulis INTRO + 2 BODY (masalah, lalu solusi) + 1 kalimat kesimpulan, ±220–260 kata, 25 menit. Lebih menantang dari mini test 1.",
+  steps:["Soal punya DUA pertanyaan (problems + solutions). Dua-duanya wajib dijawab, kalau tidak Task Response mentok di band 5–6.","Intro: parafrase + sebut bahwa kamu akan membahas masalah utama dan solusinya.","Body 1: 1–2 masalah yang dijelaskan dalam (sebab → akibat → contoh). Body 2: solusi yang benar-benar menjawab masalah di body 1.","Kesimpulan 1 kalimat: rangkum, jangan tambah ide baru."],
+  useful:["…has led to a growing proportion of…","The most pressing problem is…","place considerable strain on…","One practical solution would be to…","This would not only… but also…","If these measures were adopted, …"],
+  model:`Thanks to advances in medicine and living standards, life expectancy has risen dramatically in many parts of the world. While this is clearly a positive development, it creates significant challenges for society, which governments can address through changes to retirement policy and healthcare.
+
+The most pressing problem is economic. As the proportion of elderly people grows, there are fewer working-age adults paying taxes to fund pensions and public services. In Japan, for example, almost a third of the population is now over 65, which places considerable strain on the national budget. A second issue is healthcare: older people are more likely to suffer from chronic conditions such as dementia and heart disease, so hospitals face rising demand and long-term care costs.
+
+Several measures could ease these pressures. One practical solution would be to raise the retirement age gradually, in line with life expectancy, and to offer flexible part-time roles so that healthy older people can continue working. This would not only increase tax revenue but also keep many retirees mentally and socially active. In addition, governments should invest more heavily in preventive care, such as screening programmes and campaigns promoting exercise, since keeping people healthy is far cheaper than treating advanced disease.
+
+In conclusion, although longer lives put pressure on economies and health systems, sensible reforms to work and healthcare can turn an ageing population into an opportunity rather than a burden.`,
+  notes:["Dua bagian soal dijawab seimbang: body 1 = masalah, body 2 = solusi yang nyambung ke masalahnya.","Contoh spesifik (Jepang) memperkuat argumen tanpa harus angka persis.","Struktur kompleks yang alami: 'not only… but also', 'so that…', 'since…'."]};
+ENG_SPEAK.T2S = {title:"Mini test 2 · Speaking Part 1–3", part:"1, 2 & 3",
+  tips:["Level naik: di Part 3 coba pakai minimal 2 hedging ('I'd argue…', 'to some extent…') dan 1 perbandingan (dulu vs sekarang).","Part 2: pakai 1 menit persiapan untuk menulis KATA KUNCI tiap poin, bukan kalimat.","Kalau bingung di tengah jawaban, pakai frasa 'beli waktu' dari Speaking toolkit, jangan diam."],
+  qs:[
+   {p:1, q:"Do you like getting up early?", m:"Not really, if I'm honest! I'm naturally more of a night owl. But on lecture days I don't have much choice, so I've trained myself to get up at around five. Once I've had a coffee, I actually quite enjoy how quiet the house is at that time."},
+   {p:1, q:"Is there a skill you'd like to learn in the future?", m:"I'd love to learn to swim properly. I can just about keep myself afloat, but I've never had proper lessons. It seems like such a basic life skill, and it'd be great to be able to swim confidently in the sea when I travel."},
+   {p:1, q:"How often do you take photos?", m:"Almost every day, but mostly of random things, like my lecture slides or a nice meal. I'm not really into posing for selfies. What I do love, though, is taking landscape photos when I'm travelling, because they bring back the memories much more vividly than anything else."},
+   {p:3, q:"Why do some young people find it difficult to make decisions about their future?", m:"I think one reason is that they simply have far more options than previous generations did. When there are so many possible careers and paths, choosing one can feel like closing the door on all the others. On top of that, social media constantly shows people who seem to have everything figured out, which can make young people feel they're falling behind and afraid of making the wrong choice."},
+   {p:3, q:"Should parents make important decisions for their children?", m:"It depends on the child's age, really. For young children, parents obviously have to decide most things. But once someone reaches their late teens, I'd argue that parents should guide rather than decide. If a young adult is pushed into a degree or a job they don't want, they're unlikely to stay motivated. That said, parents usually have valuable life experience, so the ideal is probably a genuine conversation where both sides listen."},
+   {p:3, q:"Do people make better decisions when they are older?", m:"To some extent, yes. Experience helps you recognise patterns and avoid mistakes you've made before. However, I wouldn't say age automatically makes someone wiser. Older people can become more cautious, or stuck in their ways, so they may miss opportunities. I suppose the best decisions come from combining experience with an open mind, whatever your age."}
+  ],
+  card:{topic:"Describe a time when you had to make a difficult decision.", points:["what the decision was","when you made it","how you made the decision","and explain how you felt about it afterwards."]},
+  m:`I'm going to talk about the decision to study medicine rather than something closer to my other passion, which was design.
+
+This was during my final year of high school, so about three years ago. I'd always loved drawing and I'd even won a couple of small competitions, so a lot of people assumed I'd go to art school. At the same time, I'd become really interested in children's health after volunteering at a local clinic.
+
+The way I made the decision was quite methodical, actually. I wrote down what I imagined my life would look like in ten years with each choice, and I talked to people working in both fields. A paediatrician I met at the clinic was incredibly honest about how demanding the job is, but she also said there was nothing more rewarding than seeing a sick child go home healthy. That conversation pretty much tipped the balance.
+
+Afterwards, I felt a mixture of relief and nerves. Relief because I'd finally committed to something, and nerves because I knew how tough the course would be. Looking back now, I'm sure I made the right choice, and I haven't given up design completely: I still sketch to relax, and I even use drawing to remember anatomy.`,
+  phrases:["more of a night owl","I've trained myself to…","just about keep myself afloat","closing the door on…","pretty much tipped the balance","stuck in their ways"]};
+
+const ENG_TEST = {
+  T1:{title:"Mini test IELTS #1 (diagnostik)", L:"T1L", R:"T1R", W:"T1W", S:"T1S",
+   intro:"Mini test pertama: semua bagian IELTS dalam versi pendek (±50 menit). Tujuannya tahu titik awalmu, bukan dapat skor sempurna. Kerjakan berurutan, pakai timer, dan jangan buka jawaban model sebelum selesai."},
+  T2:{title:"Mini test IELTS #2 (lebih sulit)", L:"T2L", R:"T2R", W:"T2W", S:"T2S",
+   intro:"Mini test kedua, levelnya naik: listening Part 4 (kuliah), reading passage 3, essay problem–solution, dan speaking dengan Part 3 lebih dalam. Bandingkan hasilnya dengan mini test #1."}
+};
+const ENG_SECS = [["L","Listening"],["R","Reading"],["W","Writing"],["S","Speaking"],["H","Hasil"]];
+function engRound(x){ return Math.round(x*2)/2; }
+function engTestBands(T){
+  const e = E(), b = {};
+  if (e.sc[T.L]) b.L = engBand(e.sc[T.L].s/e.sc[T.L].t, "listen");
+  if (e.sc[T.R]) b.R = engBand(e.sc[T.R].s/e.sc[T.R].t, "read");
+  if (e.ai[T.W] && e.ai[T.W].band) b.W = +e.ai[T.W].band;
+  if (e.ai[T.S] && e.ai[T.S].band) b.S = +e.ai[T.S].band;
+  const v = Object.values(b); b.O = v.length === 4 ? engRound(v.reduce((a, c) => a + c, 0)/4) : null;
+  return b;
+}
+function engTestView(x, d, i){
+  const T = ENG_TEST[x.id], sec = (ui.engSec||{})[x.id] || "L", b = engTestBands(T);
+  const nav = '<div class="eng-sec" role="tablist">'+ENG_SECS.map(([k, nm], j) => '<button role="tab" aria-selected="'+(k===sec)+'" class="'+(k===sec?'on':'')+'" data-act="engsec" data-t="'+x.id+'" data-s="'+k+'">'+(j+1)+'. '+nm+(b[k]!=null?' ✓':'')+'</button>').join("")+'</div>';
+  let body = '';
+  if (sec === "L") body = engListenView({id:T.L});
+  else if (sec === "R") body = engReadView({id:T.R});
+  else if (sec === "W") body = engWriteView({id:T.W}, d, -1);
+  else if (sec === "S") body = engTestSpeak(T.S);
+  else body = engTestResult(x.id, T, b, d, i);
+  const nx = ENG_SECS.findIndex(s => s[0] === sec) + 1;
+  return '<div class="card stack"><b>'+esc(T.title)+'</b><p class="small">'+esc(T.intro)+'</p>'+nav+'</div>'+body+
+    (nx < ENG_SECS.length ? '<div class="row"><button class="btn solid" data-act="engsec" data-t="'+x.id+'" data-s="'+ENG_SECS[nx][0]+'">Lanjut ke '+ENG_SECS[nx][1]+' →</button></div>' : '');
+}
+function engTestSpeak(id){
+  const Sp = ENG_SPEAK[id], e = E();
+  const qrow = (q, k) => '<div class="eng-q"><div class="row"><button class="speak" data-act="engsq" data-id="'+id+'" data-k="'+k+'">▶</button><b>'+esc(q.q)+'</b></div><details><summary class="small">Jawaban model (buka setelah menjawab)</summary><div class="row" style="align-items:flex-start;margin-top:6px"><button class="speak" data-act="engsp" data-id="'+id+'" data-k="'+k+'">▶ Shadow</button><p class="small" style="flex:1">'+esc(q.m)+'</p></div></details></div>';
+  const part = p => Sp.qs.map((q, k) => q.p === p ? qrow(q, k) : '').join("");
+  return '<div class="card stack"><b>Tips</b><ul class="eng-ul">'+Sp.tips.map(t => '<li>'+esc(t)+'</li>').join("")+'</ul></div>'+
+    '<div class="card stack"><span class="eyebrow">Part 1 · ±3 menit</span>'+part(1)+'</div>'+
+    '<div class="card stack eng-cue"><span class="eyebrow">Part 2 · cue card</span><h3>'+esc(Sp.card.topic)+'</h3><p class="small">You should say:</p><ul class="eng-ul">'+Sp.card.points.map(p => '<li>'+esc(p)+'</li>').join("")+'</ul>'+
+      '<div class="row"><span class="mono" id="timerDisp">'+timerText()+'</span><button class="btn tiny solid" data-act="timer" data-m="1">1 menit persiapan</button><button class="btn tiny solid" data-act="timer" data-m="2">2 menit bicara</button><button class="btn tiny" data-act="timerstop">Stop</button></div>'+
+      '<details><summary><b>Jawaban model band 9</b></summary><div class="stack" style="margin-top:8px"><button class="speak" data-act="engsp" data-id="'+id+'" data-k="-1">▶ Dengarkan & shadowing</button><div class="eng-model"><p>'+esc(Sp.m).replace(/\n\n/g,"</p><p>")+'</p></div></div></details></div>'+
+    '<div class="card stack"><span class="eyebrow">Part 3 · diskusi ±4 menit</span>'+part(3)+'</div>'+
+    '<div class="card stack"><b>Frasa natural untuk dicuri</b><div class="row">'+Sp.phrases.map(p => '<span class="chip small">'+esc(p)+'</span>').join("")+'</div></div>'+
+    '<div class="card stack"><b>Transkrip jawabanmu</b><p class="small muted">Dikte pakai mikrofon keyboard HP (atau ketik ulang dari rekamanmu): Part 1, Part 2, lalu Part 3. Lalu minta penilaian di bawah.</p><textarea data-engtxt="'+id+'" rows="10" placeholder="Part 1: … / Part 2: … / Part 3: …">'+esc(e.txt[id]||"")+'</textarea></div>'+
+    engAIBox(id);
+}
+function engTestResult(tid, T, b, d, i){
+  const row = (k, nm, how) => '<div class="ms"><b>'+nm+'</b><p class="small" style="margin:4px 0 0">'+(b[k]!=null ? '≈ band <b>'+b[k]+'</b>' : '<span class="muted">'+how+'</span>')+'</p></div>';
+  const prev = tid === "T2" ? engTestBands(ENG_TEST.T1) : null;
+  return '<div class="card stack"><div><span class="eyebrow">Hasil mini test</span><h3>'+(b.O!=null ? 'Perkiraan overall: band '+b.O : 'Lengkapi semua bagian dulu')+'</h3></div>'+
+    '<div class="grid2">'+row("L","Listening","Belum dicek")+row("R","Reading","Belum dicek")+row("W","Writing","Minta penilaian Claude / isi band di bagian Writing")+row("S","Speaking","Minta penilaian Claude / isi band di bagian Speaking")+'</div>'+
+    (prev && prev.O != null && b.O != null ? '<p class="small"><b>Dibanding mini test #1:</b> '+prev.O+' → '+b.O+(b.O>prev.O?' (naik, mantap!)':b.O===prev.O?' (stabil, soalnya lebih sulit lho)':' (soal lebih sulit, jangan patah semangat)')+'</p>' : '')+
+    '<p class="small muted">Catatan: soal mini test jauh lebih sedikit dari tes asli, jadi band ini perkiraan kasar untuk memantau arah progres, bukan skor resmi.</p>'+
+    '<div class="row">'+(engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai mini test selesai</button>')+'</div></div>';
+}
+
+/* ---------------- SPEAKING HARIAN (5 menit, anti kaku) ---------------- */
+const ENG_SW = {
+ 1:{lv:"Part 1", q:"What do you usually have for breakfast?", frame:"Jawab → alasan → detail kecil (A-R-E). Cukup 3 kalimat.",
+    chunks:["I'm not really a big breakfast person…","…tends to keep me going until lunch","On a good day, …"],
+    stiff:["I eat rice and egg. It is delicious.","Usually just rice and a fried egg. It's quick, and it keeps me going until lunch."],
+    m:"I'm not really a big breakfast person, to be honest. Usually it's just rice and a fried egg, because it's quick and it tends to keep me going until lunch. On a good day, when I'm not rushing, I'll make myself a proper coffee as well."},
+ 2:{lv:"Part 1", q:"Do you prefer studying alone or with friends?", frame:"Pilih satu, kasih alasan, lalu 'tapi' (sisi lain). Ini bikin jawaban terdengar matang.",
+    chunks:["It depends on what I'm studying, really.","I find it easier to… when…","That said, …"],
+    stiff:["I prefer study alone because it is more focus.","I'd rather study on my own. I find it much easier to focus without any distractions."],
+    m:"It depends on what I'm studying, really. For memorising things, I'd rather study on my own, because I find it much easier to focus without any distractions. That said, before exams I like getting together with friends to quiz each other, since explaining things out loud shows me what I actually understand."},
+ 3:{lv:"Part 1", q:"What's your favourite time of year?", frame:"Jawab langsung + gambarkan pakai indra (lihat, rasa, suasana).",
+    chunks:["I'd have to say…","There's something about… that…","…which always puts me in a good mood"],
+    stiff:["My favourite is rainy season because the weather is cold.","I'd have to say the rainy season. There's something about the cooler air and the sound of rain that really helps me relax."],
+    m:"I'd have to say the rainy season, which might sound a bit strange. There's something about the cooler air and the sound of rain on the roof that really helps me relax, and it's the perfect excuse to stay in with a hot drink and a good series. It always puts me in a good mood, oddly enough."},
+ 5:{lv:"Part 1+", q:"Tell me about a typical day when you have lectures.", frame:"Urutan waktu + kata penghubung lisan (first thing, after that, by the time…). Jangan list kaku 'first, second, third'.",
+    chunks:["First thing in the morning, I…","After that, it's pretty much…","By the time I get home, I'm…"],
+    stiff:["First I wake up. Second I go to campus. Third I study.","First thing in the morning, I grab a quick breakfast and head to campus. After that, it's pretty much back-to-back lectures."],
+    m:"First thing in the morning, I grab a quick breakfast and head to campus, usually trying to beat the traffic. After that, it's pretty much back-to-back lectures until mid-afternoon, with a short break for lunch. By the time I get home, I'm usually exhausted, so I give myself half an hour to unwind before I start reviewing the day's material."},
+ 6:{lv:"Part 2 mini (1 menit)", q:"Describe a song that you really like. (Bicara 1 menit tanpa berhenti.)", frame:"Pakai 4 langkah: apa → kapan pertama dengar → kenapa suka (perasaan) → kapan biasanya dengar.",
+    chunks:["The song I'd like to talk about is…","I first heard it when…","It always reminds me of…"],
+    stiff:["The song is very good and I like it very much.","It's got this really catchy chorus, and every time I hear it, it takes me straight back to my last year of high school."],
+    m:"The song I'd like to talk about is an old acoustic track that a friend introduced me to. I first heard it on a long bus journey back home, and it just stuck with me. It's got a really gentle melody and the lyrics are about starting over, which felt very relevant at the time. Even now, it always reminds me of that trip, and I tend to put it on whenever I need to calm down before an exam."},
+ 7:{lv:"Part 2 mini (1 menit)", q:"Describe an app that you find useful. (Bicara 1 menit.)", frame:"Ceritakan masalah sebelum pakai app → bagaimana app membantu → contoh nyata.",
+    chunks:["I honestly don't know how I'd manage without…","What I love about it is…","For example, just last week…"],
+    stiff:["This app is very useful for me to study.","I honestly don't know how I'd manage without it. It's made revising so much less stressful."],
+    m:"The app I find most useful is a flashcard app that uses spaced repetition. Before I started using it, I'd re-read my notes again and again and still forget everything. What I love about it is that it decides when to show me each card, right before I'm about to forget it. For example, just last week it brought back some drug names I'd learnt a month ago, and I remembered nearly all of them. I honestly don't know how I'd manage without it."},
+ 8:{lv:"Part 3", q:"Do you think doctors need to be good communicators? Why?", frame:"Opini → alasan → contoh → sisi lain (O-R-E-C). Pakai hedging: 'I'd argue', 'to a large extent'.",
+    chunks:["Absolutely, and I'd argue it's just as important as…","Take… for example.","Of course, that's not to say…"],
+    stiff:["Yes, because communication is important for patient.","Absolutely. I'd argue it's just as important as clinical knowledge, because patients can't follow advice they don't understand."],
+    m:"Absolutely, and I'd argue it's just as important as clinical knowledge. A brilliant diagnosis is useless if the patient doesn't understand the treatment or doesn't trust the doctor enough to follow it. Take paediatrics, for example: you have to explain things in a way that reassures anxious parents and doesn't frighten the child. Of course, that's not to say communication can replace expertise, but the two really go hand in hand."},
+ 9:{lv:"Part 3", q:"Should university education be free for everyone?", frame:"Jawaban seimbang: dua sisi, lalu posisimu. Bandingkan negara/sistem.",
+    chunks:["In principle, yes, but…","The main argument in favour is…","On the other hand, someone has to pay for…"],
+    stiff:["I think yes because many people cannot pay.","In principle, yes. The main argument in favour is that talent shouldn't depend on how much money your family has."],
+    m:"In principle, yes, but it's more complicated than it sounds. The main argument in favour is fairness: talent shouldn't depend on how much money your family has. Countries like Germany show that free tuition can work. On the other hand, someone has to pay for it, usually through higher taxes, and free places can mean fewer places overall. So I'd probably support free education for students from low-income families, combined with generous scholarships, rather than making it free for absolutely everyone."},
+ 10:{lv:"Part 3", q:"How has technology changed the way people learn?", frame:"Bandingkan dulu vs sekarang, beri 1 dampak positif dan 1 negatif, tutup dengan prediksi.",
+    chunks:["Compared to a generation ago, …","The flip side is that…","I suspect that in the future…"],
+    stiff:["Technology make learning more easy but also have negative effect.","Compared to a generation ago, information is far easier to access. The flip side is that it's much harder to concentrate."],
+    m:"Compared to a generation ago, the biggest change is access. Anyone with a phone can watch lectures from top universities or look up almost anything in seconds. The flip side is that it's much harder to concentrate, because the same device that helps you learn is also full of distractions. I suspect that in the future, the most valuable skill won't be finding information, but knowing how to focus and judge whether what you're reading is reliable."}
+};
+const ENG_SPTOOL = [
+  ["Kenapa terasa kaku?","Biasanya karena kita menerjemahkan kalimat dari bahasa Indonesia kata per kata, dan menunggu kalimat 'sempurna' dulu sebelum bicara. Native speaker justru bicara pakai CHUNKS (potongan frasa siap pakai) dan kalimat yang dibangun sambil jalan."],
+  ["Kerangka jawaban","Part 1 = A-R-E: Answer → Reason → Example (2–4 kalimat). Part 2 = poin di kartu + cerita + perasaan, pakai past tense yang benar. Part 3 = O-R-E-C: Opinion → Reason → Example → Contrast (sisi lain)."],
+  ["Frasa 'beli waktu' (gantinya 'eee…')","That's a good question… / Let me think… / I've never really thought about that, but… / It's hard to say, but I suppose…"],
+  ["Pengganti yang terdengar lebih natural","In my opinion → I'd say… / Personally, … · very good → really great / brilliant · I like it → I'm really into it · I don't like → I'm not a big fan of… · because → mainly because / partly because · Yes → Definitely / Absolutely / Yeah, I do, actually"],
+  ["Penghubung lisan (bukan gaya essay)","The thing is, … / On top of that, … / That said, … / Mind you, … / To be honest, … / Having said that, … Hindari 'Firstly, Secondly, In conclusion' saat speaking, itu gaya tulisan."],
+  ["Kontraksi = lebih luwes","I'd, I've, it's, don't, wouldn't, there's. 'I would like to' → 'I'd like to'. Kontraksi bikin ritme bicara lebih alami dan tidak mengurangi nilai."],
+  ["Rutinitas 5 menit","(1) Dengar jawaban model sekali, (2) shadowing 2× sambil menempel suaranya, (3) tutup modelnya, jawab pakai kata-katamu sendiri sambil merekam, (4) dengarkan rekamanmu: catat 1 kata yang bikin berhenti, cari padanannya."],
+  ["Latihan di luar web","Self-talk: ceritakan apa yang sedang kamu lakukan dalam hati pakai bahasa Inggris (misal saat masak/jalan). Ganti bahasa HP ke English. Tiap malam ceritakan harimu 1 menit ke perekam suara."]
+];
+function engSwCard(d){
+  const S = ENG_SW[d]; if (!S) return '';
+  const e = E(), done = (e.swd||{})[d];
+  return '<details class="card eng-sw"'+(done?'':' open')+'><summary><b>Speaking 5 menit · Day '+d+'</b> <span class="chip small eng-k grape">'+esc(S.lv)+'</span>'+(done?' <span class="chip small eng-st ok">✓ Sudah</span>':'')+'</summary><div class="stack" style="margin-top:10px">'+
+    '<div class="row"><button class="speak" data-act="engswq" data-d="'+d+'">▶</button><b>'+esc(S.q)+'</b></div>'+
+    '<p class="small"><b>Kerangka:</b> '+esc(S.frame)+'</p>'+
+    '<div><span class="small"><b>Chunks yang dipakai:</b></span><div class="row" style="margin-top:4px">'+S.chunks.map(c => '<span class="chip small">'+esc(c)+'</span>').join("")+'</div></div>'+
+    '<div class="eng-stiff"><p class="small"><span class="bad">Kaku:</span> '+esc(S.stiff[0])+'</p><p class="small"><span class="good">Natural:</span> '+esc(S.stiff[1])+'</p></div>'+
+    '<ol class="eng-ul small"><li>Jawab dulu keras-keras pakai kerangka & chunks di atas (rekam di HP).</li><li>Buka model, dengarkan, lalu shadowing 2×.</li><li>Jawab lagi pakai kata-katamu sendiri. Bandingkan rekaman pertama dan kedua.</li></ol>'+
+    '<details><summary class="small"><b>Jawaban model</b></summary><div class="row" style="align-items:flex-start;margin-top:6px"><button class="speak" data-act="engswm" data-d="'+d+'">▶ Shadow</button><p class="small" style="flex:1">'+esc(S.m)+'</p></div></details>'+
+    '<div class="row">'+(done?'':'<button class="btn tiny solid" data-act="engswdone" data-d="'+d+'">Sudah latihan hari ini</button>')+'</div></div></details>';
+}
+function engToolkit(){
+  return '<details class="card"><summary><b>Speaking toolkit: biar nggak kaku</b> <span class="small muted">(baca sekali, buka lagi kapan pun)</span></summary><div class="stack" style="margin-top:12px">'+
+    ENG_SPTOOL.map((s, i) => '<div><b>'+(i+1)+'. '+esc(s[0])+'</b><p class="small muted" style="margin-top:2px">'+esc(s[1])+'</p></div>').join("")+'</div></details>';
+}
+
 /* Reward: oleh-oleh tiap kali satu hari beres */
 const ENG_FUN = {
+  brienz:{hi:"Grüezi! (Swiss-Jerman)", f:[
+    "Warna toska Danau Brienz berasal dari serbuk batuan halus yang digerus gletser, bukan dari alga.",
+    "Brienz adalah rumah sekolah ukir kayu satu-satunya di Swiss, dan kota ini terkenal dengan kerajinan ukirnya.",
+    "Dermaga Iseltwald di tepi danau ini jadi terkenal di seluruh dunia setelah muncul di drama Korea Crash Landing on You."],
+    m:"Mini test pertama selesai! Skor berapa pun, sekarang kamu tahu titik awalmu. Minggu depan kita lihat seberapa jauh kamu naik."},
   zermatt:{hi:"Grüezi! (salam orang Swiss-Jerman)", f:[
     "Zermatt bebas mobil bensin. Yang lewat di jalanan cuma mobil listrik kecil, kereta kuda, dan pejalan kaki.",
     "Matterhorn tingginya 4.478 m. Pendakian pertamanya 14 Juli 1865 oleh tim Edward Whymper, dan 4 dari 7 pendaki jatuh saat turun.",
@@ -2512,7 +2774,7 @@ const ENG_FUN = {
     "Pusat kota Bruges jadi Warisan Dunia UNESCO sejak 2000 dan dijuluki \"Venesia dari Utara\".",
     "Menara Belfort tingginya 83 m. Ada 366 anak tangga sampai puncaknya, dan di dalamnya ada carillon 47 lonceng.",
     "Bruges terkenal sama renda (lace) buatan tangan dan cokelat Belgia."],
-    m:"Setengah perjalanan! 6 dari 10 kota udah kamu datengin. Review hari ini bikin kata-kata lama nempel lebih lama."},
+    m:"Udah 7 dari 11 kota! Level 2 hampir tuntas. Review hari ini bikin kata-kata lama nempel lebih lama."},
   brussel:{hi:"Bonjour! / Goeiedag! (Brussels resmi dua bahasa)", f:[
     "Grand-Place jadi Warisan Dunia UNESCO sejak 1998 dan sering disebut alun-alun tercantik di dunia.",
     "Tiap dua tahun di bulan Agustus, lantai alun-alun ini ditutup karpet bunga raksasa dari ratusan ribu begonia.",
@@ -2527,12 +2789,12 @@ const ENG_FUN = {
     "Tambang garam di Hallstatt disebut salah satu yang tertua di dunia, sudah ditambang sekitar 7.000 tahun.",
     "Ada Beinhaus, rumah tulang berisi ratusan tengkorak yang dicat dan diberi nama.",
     "Saking terkenalnya, Hallstatt pernah dibuatkan replika di Tiongkok tahun 2012."],
-    m:"Sembilan hari berturut-turut! Kebiasaan udah mulai kebentuk. Besok hari terakhir, gas!"},
+    m:"Level 3 tuntas! Kebiasaan udah kebentuk. Besok Minggu mini test #2, saatnya buktiin progresmu. Gas!"},
   chillon:{hi:"Bonjour! (Swiss bagian Prancis)", f:[
     "Château de Chillon berdiri di atas pulau batu di tepi Danau Jenewa, dekat Montreux.",
     "Lord Byron nulis puisi \"The Prisoner of Chillon\" (1816) dan mengukir namanya di salah satu pilar penjaranya.",
     "Kastil ini termasuk monumen bersejarah yang paling banyak dikunjungi di Swiss."],
-    m:"10 HARI SELESAI! 10 kota, 4 negara, semua skill IELTS udah kamu sentuh. Ini baru awal perjalanan ke band 9. Proud of you, Nadia!"}
+    m:"11 HARI SELESAI! 11 kota, 4 negara, 2 mini test, semua skill IELTS udah kamu sentuh. Ini baru awal perjalanan ke band 9. Proud of you, Nadia!"}
 };
 function engReward(d){
   const D = ENG_DAYS[d-1], P = ENG_PLACES[D.place], F = ENG_FUN[D.place]; if (!F) return;
@@ -2563,11 +2825,11 @@ function vEnglish(){
   const late = []; for (let d = 1; d < Math.min(n, ENG_DAYS.length+1); d++) ENG_DAYS[d-1].tasks.forEach((_, i) => { if (!engDone(d,i)) late.push([d,i]); });
   const q = ENG_QUOTES[(Math.max(cur,1)-1) % ENG_QUOTES.length];
   const due = engDue().length;
-  const head = before ? 'Mulai '+fmt(ENG_START)+'. Intip dulu Day 1-nya.' : after ? '10 hari pertama sudah lewat. Kejar yang tertunda, lalu minta rencana berikutnya.' : (engDayDone(cur) ? 'Day '+cur+' beres. Istirahat, besok lanjut lagi.' : 'Day '+cur+'/10 · '+D.title);
+  const head = before ? 'Mulai '+fmt(ENG_START)+'. Intip dulu Day 1-nya.' : after ? 'Jadwal pertama sudah lewat. Kejar yang tertunda, lalu minta rencana berikutnya.' : (engDayDone(cur) ? 'Day '+cur+' beres. Istirahat, besok lanjut lagi.' : 'Day '+cur+'/'+ENG_DAYS.length+' · '+D.title);
   return ''+
   '<div class="eng-hero" style="background-image:url(\''+engImg(D.place)+'\')">'+
     '<div class="eng-place">'+esc(P.nm)+' · '+esc(P.cc)+'</div>'+
-    '<span class="eyebrow" style="color:#EDE8FF">English rutin · target IELTS 9.0 · '+fmt(t)+'</span>'+
+    '<span class="eyebrow" style="color:#EDE8FF">English rutin · target IELTS 9.0 · '+fmt(t)+(D.lvl?' · '+esc(D.lvl):'')+'</span>'+
     '<h2>'+esc(head)+'</h2>'+
     '<p class="eng-why">'+esc(D.why)+'</p>'+
     '<div class="count">'+
@@ -2580,11 +2842,12 @@ function vEnglish(){
     D.tasks.map((x, i) => engTaskRow(cur, i)).join("")+
     (D.bbc ? '<div class="task" style="grid-template-columns:auto 1fr auto"><span class="chip">Bonus</span><div class="t"><b>Dengar 6 menit: '+esc(D.bbc[1])+'</b><span>BBC 6 Minute English. Opsional, buat input harian & shadowing sambil jalan/makan.</span></div><a class="btn tiny" href="'+BBC6+D.bbc[0]+'" target="_blank" rel="noopener">Buka</a></div>' : '')+
   '</div>'+
+  engSwCard(cur)+engToolkit()+
   (late.length ? '<details class="more card"'+(engDayDone(cur)?' open':'')+'><summary>'+late.length+' task tertunda (boleh dikejar kapan saja)</summary><div class="stack" style="margin-top:10px">'+late.map(([d,i]) => engTaskRow(d,i,true)).join("")+'</div></details>' : '')+
   '<div class="grid2">'+
     '<div class="card stack"><div><span class="eyebrow">Pengingat harian</span><h3>Jam latihan English</h3></div>'+
       '<div class="row"><input type="time" id="engTime" value="'+esc(e.time)+'" style="width:auto">'+['06:30','12:30','19:30','21:00'].map(h => '<button class="btn tiny" data-act="engtime" data-h="'+h+'">'+h+'</button>').join("")+'</div>'+
-      '<p class="small muted">Kalau web ini terbuka, jam '+esc(e.time)+' muncul pengingat. Biar tetap diingatkan walau web ditutup, masukkan jadwal 10 hari ke kalender HP (ada alarmnya).</p>'+
+      '<p class="small muted">Kalau web ini terbuka, jam '+esc(e.time)+' muncul pengingat. Biar tetap diingatkan walau web ditutup, masukkan jadwal latihan ke kalender HP (ada alarmnya).</p>'+
       '<div class="row"><button class="btn tiny solid" data-act="engics">Tambah ke kalender HP (.ics)</button><button class="btn tiny" data-act="engnotif">Izinkan notifikasi</button></div></div>'+
     '<div class="card stack"><div><span class="eyebrow">Spaced repetition</span><h3>Review kosakata</h3></div>'+
       '<p class="small muted">'+(Object.keys(e.vb).length ? due+' kolokasi jatuh tempo hari ini. Kata yang kamu ingat baru muncul lagi 1 → 2 → 4 → 7 → 14 hari kemudian.' : 'Belum ada kata. Kosakata pertama dibuka di Day 1.')+'</p>'+
@@ -2592,7 +2855,7 @@ function vEnglish(){
       '<blockquote class="eng-quote">'+esc(q)+'</blockquote></div>'+
   '</div>'+
   engPassport()+
-  '<div class="stack"><h3>Jadwal 10 hari</h3><div class="eng-days">'+ENG_DAYS.map((Dd, j) => engDayCard(j+1)).join("")+'</div></div>'+
+  '<div class="stack"><h3>Jadwal '+ENG_DAYS.length+' hari</h3><div class="eng-days">'+ENG_DAYS.map((Dd, j) => engDayCard(j+1)).join("")+'</div></div>'+
   engProgress()+
   '<details class="card"><summary><b>Strategi belajar (hasil riset) & format IELTS</b></summary><div class="stack" style="margin-top:12px">'+
     ENG_STRATEGY.map((s, i) => '<div><b>'+(i+1)+'. '+esc(s[0])+'</b><p class="small muted" style="margin-top:2px">'+esc(s[1])+'</p></div>').join("")+
@@ -2609,13 +2872,13 @@ function engDayCard(d){
   const st = done ? ['ok','Selesai'] : dt === t ? ['pop','Hari ini'] : dt < t ? ['warn','Tertunda'] : ['','Nanti'];
   return '<div class="eng-day'+(dt===t?' today':'')+'"><img src="'+engImg(D.place,true)+'" alt="'+esc(ENG_PLACES[D.place].nm)+'" loading="lazy">'+
     '<div class="eng-day-b"><div class="row" style="justify-content:space-between"><b>Day '+d+'</b><span class="chip small eng-st '+st[0]+'">'+st[1]+'</span></div>'+
-    '<span class="small muted">'+fmt(dt)+' · '+esc(ENG_PLACES[D.place].nm)+'</span><p class="small" style="margin:2px 0 4px"><b>'+esc(D.title)+'</b></p>'+
+    (D.lvl?'<span class="small eng-lvl">'+esc(D.lvl)+'</span>':'')+'<span class="small muted">'+fmt(dt)+' · '+esc(ENG_PLACES[D.place].nm)+'</span><p class="small" style="margin:2px 0 4px"><b>'+esc(D.title)+'</b></p>'+
     D.tasks.map((x, i) => '<button class="eng-tk'+(engDone(d,i)?' on':'')+'" data-act="engopen" data-d="'+d+'" data-i="'+i+'">'+(engDone(d,i)?'✓ ':'○ ')+ENG_KIND[x.k]+'</button>').join("")+'</div></div>';
 }
 function engProgress(){
   const e = E(), avg = ids => { const a = ids.map(id => e.sc[id]).filter(Boolean); return a.length ? a.reduce((s, x) => s + x.s/x.t, 0)/a.length : null; };
-  const L = avg(["L1","L2","L3"]), R = avg(["R1","R2","R3"]), G = avg(["G1","G2","G3"]);
-  const wb = ["W1","W2","W3"].map(id => (e.ai[id]||{}).band).filter(Boolean), sb = ["S1","S2","S3"].map(id => (e.ai[id]||{}).band).filter(Boolean);
+  const L = avg(["L1","L2","L3","T1L","T2L"]), R = avg(["R1","R2","R3","T1R","T2R"]), G = avg(["G1","G2","G3"]);
+  const wb = ["W1","W2","W3","T1W","T2W"].map(id => (e.ai[id]||{}).band).filter(Boolean), sb = ["S1","S2","S3","T1S","T2S"].map(id => (e.ai[id]||{}).band).filter(Boolean);
   const mean = a => a.length ? Math.round(a.reduce((s,x)=>s+x,0)/a.length*2)/2 : null;
   const row = (nm, pct, band, note) => '<div class="eng-bar"><div class="row" style="justify-content:space-between"><b>'+nm+'</b><span class="small mono">'+(band!=null?'≈ band '+band:'belum ada data')+'</span></div><div class="bar"><span style="width:'+(pct!=null?Math.round(pct*100):0)+'%"></span></div><span class="small muted">'+note+'</span></div>';
   const errs = e.err.slice(-12).reverse();
@@ -2636,7 +2899,7 @@ function engProgress(){
 /* ---------- ruang kerja task ---------- */
 function engTaskView(d, i){
   const D = ENG_DAYS[d-1], x = D.tasks[i], P = ENG_PLACES[D.place], dn = engDone(d,i);
-  const body = {listen:engListenView, read:engReadView, write:engWriteView, speak:engSpeakView, gram:engGramView, vocab:engVocabView, review:engReviewIntro, eval:engEvalView}[x.k](x, d, i);
+  const body = {listen:engListenView, read:engReadView, write:engWriteView, speak:engSpeakView, gram:engGramView, vocab:engVocabView, review:engReviewIntro, eval:engEvalView, test:engTestView}[x.k](x, d, i);
   const vids = (D.yt||[]).map(v => '<a class="btn tiny ghost" href="'+yt(v[1])+'" target="_blank" rel="noopener">▶ '+esc(v[0])+'</a>').join("");
   return '<div class="eng-strip" style="background-image:url(\''+engImg(D.place)+'\')"><button class="btn tiny" data-act="engback">← Jadwal</button><div><span class="eyebrow" style="color:#EDE8FF">Day '+d+' · '+fmt(engDate(d))+' · '+esc(P.nm)+'</span><h2>'+esc(engTaskTitle(x))+'</h2><span class="chip small eng-k '+ENG_KCOL[x.k]+'">'+ENG_KIND[x.k]+' · ±'+x.min+' menit</span>'+(dn?' <span class="chip small eng-st ok">Selesai</span>':'')+'</div></div>'+
     body+
@@ -2717,7 +2980,7 @@ function engPrompt(id){
     return "You are a strict, experienced IELTS examiner. Assess this IELTS Academic Writing "+W.type+" response against the official public band descriptors ("+(W.type==="Task 1"?"Task Achievement":"Task Response")+", Coherence and Cohesion, Lexical Resource, Grammatical Range and Accuracy). Be honest and precise; do not inflate the score. The candidate is an Indonesian medical student aiming for band 9."+(id==="W1"?" NOTE: for this exercise she wrote only the introduction and ONE body paragraph, so judge the quality of what is there and say what band it would reach if the rest matched it.":"")+"\n\nTASK:\n"+W.prompt+"\n\nRESPONSE ("+engWc(txt)+" words):\n"+txt+"\n\nReply in casual but clear Indonesian (keep all English examples in English), in exactly this format:\nOVERALL: <band, e.g. 6.5>\n"+(W.type==="Task 1"?"TA":"TR")+": <band> — <alasan singkat>\nCC: <band> — <alasan>\nLR: <band> — <alasan>\nGRA: <band> — <alasan>\n\n5 PERBAIKAN PRIORITAS\n(kutip kalimatnya → versi perbaikan → kenapa)\n\nYANG SUDAH BAGUS\n\nVERSI BAND 9 DARI SATU PARAGRAFMU\n\nLATIHAN BESOK\n(satu kebiasaan spesifik yang harus dilatih)";
   }
   const Sp = ENG_SPEAK[id], a = e.txt[id]||"";
-  return "You are a strict, experienced IELTS Speaking examiner. Below is a transcript (typed or dictated) of an Indonesian medical student's answers to IELTS Speaking Part "+Sp.part+" questions. Assess Fluency and Coherence, Lexical Resource and Grammatical Range and Accuracy using the official public band descriptors (pronunciation cannot be judged from text, so skip it). Be honest; she is aiming for band 9.\n\n"+(Sp.card?"CUE CARD: "+Sp.card.topic+" ("+Sp.card.points.join("; ")+")":"QUESTIONS:\n"+Sp.qs.map((q,i)=>(i+1)+". "+q.q).join("\n"))+"\n\nTRANSCRIPT:\n"+a+"\n\nReply in casual but clear Indonesian (keep English examples in English), in exactly this format:\nOVERALL: <band>\nFC: <band> — <alasan>\nLR: <band> — <alasan>\nGRA: <band> — <alasan>\n\n5 PERBAIKAN PRIORITAS (kutip → versi lebih natural → kenapa)\n\nKOSAKATA/IDIOM YANG BISA DIPAKAI\n\nCONTOH JAWABAN UPGRADE (untuk 1 jawaban)";
+  return "You are a strict, experienced IELTS Speaking examiner. Below is a transcript (typed or dictated) of an Indonesian medical student's answers to IELTS Speaking Part "+Sp.part+" questions. Assess Fluency and Coherence, Lexical Resource and Grammatical Range and Accuracy using the official public band descriptors (pronunciation cannot be judged from text, so skip it). Be honest; she is aiming for band 9.\n\n"+(Sp.card?"CUE CARD: "+Sp.card.topic+" ("+Sp.card.points.join("; ")+")\n":"")+(Sp.qs?"QUESTIONS:\n"+Sp.qs.map((q,i)=>(i+1)+". "+(q.p?"[Part "+q.p+"] ":"")+q.q).join("\n"):"")+"\n\nTRANSCRIPT:\n"+a+"\n\nReply in casual but clear Indonesian (keep English examples in English), in exactly this format:\nOVERALL: <band>\nFC: <band> — <alasan>\nLR: <band> — <alasan>\nGRA: <band> — <alasan>\n\n5 PERBAIKAN PRIORITAS (kutip → versi lebih natural → kenapa)\n\nKOSAKATA/IDIOM YANG BISA DIPAKAI\n\nCONTOH JAWABAN UPGRADE (untuk 1 jawaban)";
 }
 function engAIBox(id){
   const e = E(), ai = e.ai[id];
@@ -2733,7 +2996,7 @@ function engWriteView(x, d, i){
     '<div class="grid2"><div class="card stack"><b>Langkah</b><ol class="eng-ul">'+W.steps.map(s => '<li>'+esc(s)+'</li>').join("")+'</ol></div><div class="card stack"><b>Frasa yang bisa dipakai</b><div class="row">'+W.useful.map(u => '<span class="chip small">'+esc(u)+'</span>').join("")+'</div></div></div>'+
     '<div class="card stack"><div class="row" style="justify-content:space-between"><b>Tulis di sini</b><span class="row"><span class="mono" id="timerDisp">'+timerText()+'</span><button class="btn tiny solid" data-act="timer" data-m="'+W.time+'">Timer '+W.time+' menit</button><button class="btn tiny" data-act="timerstop">Stop</button></span></div>'+
       '<textarea id="engTxt" data-engtxt="'+x.id+'" rows="14" placeholder="Mulai menulis... (tersimpan otomatis)">'+esc(txt)+'</textarea>'+
-      '<div class="row" style="justify-content:space-between"><span class="small mono" id="engWc">'+wc+' kata (min. '+W.minWords+')</span>'+(engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai selesai</button>')+'</div></div>'+
+      '<div class="row" style="justify-content:space-between"><span class="small mono" id="engWc">'+wc+' kata (min. '+W.minWords+')</span>'+(i<0?'':engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai selesai</button>')+'</div></div>'+
     engAIBox(x.id)+
     '<details class="card"><summary><b>Jawaban model band 9</b> <span class="small muted">(buka SETELAH kamu menulis)</span></summary><div class="stack" style="margin-top:10px"><div class="eng-model">'+esc(W.model).replace(/\n\n/g,"</p><p>").replace(/^/,"<p>")+'</p></div><b>Kenapa ini band 9</b><ul class="eng-ul">'+W.notes.map(n => '<li>'+esc(n)+'</li>').join("")+'</ul></div></details>';
 }
@@ -2747,7 +3010,7 @@ function engSpeakView(x, d, i){
   return '<div class="card stack"><b>Tips</b><ul class="eng-ul">'+Sp.tips.map(t => '<li>'+esc(t)+'</li>').join("")+'</ul></div>'+qs+
     '<div class="card stack"><b>Frasa natural untuk dicuri</b><div class="row">'+Sp.phrases.map(p => '<span class="chip small">'+esc(p)+'</span>').join("")+'</div></div>'+
     '<div class="card stack"><b>Transkrip jawabanmu (opsional)</b><p class="small muted">Ketik, atau pakai tombol mikrofon di keyboard HP (dikte) supaya yang tertulis = yang kamu ucapkan. Lalu minta penilaian di bawah.</p><textarea data-engtxt="'+x.id+'" rows="8" placeholder="Jawabanku…">'+esc(e.txt[x.id]||"")+'</textarea>'+
-      '<div class="row">'+(engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai selesai</button>')+'</div></div>'+
+      '<div class="row">'+(i<0?'':engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai selesai</button>')+'</div></div>'+
     engAIBox(x.id);
 }
 function engVocabView(x, d, i){
@@ -2777,15 +3040,15 @@ function engReviewView(){
 function engEvalView(x, d, i){
   const e = E(), ev = e.ev, sk = ["Listening","Reading","Writing","Speaking"];
   const sum = engSummary();
-  return '<div class="card stack"><b>Ringkasan 10 hari</b><pre class="eng-ai" id="engSum">'+esc(sum)+'</pre></div>'+
+  return '<div class="card stack"><b>Ringkasan '+ENG_DAYS.length+' hari</b><pre class="eng-ai" id="engSum">'+esc(sum)+'</pre></div>'+
     '<div class="card stack"><b>Nilai dirimu sendiri</b><div class="grid2">'+sk.map(s => '<label class="small">'+s+' (perasaanmu sekarang)<br><select data-engev="'+s+'"><option value="">–</option>'+[4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9].map(b => '<option'+(ev[s]==b?' selected':'')+'>'+b+'</option>').join("")+'</select></label>').join("")+'</div>'+
-      '<label class="small">Bagian paling sulit selama 10 hari ini?<textarea data-engev="sulit" rows="3">'+esc(ev.sulit||"")+'</textarea></label>'+
+      '<label class="small">Bagian paling sulit selama ini?<textarea data-engev="sulit" rows="3">'+esc(ev.sulit||"")+'</textarea></label>'+
       '<label class="small">Mau fokus apa di 10 hari berikutnya? (mis. lebih banyak listening, writing tiap hari, persiapan tes bulan X)<textarea data-engev="fokus" rows="3">'+esc(ev.fokus||"")+'</textarea></label>'+
       '<p class="small muted">Kirim ringkasan ini ke aku (Claude) di chat project, nanti aku buatkan 10 hari berikutnya yang lebih menantang dan pas sama kelemahanmu.</p>'+
-      '<div class="row"><button class="btn" data-act="engcopysum">Salin ringkasan</button>'+(engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai selesai</button>')+'</div></div>';
+      '<div class="row"><button class="btn" data-act="engcopysum">Salin ringkasan</button>'+(i<0?'':engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai selesai</button>')+'</div></div>';
 }
 function engSummary(){
-  const e = E(), lines = ["Ringkasan English 10 hari (Ruang Belajar Nadia)", "Task selesai: "+engTotals().done+"/"+engTotals().all+" · streak "+engStreak()+" hari · kolokasi dikuasai "+engMastered()+"/36"];
+  const e = E(), lines = ["Ringkasan English "+ENG_DAYS.length+" hari (Ruang Belajar Nadia)", "Task selesai: "+engTotals().done+"/"+engTotals().all+" · streak "+engStreak()+" hari · kolokasi dikuasai "+engMastered()+"/36"];
   Object.keys(e.sc).sort().forEach(k => lines.push(k+": "+e.sc[k].s+"/"+e.sc[k].t));
   Object.keys(e.ai).forEach(k => { if (e.ai[k].band) lines.push(k+" band: "+e.ai[k].band); });
   ["Listening","Reading","Writing","Speaking"].forEach(s => { if (e.ev[s]) lines.push("Self-rating "+s+": "+e.ev[s]); });
@@ -2834,6 +3097,10 @@ document.addEventListener("click", e => {
   const el = e.target.closest("[data-act]"); if (!el || !/^eng/.test(el.dataset.act)) return;
   const a = el.dataset.act, X = E();
   const H = {
+    engsec(){ ui.engSec = ui.engSec || {}; ui.engSec[el.dataset.t] = el.dataset.s; engStop(); render(); window.scrollTo({top:0}); },
+    engswq(){ engStop(); engSay(ENG_SW[el.dataset.d].q, {v:1}); },
+    engswm(){ engStop(); engSay(ENG_SW[el.dataset.d].m, {rate:0.92}); },
+    engswdone(){ X.swd = X.swd || {}; X.swd[el.dataset.d] = todayISO(); save(); confetti(); toast("Speaking hari ini beres! Makin luwes tiap hari."); render(); },
     engreward(){ engReward(+el.dataset.d); },
     engrwclose(){ const w = document.getElementById("engRw"); if (w) w.remove(); },
     engopen(){ engStop(); ui.engOpen = {d:+el.dataset.d, i:+el.dataset.i}; if (view !== "english") go("english"); else { render(); window.scrollTo({top:0}); } },
@@ -2845,7 +3112,7 @@ document.addEventListener("click", e => {
     engsayw(){ engStop(); const W = engWord(el.dataset.w); engSay(W[0]+". "+W[2]); },
     engsayall(){ engStop(); ENG_VOCAB[el.dataset.id].words.forEach(w => engSay(w[0], {rate:0.85})); },
     engpick(){ const m = el.dataset.m; X.ans[m] = X.ans[m]||{}; X.ans[m][el.dataset.k] = el.dataset.v; save(); el.parentNode.querySelectorAll(".opt").forEach(b => b.classList.toggle("sel", b === el)); },
-    engcheck(){ engCheck(el.dataset.m); const o = ui.engOpen; if (o) engMark(o.d, o.i); save(); render(); },
+    engcheck(){ engCheck(el.dataset.m); const o = ui.engOpen; if (o && ENG_DAYS[o.d-1].tasks[o.i].k !== "test") engMark(o.d, o.i); save(); render(); },
     engvcheck(){ const qk = "Q"+el.dataset.id, qs = ui.engVq[qk], ans = X.ans[qk]||{}; let s = 0; qs.forEach((q, k) => { const ok = String(ans["0-"+k]) === String(q.a); if (ok) s++; else X.err.push({src:el.dataset.id, q:q.q, your:ans["0-"+k]!=null?q.o[ans["0-"+k]]:"", right:q.o[q.a], why:q.why, at:todayISO()}); engVbSet(q.o[q.a], ok); });
       X.sc[qk] = {s, t:qs.length, at:todayISO()}; X.chk[qk] = true; engMark(+el.dataset.d, +el.dataset.i); save(); render(); },
     engretry(){ const m = el.dataset.m; X.ans[m] = {}; X.chk[m] = false; save(); render(); },
