@@ -344,6 +344,8 @@ nav.tabs a.tab-eng[aria-current="page"]{color:#fff;background:var(--pop)}
 .eng-stiff{border-radius:12px;background:rgba(255,255,255,.7);border:1px dashed var(--line);padding:8px 12px}
 .eng-stiff p{margin:2px 0}.eng-stiff .bad{color:#C0392B;font-weight:700}.eng-stiff .good{color:#0E8A7E;font-weight:700}
 .eng-lvl{color:#B0124A;font-weight:700}
+.eng-road{display:grid;gap:10px}
+.eng-now{border:2px solid var(--pop)}
 .eng-stamps{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(92px,1fr))}
 .eng-stamp{border:2px dashed var(--line);border-radius:14px;padding:8px;display:grid;gap:4px;justify-items:center;text-align:center;font-size:.75rem;background:rgba(255,255,255,.9);color:var(--muted);font:inherit;font-size:.75rem;cursor:default}
 .eng-stamp img{width:56px;height:56px;border-radius:50%;object-fit:cover;filter:grayscale(1);opacity:.45}
@@ -1060,7 +1062,7 @@ function paintTop(){
 
 function render(){
   paintTop();
-  $("#tabs").hidden = view === "english";
+  $("#tabs").style.display = view === "english" ? "none" : "";
   document.querySelectorAll("#tabs a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href")==="#"+view ? "page" : "false"));
   const fn = {beranda:vBeranda, kuliah:vKuliah, mikir:vMikir, dasar:vDasar, rangkuman:vRangkuman, latsol:vLatsol, nonton:vNonton, progres:vProgres, pustaka:vPustaka, english:vEnglish}[view];
   $("#app").innerHTML = '<section class="view" id="v-'+view+'">'+fn()+'</section>';
@@ -1950,57 +1952,57 @@ const BBC6 = "https://www.bbc.co.uk/learningenglish/english/features/6-minute-en
 
 /* 11 hari (Kam 29 Okt – Min 8 Nov). Tiap Minggu = mini test. Tiap hari maks 2 task. k = jenis task, id = materi. */
 const ENG_DAYS = [
-  {place:"zermatt", lvl:"Level 1 · Dasar", title:"Kenal medan + Listening Part 1", skill:"Listening",
+  {place:"zermatt", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Kenal medan + Listening Part 1", skill:"Listening",
    why:"Hari pertama: kenalan dulu sama format IELTS dan langsung coba Listening Part 1 (isi formulir). Part 1 itu bagian 'paling ramah', cocok buat pemanasan dan ngukur titik awal.",
    tasks:[{k:"listen", id:"L1", min:25}, {k:"vocab", id:"V1", min:10}],
    yt:[["Strategi Listening Part 1 (form completion)","IELTS listening part 1 form completion tips"],["Coba full test asli (opsional)","Cambridge IELTS 19 listening test 1 with answers"]],
    bbc:["ep-260910","Can apps teach you a language?"]},
-  {place:"lauterbrunnen", lvl:"Level 1 · Dasar", title:"Reading: True / False / Not Given", skill:"Reading",
+  {place:"lauterbrunnen", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Reading: True / False / Not Given", skill:"Reading",
    why:"TFNG adalah tipe soal yang paling sering bikin skor reading jatuh. Hari ini kita latih cara bedain FALSE (teks bilang kebalikannya) vs NOT GIVEN (teks gak bilang apa-apa).",
    tasks:[{k:"read", id:"R1", min:25}, {k:"gram", id:"G1", min:12}],
    yt:[["Cara jawab True/False/Not Given","IELTS reading true false not given strategy"]],
    bbc:["ep-260917","Is rejection good for us?"]},
-  {place:"luzern", lvl:"Level 1 · Dasar", title:"Speaking Part 1 + kosakata kesehatan", skill:"Speaking",
+  {place:"luzern", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Speaking Part 1 + kosakata kesehatan", skill:"Speaking",
    why:"Speaking Part 1 = pertanyaan ringan tentang dirimu. Kuncinya: jawab langsung, kasih alasan, kasih contoh (2–4 kalimat). Kita juga shadowing jawaban model biar intonasi makin natural.",
    tasks:[{k:"speak", id:"S1", min:20}, {k:"vocab", id:"V2", min:10}],
    yt:[["Contoh Speaking Part 1 band 9","IELTS speaking part 1 band 9 sample"]],
    bbc:["ep-261022","What should you eat for a better night's sleep?"]},
-  {place:"brienz", lvl:"Mini test #1", title:"Minggu: Mini test IELTS #1", skill:"Mini test",
+  {place:"brienz", lvl:"Bulan 1 · Mini test #1", title:"Minggu: Mini test IELTS #1", skill:"Mini test",
    why:"Hari Minggu = mini test. Semua bagian IELTS (listening, reading, writing, speaking) dalam versi pendek, ±50 menit. Hasilnya jadi titik awal yang nanti dibandingkan dengan mini test berikutnya.",
    tasks:[{k:"test", id:"T1", min:50}],
    yt:[["Gambaran hari tes IELTS","IELTS test day what to expect full format"]],
    bbc:null},
-  {place:"elbphilharmonie", lvl:"Level 2 · Menengah", title:"Listening Part 3 (diskusi akademik)", skill:"Listening",
+  {place:"elbphilharmonie", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Listening Part 3 (diskusi akademik)", skill:"Listening",
    why:"Hari pertama Blok Repro, jadi tugasnya dibuat ringan. Part 3 = diskusi mahasiswa dan dosen, pilihan gandanya penuh jebakan (opini yang berubah, 'tapi', 'sebenarnya').",
    tasks:[{k:"listen", id:"L2", min:25}, {k:"vocab", id:"V3", min:10}],
    yt:[["Strategi Listening Part 3","IELTS listening part 3 multiple choice tips"]],
    bbc:["ep-260903","Climate change and extreme weather"]},
-  {place:"speicherstadt", lvl:"Level 2 · Menengah", title:"Writing Task 2: intro + 1 body", skill:"Writing",
+  {place:"speicherstadt", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Writing Task 2: intro + 1 body", skill:"Writing",
    why:"Belum langsung full essay. Hari ini fokus fondasi band tinggi: membaca soal dengan benar, posisi yang jelas di intro, dan satu body paragraph yang berkembang penuh (ide → penjelasan → contoh).",
    tasks:[{k:"write", id:"W1", min:30}, {k:"gram", id:"G2", min:12}],
    yt:[["Struktur opinion essay","IELTS writing task 2 opinion essay structure band 9"]],
    bbc:null},
-  {place:"brugge", lvl:"Level 2 · Menengah", title:"Writing Task 1: line graph", skill:"Writing",
+  {place:"brugge", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Writing Task 1: line graph", skill:"Writing",
    why:"Task 1 Academic = melaporkan data, bukan beropini. Kuncinya overview yang jelas (tren utama) + angka yang dipilih dengan cerdas dan dibandingkan.",
    tasks:[{k:"write", id:"W2", min:25}, {k:"review", id:"RV1", min:10}],
    yt:[["Contoh Task 1 line graph","IELTS writing task 1 line graph band 9 sample answer"]],
    bbc:null},
-  {place:"brussel", lvl:"Level 3 · Lanjut", title:"Reading: Matching Headings + Speaking Part 2", skill:"Reading",
+  {place:"brussel", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Reading: Matching Headings + Speaking Part 2", skill:"Reading",
    why:"Matching headings melatih kamu menangkap IDE UTAMA paragraf, bukan kata kunci. Lalu Speaking Part 2: bicara 2 menit tanpa berhenti, pakai catatan 1 menit.",
    tasks:[{k:"read", id:"R2", min:22}, {k:"speak", id:"S2", min:15}],
    yt:[["Strategi matching headings","IELTS reading matching headings strategy"],["Contoh Part 2 band 9","IELTS speaking part 2 band 9 sample describe a place"]],
    bbc:null},
-  {place:"gent", lvl:"Level 3 · Lanjut", title:"Writing Task 2: full essay 40 menit", skill:"Writing",
+  {place:"gent", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Writing Task 2: full essay 40 menit", skill:"Writing",
    why:"Sekarang full essay dengan waktu ujian asli. Habis nulis, nilai pakai rubrik 4 kriteria dan bandingkan dengan model band 9.",
    tasks:[{k:"write", id:"W3", min:45}, {k:"gram", id:"G3", min:12}],
    yt:[["Discussion essay (discuss both views)","IELTS writing task 2 discuss both views band 9"]],
    bbc:null},
-  {place:"hallstatt", lvl:"Level 3 · Lanjut", title:"Listening Part 4 + Speaking Part 3", skill:"Listening",
+  {place:"hallstatt", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Listening Part 4 + Speaking Part 3", skill:"Listening",
    why:"Part 4 = kuliah monolog tanpa jeda, paling mirip dengar dosen di kampus. Speaking Part 3 = diskusi abstrak: di sini band 8–9 dibedakan oleh kemampuan menimbang, memberi contoh, dan 'hedging'.",
    tasks:[{k:"listen", id:"L3", min:25}, {k:"speak", id:"S3", min:15}],
    yt:[["Strategi Listening Part 4","IELTS listening part 4 note completion tips"],["Contoh Speaking Part 3","IELTS speaking part 3 band 9 sample answers"]],
    bbc:["ep-260806","How do climate scientists make predictions?"]},
-  {place:"chillon", lvl:"Mini test #2", title:"Minggu: Mini test IELTS #2 + evaluasi", skill:"Mini test",
+  {place:"chillon", lvl:"Bulan 1 · Mini test #2", title:"Minggu: Mini test IELTS #2 + evaluasi", skill:"Mini test",
    why:"Mini test kedua, levelnya lebih tinggi: listening Part 4, reading passage 3, essay problem–solution, speaking Part 3 lebih dalam. Setelah itu evaluasi semuanya supaya rencana berikutnya pas sasaran.",
    tasks:[{k:"test", id:"T2", min:55}, {k:"eval", id:"E1", min:10}],
    yt:[["Full listening test asli (bonus)","Cambridge IELTS 19 listening test 2 with answers"]],
@@ -2738,6 +2740,23 @@ function engToolkit(){
     ENG_SPTOOL.map((s, i) => '<div><b>'+(i+1)+'. '+esc(s[0])+'</b><p class="small muted" style="margin-top:2px">'+esc(s[1])+'</p></div>').join("")+'</div></details>';
 }
 
+/* Roadmap 4 bulan: level naik per bulan, bukan per hari */
+const ENG_ROADMAP = [
+  {nm:"Bulan 1 · Fondasi", from:"2026-10-29", to:"2026-11-29", band:"±6–6.5",
+   goal:"Kenal semua tipe soal IELTS, Speaking Part 1 lancar tanpa kaku, kalimat & paragraf rapi, kolokasi akademik dasar. Mini test tiap Minggu versi pendek."},
+  {nm:"Bulan 2 · Menengah", from:"2026-11-30", to:"2026-12-27", band:"±6.5–7",
+   goal:"Part 2 bicara 2 menit tanpa macet, listening Part 3–4, reading semua tipe soal pakai timer, essay penuh 40 menit, grammar kompleks."},
+  {nm:"Bulan 3 · Lanjut", from:"2026-12-28", to:"2027-01-24", band:"±7–7.5",
+   goal:"Speaking Part 3 abstrak dengan hedging & idiom natural, reading passage 3 akademik, Task 1 semua jenis grafik/proses/peta, vocab level C1."},
+  {nm:"Bulan 4 · Mahir & simulasi", from:"2027-01-25", to:"2027-02-28", band:"8+ → 9",
+   goal:"Full mock test tiap Minggu dengan waktu asli, poles kesalahan dari catatan error, jawaban spontan seperti native, strategi waktu ujian."}
+];
+function engRoadmap(){
+  const t = todayISO(), cur = ENG_ROADMAP.findIndex(r => t <= r.to), ci = cur < 0 ? ENG_ROADMAP.length-1 : Math.max(0, cur);
+  return '<details class="card"'+(engDayNo() <= 1 ? ' open' : '')+'><summary><b>Roadmap 4 bulan menuju band 9</b> <span class="small muted">· sekarang: '+esc(ENG_ROADMAP[ci].nm)+'</span></summary><div class="stack" style="margin-top:12px">'+
+    '<p class="small muted">Levelnya naik pelan-pelan per bulan, bukan per hari. Tiap hari tetap 1–2 task, tiap Minggu mini test yang makin mirip tes asli. Target band per bulan itu perkiraan, nanti disesuaikan sama hasil mini test-mu.</p>'+
+    '<div class="eng-road">'+ENG_ROADMAP.map((r, i) => '<div class="ms'+(i===ci?' eng-now':'')+'"><div class="row" style="justify-content:space-between"><b>'+esc(r.nm)+'</b>'+(i===ci?'<span class="chip small pop">Sekarang</span>':'')+'</div><span class="small muted">'+fmt(r.from)+' – '+fmt(r.to)+' · target '+esc(r.band)+'</span><p class="small" style="margin:4px 0 0">'+esc(r.goal)+'</p></div>').join("")+'</div></div></details>';
+}
 /* Reward: oleh-oleh tiap kali satu hari beres */
 const ENG_FUN = {
   brienz:{hi:"Grüezi! (Swiss-Jerman)", f:[
@@ -2774,7 +2793,7 @@ const ENG_FUN = {
     "Pusat kota Bruges jadi Warisan Dunia UNESCO sejak 2000 dan dijuluki \"Venesia dari Utara\".",
     "Menara Belfort tingginya 83 m. Ada 366 anak tangga sampai puncaknya, dan di dalamnya ada carillon 47 lonceng.",
     "Bruges terkenal sama renda (lace) buatan tangan dan cokelat Belgia."],
-    m:"Udah 7 dari 11 kota! Level 2 hampir tuntas. Review hari ini bikin kata-kata lama nempel lebih lama."},
+    m:"Udah 7 dari 11 kota! Review hari ini bikin kata-kata lama nempel lebih lama."},
   brussel:{hi:"Bonjour! / Goeiedag! (Brussels resmi dua bahasa)", f:[
     "Grand-Place jadi Warisan Dunia UNESCO sejak 1998 dan sering disebut alun-alun tercantik di dunia.",
     "Tiap dua tahun di bulan Agustus, lantai alun-alun ini ditutup karpet bunga raksasa dari ratusan ribu begonia.",
@@ -2789,7 +2808,7 @@ const ENG_FUN = {
     "Tambang garam di Hallstatt disebut salah satu yang tertua di dunia, sudah ditambang sekitar 7.000 tahun.",
     "Ada Beinhaus, rumah tulang berisi ratusan tengkorak yang dicat dan diberi nama.",
     "Saking terkenalnya, Hallstatt pernah dibuatkan replika di Tiongkok tahun 2012."],
-    m:"Level 3 tuntas! Kebiasaan udah kebentuk. Besok Minggu mini test #2, saatnya buktiin progresmu. Gas!"},
+    m:"Sepuluh hari! Kebiasaan udah mulai kebentuk. Besok Minggu mini test #2, saatnya buktiin progresmu. Gas!"},
   chillon:{hi:"Bonjour! (Swiss bagian Prancis)", f:[
     "Château de Chillon berdiri di atas pulau batu di tepi Danau Jenewa, dekat Montreux.",
     "Lord Byron nulis puisi \"The Prisoner of Chillon\" (1816) dan mengukir namanya di salah satu pilar penjaranya.",
@@ -2854,6 +2873,7 @@ function vEnglish(){
       '<div class="row"><button class="btn tiny solid" data-act="engrev" data-src="due"'+(due?'':' disabled')+'>Mulai review ('+due+')</button></div>'+
       '<blockquote class="eng-quote">'+esc(q)+'</blockquote></div>'+
   '</div>'+
+  engRoadmap()+
   engPassport()+
   '<div class="stack"><h3>Jadwal '+ENG_DAYS.length+' hari</h3><div class="eng-days">'+ENG_DAYS.map((Dd, j) => engDayCard(j+1)).join("")+'</div></div>'+
   engProgress()+
