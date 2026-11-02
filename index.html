@@ -444,7 +444,7 @@ const STEPS = [
 
 const BLOCKS_DEFAULT = [
   {id:"uro", name:"Urogenital", start:"2026-09-28", uab:"2026-10-26", tentative:true},
-  {id:"repro", name:"Reproduksi", start:"2026-11-02", uab:"2026-11-30", tentative:true}
+  {id:"repro", name:"Reproduksi", start:"2026-11-02", uab:"2026-11-30", tentative:false}
 ];
 
 const LECTURES_DEFAULT = [
@@ -472,17 +472,19 @@ const LECTURES_DEFAULT = [
   {id:"k21", block:"uro", no:21, title:"Batu Saluran Kemih", en:"urolithiasis kidney stones ESWL PCNL", date:"2026-10-22"},
   {id:"k22", block:"uro", no:22, tent:true, title:"Penyimpangan Seksual 1 (Ekshibisionisme, Voyeurisme, Frotteurisme, Fetisisme, Transvestisme, Pedofilia)", en:"paraphilic disorders exhibitionism voyeurism fetishism pedophilia", date:"2026-10-07"},
   {id:"k23", block:"uro", no:23, tent:true, title:"Penyimpangan Seksual 2 (Sadisme, Masokisme, Spektrum Parafilia, Orientasi Seksual)", en:"sexual sadism masochism paraphilia spectrum", date:"2026-10-07"},
-  /* Blok Repro: urutan dari folder PPT kating; tanggal = perkiraan, belum dari jadwal resmi */
-  {id:"r1", block:"repro", no:1, title:"Asuhan Antenatal (ANC) dan Infeksi pada Kehamilan (Hepatitis B, HIV, Sifilis, Malaria, TORCH)", en:"antenatal care hepatitis B HIV syphilis malaria TORCH pregnancy", date:"2026-11-02"},
-  {id:"r2", block:"repro", no:2, title:"Perdarahan pada Kehamilan Muda (Abortus, Kehamilan Ektopik, Mola Hidatidosa, Kuretase)", en:"abortion ectopic pregnancy hydatidiform mole curettage", date:"2026-11-03"},
-  {id:"r3", block:"repro", no:3, title:"Perdarahan pada Kehamilan Lanjut (Plasenta Previa, Solusio Plasenta, Vasa Previa, Syok pada Kehamilan)", en:"placenta previa placental abruption vasa previa obstetric shock", date:"2026-11-04"},
-  {id:"r4", block:"repro", no:4, title:"Patologi Janin dan Neonatus (IUGR, IUFD, Gemelli & Kembar Siam, Polihidramnion, Kelainan Janin, Inkompatibilitas Darah)", en:"IUGR IUFD twin pregnancy conjoined twins polyhydramnios Rh incompatibility", date:"2026-11-05"},
-  {id:"r5", block:"repro", no:5, title:"Gangguan Metabolik dalam Kehamilan (Hipertensi dalam Kehamilan, Preeklamsia, Eklamsia, Sindrom HELLP, Diabetes Gestasional, Insufisiensi Plasenta)", en:"preeclampsia eclampsia HELLP gestational diabetes", date:"2026-11-06"},
-  {id:"r6", block:"repro", no:6, title:"Ultrasonografi (USG) Obstetri dan Kardiotokografi (CTG)", en:"obstetric ultrasound cardiotocography CTG", date:"2026-11-09"},
-  {id:"r7", block:"repro", no:7, title:"Asuhan Persalinan Normal (Pelvimetri, Fisiologi dan Tanda Persalinan, Kala I–IV, Mekanisme Persalinan, Partograf, Komplikasi Pascapersalinan)", en:"normal labor partograph mechanism of labor postpartum hemorrhage", date:"2026-11-10"},
-  {id:"r8", block:"repro", no:8, title:"Persalinan dengan Tindakan (Episiotomi dan Laserasi Perineum, Induksi Persalinan, Profil Biofisik, Ekstraksi Vakum, Persalinan Sungsang, Letak Lintang, Seksio Sesarea)", en:"episiotomy labor induction vacuum extraction breech cesarean section", date:"2026-11-11"},
-  {id:"r9", block:"repro", no:9, title:"Patologi dalam Kehamilan (Persalinan Preterm, Kortikosteroid Antenatal, Kehamilan Postterm, Ketuban Pecah Dini, Korioamnionitis, Inkompetensi Serviks)", en:"preterm labor antenatal corticosteroids postterm PROM chorioamnionitis cervical insufficiency", date:"2026-11-12"},
-  {id:"r10", block:"repro", no:10, title:"Penyulit Persalinan (Malpresentasi, Kelainan Letak, Disproporsi Kepala Panggul, Distosia Bahu, Partus Lama, Prolaps Tali Pusat, Hipoksia Janin, Ruptur Uteri)", en:"malpresentation cephalopelvic disproportion shoulder dystocia cord prolapse uterine rupture", date:"2026-11-13"}
+  /* Blok Repro: urutan dari folder PPT kating; tanggal dari info PJMK (30 Okt, 2 & 3 Nov 2026), tent = masih perkiraan */
+  {id:"r1", block:"repro", no:1, title:"Asuhan Antenatal (ANC) dan Infeksi pada Kehamilan (Hepatitis B, HIV, Sifilis, Malaria, TORCH)", en:"antenatal care hepatitis B HIV syphilis malaria TORCH pregnancy", date:"2026-11-02", tent:true, dosen:"dr. Arief Adibrata, Sp.OG, M.Ked.Klim", ket:"Jadwal resmi: Antenatal Care dan Gangguan pada Awal Kehamilan. RESCHEDULE, tanggal baru belum diumumkan"},
+  {id:"r2", block:"repro", no:2, title:"Perdarahan pada Kehamilan Muda (Abortus, Kehamilan Ektopik, Mola Hidatidosa, Kuretase)", en:"abortion ectopic pregnancy hydatidiform mole curettage", date:"2026-10-30", dosen:"dr. Nurfianti Indriana, Sp.OG", ket:"Jumat 30 Okt, 07.30–10.30 (sesi gabungan KUL 2–4)"},
+  {id:"r3", block:"repro", no:3, title:"Perdarahan pada Kehamilan Lanjut (Plasenta Previa, Solusio Plasenta, Vasa Previa, Syok pada Kehamilan)", en:"placenta previa placental abruption vasa previa obstetric shock", date:"2026-10-30", dosen:"dr. Nurfianti Indriana, Sp.OG", ket:"Jumat 30 Okt, 07.30–10.30 (sesi gabungan KUL 2–4)"},
+  {id:"r4", block:"repro", no:4, title:"Patologi Janin dan Neonatus (IUGR, IUFD, Gemelli & Kembar Siam, Polihidramnion, Kelainan Janin, Inkompatibilitas Darah)", en:"IUGR IUFD twin pregnancy conjoined twins polyhydramnios Rh incompatibility", date:"2026-11-02", dosen:"dr. Nurfianti Indriana, Sp.OG", ket:"Mulai Jumat 30 Okt, lanjut Senin 2 Nov 06.00–08.00"},
+  {id:"r5", block:"repro", no:5, title:"Gangguan Metabolik dalam Kehamilan (Hipertensi dalam Kehamilan, Preeklamsia, Eklamsia, Sindrom HELLP, Diabetes Gestasional, Insufisiensi Plasenta)", en:"preeclampsia eclampsia HELLP gestational diabetes", date:"2026-11-06", tent:true},
+  {id:"r6", block:"repro", no:6, title:"Ultrasonografi (USG) Obstetri dan Kardiotokografi (CTG)", en:"obstetric ultrasound cardiotocography CTG", date:"2026-11-03", dosen:"dr. Nurfianti Indriana, Sp.OG", ket:"Selasa 3 Nov, 06.20–09.40 (bareng KUL 7)"},
+  {id:"r7", block:"repro", no:7, title:"Asuhan Persalinan Normal (Pelvimetri, Fisiologi dan Tanda Persalinan, Kala I–IV, Mekanisme Persalinan, Partograf, Komplikasi Pascapersalinan)", en:"normal labor partograph mechanism of labor postpartum hemorrhage", date:"2026-11-03", dosen:"dr. Nurfianti Indriana, Sp.OG", ket:"Selasa 3 Nov, 06.20–09.40 (bareng KUL 6)"},
+  {id:"r8", block:"repro", no:8, title:"Persalinan dengan Tindakan (Episiotomi dan Laserasi Perineum, Induksi Persalinan, Profil Biofisik, Ekstraksi Vakum, Persalinan Sungsang, Letak Lintang, Seksio Sesarea)", en:"episiotomy labor induction vacuum extraction breech cesarean section", date:"2026-11-11", tent:true},
+  {id:"r9", block:"repro", no:9, title:"Patologi dalam Kehamilan (Persalinan Preterm, Kortikosteroid Antenatal, Kehamilan Postterm, Ketuban Pecah Dini, Korioamnionitis, Inkompetensi Serviks)", en:"preterm labor antenatal corticosteroids postterm PROM chorioamnionitis cervical insufficiency", date:"2026-11-12", tent:true},
+  {id:"r10", block:"repro", no:10, title:"Penyulit Persalinan (Malpresentasi, Kelainan Letak, Disproporsi Kepala Panggul, Distosia Bahu, Partus Lama, Prolaps Tali Pusat, Hipoksia Janin, Ruptur Uteri)", en:"malpresentation cephalopelvic disproportion shoulder dystocia cord prolapse uterine rupture", date:"2026-11-13", tent:true},
+  {id:"r12", block:"repro", no:12, disc:"etik", title:"Tinjauan Etik dan Kedokteran", en:"medical ethics obstetrics reproductive health ethics", date:"2026-11-03", dosen:"dr. Doby Indrawan", ket:"Selasa 3 Nov, 09.50–11.30"},
+  {id:"r13", block:"repro", no:13, disc:"gizi", title:"Gizi pada Ibu Hamil dan Menyusui", en:"nutrition in pregnancy and lactation", date:"2026-11-03", dosen:"Bu Laras", ket:"Selasa 3 Nov, 12.20–14.00"}
 ];
 
 const QUOTES = [
@@ -833,6 +835,15 @@ function addNewLectures(st){
     st.lecRev = LEC_REV;
   }
   LECTURES_DEFAULT.forEach(d => { if (st.seenLec.indexOf(d.id) < 0){ if (!(st.lectures||[]).some(l => l.id === d.id)) st.lectures.push(JSON.parse(JSON.stringify(d))); st.seenLec.push(d.id); } });
+  /* jadwal resmi Blok Repro (info PJMK 30 Okt, 2 & 3 Nov): tanggal perkiraan lama diganti, tanggal yang kamu edit sendiri tidak disentuh */
+  if (!st.reproSched1){
+    const OLD_R = {r1:"2026-11-02", r2:"2026-11-03", r3:"2026-11-04", r4:"2026-11-05", r5:"2026-11-06", r6:"2026-11-09", r7:"2026-11-10", r8:"2026-11-11", r9:"2026-11-12", r10:"2026-11-13"};
+    LECTURES_DEFAULT.forEach(d => { if (d.block !== "repro") return; const l = (st.lectures||[]).find(x => x.id === d.id); if (!l) return;
+      if (!l.date || l.date === OLD_R[d.id]) l.date = d.date; if (!l.dosen && d.dosen) l.dosen = d.dosen; if (d.ket) l.ket = d.ket; if (d.disc) l.disc = d.disc; if (d.tent) l.tent = true; else delete l.tent; });
+    (st.blocks||[]).forEach(b => { if (b.id === "repro") b.tentative = false; });
+    st.lectures.sort((x,y) => (x.block===y.block ? (x.no||0)-(y.no||0) : 0));
+    st.reproSched1 = true;
+  }
 }
 
 function save(){
@@ -1152,7 +1163,7 @@ function lecCard(l, sch, t){
   const sums = allSummaries().filter(s => s.lecture === l.id); const qz = allQuizzes().filter(q => q.lecture === l.id || (q.qs||[]).some(x => x.lec === l.id));
   const c = S.conf[l.id]||0;
   return '<article class="card lec" id="lec-'+l.id+'">'+
-    '<div class="lec-head"><span class="lec-no">KUL '+l.no+'</span><div class="lec-title"><h3>'+esc(l.title)+'</h3><span class="small muted">'+fmt(l.date)+(l.dosen?' · '+esc(l.dosen):'')+'</span></div>'+
+    '<div class="lec-head"><span class="lec-no">KUL '+l.no+'</span><div class="lec-title"><h3>'+esc(l.title)+'</h3><span class="small muted">'+fmt(l.date)+(l.tent?' (perkiraan)':'')+(l.dosen?' · '+esc(l.dosen):'')+(l.ket?'<br>'+esc(l.ket):'')+'</span></div>'+
       '<div class="row">'+(l.ppt?'<a class="btn tiny" href="'+esc(l.ppt)+'" target="_blank" rel="noopener">Buka PPT</a>':'')+
       (sums.length?'<a class="btn tiny" href="#rangkuman" data-act="opensum" data-id="'+sums[0].id+'">Rangkuman</a>':'<span class="chip">Rangkuman menyusul</span>')+
       (qz.length?'<a class="btn tiny" href="#latsol" data-act="openquiz" data-id="'+qz[0].id+'">Latsol</a>':'')+
