@@ -344,6 +344,12 @@ nav.tabs a.tab-eng[aria-current="page"]{color:#fff;background:var(--pop)}
 .eng-stiff{border-radius:12px;background:rgba(255,255,255,.7);border:1px dashed var(--line);padding:8px 12px}
 .eng-stiff p{margin:2px 0}.eng-stiff .bad{color:#C0392B;font-weight:700}.eng-stiff .good{color:#0E8A7E;font-weight:700}
 .eng-lvl{color:#B0124A;font-weight:700}
+.eng-drill{border:2px solid #C9B8F5}
+.eng-drt{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#F3EEFF;border-radius:12px;padding:10px 14px;font-weight:600}
+.eng-drt b{font-size:1.8rem;line-height:1}
+.eng-drt.rec{background:#FFE8EF;color:#9B0F43}
+.eng-drill .bar{display:block;height:8px;border-radius:99px;background:var(--soft);overflow:hidden}
+#engDrB{display:block;height:100%;background:linear-gradient(90deg,var(--peri),var(--pop));transition:width .25s linear}
 .eng-road{display:grid;gap:10px}
 .eng-now{border:2px solid var(--pop)}
 .eng-stamps{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(92px,1fr))}
@@ -1934,7 +1940,7 @@ function confetti(){
 /* ============================================================
    ENGLISH · IELTS 9.0 — DATA (materi semua dibuat sendiri)
    ============================================================ */
-const ENG_START = "2026-10-29";
+const ENG_START = "2026-11-04";
 const ENG_PLACES = {
   brienz:{nm:"Danau Brienz", cc:"Swiss", f:"brienz", cr:"Carsten Steger, CC BY-SA 4.0"},
   zermatt:{nm:"Matterhorn, Zermatt", cc:"Swiss", f:"zermatt", cr:"Roy Egloff, CC BY-SA 4.0"},
@@ -1946,65 +1952,71 @@ const ENG_PLACES = {
   brussel:{nm:"Grand-Place, Brussels", cc:"Belgia", f:"brussel", cr:"Celuici, CC BY-SA 4.0"},
   gent:{nm:"Graslei, Ghent", cc:"Belgia", f:"gent", cr:"Michiel Hendryckx, CC BY-SA 4.0"},
   hallstatt:{nm:"Hallstatt", cc:"Austria", f:"hallstatt", cr:"C.Stadler/Bwag, CC BY-SA 4.0"},
+  grindelwald:{nm:"Grindelwald & Gunung Eiger", cc:"Swiss", f:"grindelwald", cr:"Leonhard Lenz, CC0"},
   chillon:{nm:"Château de Chillon, Danau Jenewa", cc:"Swiss", f:"chillon", cr:"Giles Laurent, CC BY-SA 4.0"}
 };
 const BBC6 = "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/";
 
-/* 11 hari (Kam 29 Okt – Min 8 Nov). Tiap Minggu = mini test. Tiap hari maks 2 task. k = jenis task, id = materi. */
+/* 12 hari (Rab 4 – Min 15 Nov). Tiap Minggu = mini test. Tiap hari 1 task + 5 menit speaking spontan. k = jenis task, id = materi. */
 const ENG_DAYS = [
   {place:"zermatt", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Kenal medan + Listening Part 1", skill:"Listening",
    why:"Hari pertama: kenalan dulu sama format IELTS dan langsung coba Listening Part 1 (isi formulir). Part 1 itu bagian 'paling ramah', cocok buat pemanasan dan ngukur titik awal.",
-   tasks:[{k:"listen", id:"L1", min:25}, {k:"vocab", id:"V1", min:10}],
+   tasks:[{k:"listen", id:"L1", min:25}],
    yt:[["Strategi Listening Part 1 (form completion)","IELTS listening part 1 form completion tips"],["Coba full test asli (opsional)","Cambridge IELTS 19 listening test 1 with answers"]],
    bbc:["ep-260910","Can apps teach you a language?"]},
-  {place:"lauterbrunnen", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Reading: True / False / Not Given", skill:"Reading",
-   why:"TFNG adalah tipe soal yang paling sering bikin skor reading jatuh. Hari ini kita latih cara bedain FALSE (teks bilang kebalikannya) vs NOT GIVEN (teks gak bilang apa-apa).",
-   tasks:[{k:"read", id:"R1", min:25}, {k:"gram", id:"G1", min:12}],
-   yt:[["Cara jawab True/False/Not Given","IELTS reading true false not given strategy"]],
+  {place:"lauterbrunnen", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Kosakata: pendidikan & belajar", skill:"Vocab",
+   why:"Hari ringan: 12 kolokasi tentang belajar yang pasti kepakai di speaking & writing. Yang dihafal FRASA-nya (kata yang biasa nempel bareng), bukan kata tunggal.",
+   tasks:[{k:"vocab", id:"V1", min:12}],
+   yt:[["Kolokasi IELTS topik pendidikan","IELTS vocabulary education collocations"]],
    bbc:["ep-260917","Is rejection good for us?"]},
-  {place:"luzern", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Speaking Part 1 + kosakata kesehatan", skill:"Speaking",
-   why:"Speaking Part 1 = pertanyaan ringan tentang dirimu. Kuncinya: jawab langsung, kasih alasan, kasih contoh (2–4 kalimat). Kita juga shadowing jawaban model biar intonasi makin natural.",
-   tasks:[{k:"speak", id:"S1", min:20}, {k:"vocab", id:"V2", min:10}],
+  {place:"luzern", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Speaking Part 1: jawab spontan", skill:"Speaking",
+   why:"Speaking Part 1 = pertanyaan ringan tentang dirimu. Jawab SPONTAN dulu pakai timer & rekam suara, baru lihat jawaban model. Kuncinya: jawab langsung, kasih alasan, kasih contoh.",
+   tasks:[{k:"speak", id:"S1", min:20}],
    yt:[["Contoh Speaking Part 1 band 9","IELTS speaking part 1 band 9 sample"]],
    bbc:["ep-261022","What should you eat for a better night's sleep?"]},
+  {place:"speicherstadt", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Reading: True / False / Not Given", skill:"Reading",
+   why:"TFNG adalah tipe soal yang paling sering bikin skor reading jatuh. Hari ini kita latih cara bedain FALSE (teks bilang kebalikannya) vs NOT GIVEN (teks gak bilang apa-apa).",
+   tasks:[{k:"read", id:"R1", min:25}],
+   yt:[["Cara jawab True/False/Not Given","IELTS reading true false not given strategy"]],
+   bbc:null},
   {place:"brienz", lvl:"Bulan 1 · Mini test #1", title:"Minggu: Mini test IELTS #1", skill:"Mini test",
    why:"Hari Minggu = mini test. Semua bagian IELTS (listening, reading, writing, speaking) dalam versi pendek, ±50 menit. Hasilnya jadi titik awal yang nanti dibandingkan dengan mini test berikutnya.",
    tasks:[{k:"test", id:"T1", min:50}],
    yt:[["Gambaran hari tes IELTS","IELTS test day what to expect full format"]],
    bbc:null},
-  {place:"elbphilharmonie", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Listening Part 3 (diskusi akademik)", skill:"Listening",
-   why:"Hari pertama Blok Repro, jadi tugasnya dibuat ringan. Part 3 = diskusi mahasiswa dan dosen, pilihan gandanya penuh jebakan (opini yang berubah, 'tapi', 'sebenarnya').",
-   tasks:[{k:"listen", id:"L2", min:25}, {k:"vocab", id:"V3", min:10}],
-   yt:[["Strategi Listening Part 3","IELTS listening part 3 multiple choice tips"]],
+  {place:"elbphilharmonie", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Grammar: kalimat kompleks", skill:"Grammar",
+   why:"Kalimat kompleks yang rapi itu syarat band 7+ di writing dan speaking. Hari ini: who/which/that, dan cara memadatkan kalimat pakai participle clause.",
+   tasks:[{k:"gram", id:"G1", min:15}],
+   yt:[["Relative clauses untuk IELTS","IELTS grammar relative clauses complex sentences"]],
    bbc:["ep-260903","Climate change and extreme weather"]},
-  {place:"speicherstadt", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Writing Task 2: intro + 1 body", skill:"Writing",
+  {place:"brugge", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Writing Task 2: intro + 1 body", skill:"Writing",
    why:"Belum langsung full essay. Hari ini fokus fondasi band tinggi: membaca soal dengan benar, posisi yang jelas di intro, dan satu body paragraph yang berkembang penuh (ide → penjelasan → contoh).",
-   tasks:[{k:"write", id:"W1", min:30}, {k:"gram", id:"G2", min:12}],
+   tasks:[{k:"write", id:"W1", min:30}],
    yt:[["Struktur opinion essay","IELTS writing task 2 opinion essay structure band 9"]],
    bbc:null},
-  {place:"brugge", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Writing Task 1: line graph", skill:"Writing",
-   why:"Task 1 Academic = melaporkan data, bukan beropini. Kuncinya overview yang jelas (tren utama) + angka yang dipilih dengan cerdas dan dibandingkan.",
-   tasks:[{k:"write", id:"W2", min:25}, {k:"review", id:"RV1", min:10}],
-   yt:[["Contoh Task 1 line graph","IELTS writing task 1 line graph band 9 sample answer"]],
+  {place:"brussel", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Speaking Part 2: ngomong 2 menit", skill:"Speaking",
+   why:"Part 2: 1 menit persiapan, lalu ngomong 2 menit tanpa berhenti. Coba spontan dulu pakai timer & rekam suara, baru lihat jawaban model.",
+   tasks:[{k:"speak", id:"S2", min:20}],
+   yt:[["Contoh Part 2 band 9","IELTS speaking part 2 band 9 sample describe a place"]],
    bbc:null},
-  {place:"brussel", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Reading: Matching Headings + Speaking Part 2", skill:"Reading",
-   why:"Matching headings melatih kamu menangkap IDE UTAMA paragraf, bukan kata kunci. Lalu Speaking Part 2: bicara 2 menit tanpa berhenti, pakai catatan 1 menit.",
-   tasks:[{k:"read", id:"R2", min:22}, {k:"speak", id:"S2", min:15}],
-   yt:[["Strategi matching headings","IELTS reading matching headings strategy"],["Contoh Part 2 band 9","IELTS speaking part 2 band 9 sample describe a place"]],
+  {place:"gent", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Listening Part 3 (diskusi akademik)", skill:"Listening",
+   why:"Part 3 = diskusi mahasiswa dan dosen. Pilihan gandanya penuh jebakan: opini yang berubah, 'tapi', 'sebenarnya'.",
+   tasks:[{k:"listen", id:"L2", min:25}],
+   yt:[["Strategi Listening Part 3","IELTS listening part 3 multiple choice tips"]],
    bbc:null},
-  {place:"gent", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Writing Task 2: full essay 40 menit", skill:"Writing",
-   why:"Sekarang full essay dengan waktu ujian asli. Habis nulis, nilai pakai rubrik 4 kriteria dan bandingkan dengan model band 9.",
-   tasks:[{k:"write", id:"W3", min:45}, {k:"gram", id:"G3", min:12}],
-   yt:[["Discussion essay (discuss both views)","IELTS writing task 2 discuss both views band 9"]],
+  {place:"hallstatt", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Kosakata: kesehatan & kedokteran", skill:"Vocab",
+   why:"Hari ringan lagi: 12 kolokasi kesehatan. Topik ini sering muncul di IELTS, dan buat kamu yang anak kedokteran, ini bisa jadi senjata andalan.",
+   tasks:[{k:"vocab", id:"V2", min:12}],
+   yt:[["Kosakata IELTS topik kesehatan","IELTS vocabulary health collocations"]],
+   bbc:["ep-261022","What should you eat for a better night's sleep?"]},
+  {place:"grindelwald", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Reading: Matching Headings", skill:"Reading",
+   why:"Matching headings melatih kamu menangkap IDE UTAMA paragraf, bukan sekadar mencari kata yang sama.",
+   tasks:[{k:"read", id:"R2", min:22}],
+   yt:[["Strategi matching headings","IELTS reading matching headings strategy"]],
    bbc:null},
-  {place:"hallstatt", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Listening Part 4 + Speaking Part 3", skill:"Listening",
-   why:"Part 4 = kuliah monolog tanpa jeda, paling mirip dengar dosen di kampus. Speaking Part 3 = diskusi abstrak: di sini band 8–9 dibedakan oleh kemampuan menimbang, memberi contoh, dan 'hedging'.",
-   tasks:[{k:"listen", id:"L3", min:25}, {k:"speak", id:"S3", min:15}],
-   yt:[["Strategi Listening Part 4","IELTS listening part 4 note completion tips"],["Contoh Speaking Part 3","IELTS speaking part 3 band 9 sample answers"]],
-   bbc:["ep-260806","How do climate scientists make predictions?"]},
   {place:"chillon", lvl:"Bulan 1 · Mini test #2", title:"Minggu: Mini test IELTS #2 + evaluasi", skill:"Mini test",
-   why:"Mini test kedua, levelnya lebih tinggi: listening Part 4, reading passage 3, essay problem–solution, speaking Part 3 lebih dalam. Setelah itu evaluasi semuanya supaya rencana berikutnya pas sasaran.",
-   tasks:[{k:"test", id:"T2", min:55}, {k:"eval", id:"E1", min:10}],
+   why:"Mini test kedua, sedikit lebih menantang. Di halaman Hasil ada evaluasi 2 minggu: kirim ringkasannya ke aku supaya rencana berikutnya pas sasaran.",
+   tasks:[{k:"test", id:"T2", min:60}],
    yt:[["Full listening test asli (bonus)","Cambridge IELTS 19 listening test 2 with answers"]],
    bbc:null}
 ];
@@ -2017,7 +2029,7 @@ const ENG_STRATEGY = [
   ["Shadowing untuk listening & pronunciation","Beberapa studi eksperimen pada pelajar EFL menemukan shadowing (menirukan audio sedetik di belakangnya) meningkatkan skor listening. Tiap jawaban model speaking dan transkrip listening bisa diputar untuk kamu tiru."],
   ["Latihan sengaja + umpan balik","Tulis → nilai pakai rubrik (atau minta Claude menilai) → perbaiki → tulis ulang. Band naik bukan dari banyaknya esai, tapi dari memperbaiki pola kesalahan yang sama."],
   ["Bertahap: dari tanpa waktu ke waktu ujian","Hari awal fokus teknik, lalu pelan-pelan pakai timer sesuai ujian asli (Writing Task 2 = 40 menit, Reading = 20 menit per passage)."],
-  ["Kecil tapi tiap hari","1–2 tugas (±30–45 menit) tiap hari lebih efektif daripada maraton seminggu sekali. Tambahan 6 menit dengar BBC 6 Minute English sambil jalan = input harian."]
+  ["Kecil tapi tiap hari","1 tugas (±20–30 menit) + 5 menit ngomong spontan tiap hari lebih efektif daripada maraton seminggu sekali. Tambahan 6 menit dengar BBC 6 Minute English sambil jalan = input harian."]
 ];
 const ENG_FORMAT = [
   ["Listening","4 bagian, 40 soal, ±30 menit. Audio diputar SEKALI. Part 1 percakapan sehari-hari, Part 2 monolog umum, Part 3 diskusi akademik, Part 4 kuliah."],
@@ -2473,14 +2485,27 @@ function engVbSet(w, ok){ const e = E(), v = e.vb[w] || {b:0}; v.b = ok ? Math.m
 
 /* suara bahasa Inggris (browser) */
 let engAudio = {on:false, id:null, tok:0};
-function engVoices(){ try { const vs = speechSynthesis.getVoices().filter(v => /^en(-|_)/i.test(v.lang)); const gb = vs.filter(v => /GB/i.test(v.lang)); return gb.concat(vs.filter(v => !/GB/i.test(v.lang))); } catch(e){ return []; } }
+function engVoices(){ try { const vs = speechSynthesis.getVoices().filter(v => /^en(-|_)/i.test(v.lang)), good = v => /natural|neural|online|google|siri|premium|enhanced/i.test(v.name) ? 0 : 1, gb = v => /GB/i.test(v.lang) ? 0 : 1; return vs.sort((a, b) => good(a) - good(b) || gb(a) - gb(b)); } catch(e){ return []; } }
+function engHash(t){ let h = 0x811c9dc5; for (let i = 0; i < t.length; i++) { h ^= t.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h.toString(16).padStart(8, "0"); }
+const ENG_AUD = new Set("0055cc8d 007c634e 00de4836 01b2a295 04dbbb55 070b234f 07a1d5b5 0818d9a8 08a0ccc3 0ac94c67 0d94e1fd 0df810be 0eb63de0 0f9cd883 0fc35bfa 0feceb51 112d0016 1187efea 12237ea4 1242220d 13a7b1a5 13e117f8 13e3fe2f 1501d2cc 1567a32f 15e20a45 16be1050 16d47711 1702fa54 195793df 19b02670 19f91c29 1a44bb7c 1a5ae523 1d60820e 1dc5c66f 1ea0783b 1f5478ff 1fea1318 201fab99 21b86e82 2307fcfd 26fa798f 2814c7c8 28adbfc6 294d8292 2a27f159 2b6dab6b 2c480fba 2dcaca0b 2e0d2c98 2ed594f4 3256cf20 326020d5 329d211c 32e834e3 3337eb35 3436a424 34d08152 38fd33bc 3bacd690 3bae87f4 3bdad172 3d24f0b8 3e89c31d 3fe33845 41b91d82 42253d3d 45838d14 46b6564d 46f3b2b2 49c6e164 4baaed25 4c92785a 4ce2af85 4d964730 4fabbeca 50503c0f 5250ebd3 559c2fbb 55e0bf9f 569211d4 5a7a7037 5a8078ae 5b35d67a 5b679b2d 5c24f4a5 5d2f50a6 5db15c08 5fcae8ca 5ff995b6 62c9d36f 62faa700 64005806 64f9af5d 66d821d6 67055f64 6821fb1e 682325fe 68301771 686d8496 68866b3a 69c5c0fe 6a0ebb07 6c280aeb 6c7f92bb 6cbcddfb 6cccb425 6dcce53f 6de31634 6e377f6d 6ee946b4 6fd8fb36 70ee9c9e 70f95221 71cd3af9 7200b1d9 7297a4a4 7311b4ef 73558eda 73f76ce9 73fb5968 76e5b2c1 772674da 77bada07 78a26263 792391c2 7a8d2641 7acc2fdc 7ba5598c 7c60e7df 7cadfa17 7cf5d9f8 7d8865ac 80e80274 8208a223 83352e20 83e2494d 8492191d 850c9a62 8677db7b 86d21be4 875ebc60 8a341047 8c6389e3 8d93cdc5 9684736a 96ee5324 973e6ae6 9960695f 9aeed42e 9af72c5b 9b6e88e9 9dd48a48 9e81332d 9fd60077 a036bb60 a0f86c3f a10e7587 a12a7033 a51ccc24 a55f36e3 a58cd5b4 a5c3d38a a5e161fd a6e13107 abe54dc4 abeca202 adb0dbce ade60045 b01c117a b0f855ce b41446b7 b429f42a b6802408 b80279c7 b89b10d1 b99f264b bb60a6f7 bd006ded bdb5db13 beee906d bf4d8bb8 c08468e2 c0b7b19d c17e873e c1b11519 c38b45a0 c62b8283 c664bbc6 c6c69b7f c70931ff c873861e c90d9a5e c9434824 ca39aed2 cb5f51a2 cc09e7e5 ce1be196 cef9567d d274622e d330f0d6 d3336fed d63a17a3 d6629666 d66545ae d7408938 d9954430 d9e17ffb dafc09fa db47838f ddad5189 de3d4e24 e110feef e16bcf61 e195cd85 e30063d8 e3671d45 e3ead437 e531f730 e6ee1f56 e7b53660 ea07e0d5 eadf1f41 eeb27b91 f019df89 f0fd0d47 f10548db f310d6cc f3adaad6 f3d3acd7 f3e48e92 f42a8f0b f5e8209f f6a64259 f72ddeba fb07999a fb1fb1bf fb7b4d36 fb98bde7 fec505b7".split(" "));
+const engAud = typeof Audio === "function" ? new Audio() : null;
 function engSay(text, opt){
+  opt = opt || {}; const h = engHash(text);
+  if (engAud && ENG_AUD.has(h)) {
+    let fell = false; const fb = () => { if (fell) return; fell = true; engAud.onended = null; engTts(text, opt); };
+    engAud.onended = opt.end || null; engAud.onerror = fb; engAud.src = "audio/eng/"+h+".mp3";
+    const pr = engAud.play(); if (pr && pr.catch) pr.catch(err => { if (!err || err.name !== "AbortError") fb(); });
+    return;
+  }
+  engTts(text, opt);
+}
+function engTts(text, opt){
   opt = opt || {}; const ss = window.speechSynthesis; if (!ss) { toast("Browser ini belum mendukung suara"); return; }
   const u = new SpeechSynthesisUtterance(text); u.lang = "en-GB"; u.rate = opt.rate || 0.95; u.pitch = opt.pitch || 1;
   const vs = engVoices(); if (vs.length) u.voice = vs[(opt.v||0) % vs.length];
   if (opt.end) u.onend = opt.end; ss.speak(u);
 }
-function engStop(){ try { speechSynthesis.cancel(); } catch(e){} engAudio.on = false; engAudio.tok++; document.querySelectorAll("[data-act=engplay]").forEach(b => b.textContent = b.dataset.lbl); }
+function engStop(){ try { speechSynthesis.cancel(); } catch(e){} if (engAud) { engAud.onended = null; engAud.onerror = null; try { engAud.pause(); } catch(e){} } engAudio.on = false; engAudio.tok++; document.querySelectorAll("[data-act=engplay]").forEach(b => b.textContent = b.dataset.lbl); }
 function engPlay(id, btn){
   if (engAudio.on) { const same = engAudio.id === id; engStop(); if (same) return; }
   const L = ENG_LISTEN[id], spk = Object.keys(L.speakers); const tok = ++engAudio.tok; engAudio.on = true; engAudio.id = id;
@@ -2654,7 +2679,7 @@ function engTestSpeak(id){
   const Sp = ENG_SPEAK[id], e = E();
   const qrow = (q, k) => '<div class="eng-q"><div class="row"><button class="speak" data-act="engsq" data-id="'+id+'" data-k="'+k+'">▶</button><b>'+esc(q.q)+'</b></div><details><summary class="small">Jawaban model (buka setelah menjawab)</summary><div class="row" style="align-items:flex-start;margin-top:6px"><button class="speak" data-act="engsp" data-id="'+id+'" data-k="'+k+'">▶ Shadow</button><p class="small" style="flex:1">'+esc(q.m)+'</p></div></details></div>';
   const part = p => Sp.qs.map((q, k) => q.p === p ? qrow(q, k) : '').join("");
-  return '<div class="card stack"><b>Tips</b><ul class="eng-ul">'+Sp.tips.map(t => '<li>'+esc(t)+'</li>').join("")+'</ul></div>'+
+  return engDrillBox(id)+'<div class="card stack"><b>Tips</b><ul class="eng-ul">'+Sp.tips.map(t => '<li>'+esc(t)+'</li>').join("")+'</ul></div>'+
     '<div class="card stack"><span class="eyebrow">Part 1 · ±3 menit</span>'+part(1)+'</div>'+
     '<div class="card stack eng-cue"><span class="eyebrow">Part 2 · cue card</span><h3>'+esc(Sp.card.topic)+'</h3><p class="small">You should say:</p><ul class="eng-ul">'+Sp.card.points.map(p => '<li>'+esc(p)+'</li>').join("")+'</ul>'+
       '<div class="row"><span class="mono" id="timerDisp">'+timerText()+'</span><button class="btn tiny solid" data-act="timer" data-m="1">1 menit persiapan</button><button class="btn tiny solid" data-act="timer" data-m="2">2 menit bicara</button><button class="btn tiny" data-act="timerstop">Stop</button></div>'+
@@ -2671,7 +2696,7 @@ function engTestResult(tid, T, b, d, i){
     '<div class="grid2">'+row("L","Listening","Belum dicek")+row("R","Reading","Belum dicek")+row("W","Writing","Minta penilaian Claude / isi band di bagian Writing")+row("S","Speaking","Minta penilaian Claude / isi band di bagian Speaking")+'</div>'+
     (prev && prev.O != null && b.O != null ? '<p class="small"><b>Dibanding mini test #1:</b> '+prev.O+' → '+b.O+(b.O>prev.O?' (naik, mantap!)':b.O===prev.O?' (stabil, soalnya lebih sulit lho)':' (soal lebih sulit, jangan patah semangat)')+'</p>' : '')+
     '<p class="small muted">Catatan: soal mini test jauh lebih sedikit dari tes asli, jadi band ini perkiraan kasar untuk memantau arah progres, bukan skor resmi.</p>'+
-    '<div class="row">'+(engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai mini test selesai</button>')+'</div></div>';
+    '<div class="row">'+(engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai mini test selesai</button>')+'</div></div>'+(tid === "T2" ? engEvalView({id:"E1"}, d, -1) : '');
 }
 
 /* ---------------- SPEAKING HARIAN (5 menit, anti kaku) ---------------- */
@@ -2720,7 +2745,8 @@ const ENG_SPTOOL = [
   ["Pengganti yang terdengar lebih natural","In my opinion → I'd say… / Personally, … · very good → really great / brilliant · I like it → I'm really into it · I don't like → I'm not a big fan of… · because → mainly because / partly because · Yes → Definitely / Absolutely / Yeah, I do, actually"],
   ["Penghubung lisan (bukan gaya essay)","The thing is, … / On top of that, … / That said, … / Mind you, … / To be honest, … / Having said that, … Hindari 'Firstly, Secondly, In conclusion' saat speaking, itu gaya tulisan."],
   ["Kontraksi = lebih luwes","I'd, I've, it's, don't, wouldn't, there's. 'I would like to' → 'I'd like to'. Kontraksi bikin ritme bicara lebih alami dan tidak mengurangi nilai."],
-  ["Rutinitas 5 menit","(1) Dengar jawaban model sekali, (2) shadowing 2× sambil menempel suaranya, (3) tutup modelnya, jawab pakai kata-katamu sendiri sambil merekam, (4) dengarkan rekamanmu: catat 1 kata yang bikin berhenti, cari padanannya."],
+  ["Rutinitas 5 menit (spontan dulu!)","(1) Dengar pertanyaan, mikir sebentar, langsung ngomong pakai timer sambil direkam, tanpa nulis. (2) Dengar rekamanmu: catat bagian yang macet. (3) Baru lihat ide/model dan shadowing sekali. (4) Jawab ulang pertanyaan yang sama: biasanya jauh lebih lancar. Ngomong spontan itu otot, makin sering dipakai makin kuat."],
+  ["Kalau macet di tengah jalan","Jangan diam. Ganti kata yang kamu lupa dengan penjelasan: lupa 'stethoscope'? bilang 'the thing doctors use to listen to your heart'. Examiner menilai kelancaran, bukan kamus di kepalamu."],
   ["Latihan di luar web","Self-talk: ceritakan apa yang sedang kamu lakukan dalam hati pakai bahasa Inggris (misal saat masak/jalan). Ganti bahasa HP ke English. Tiap malam ceritakan harimu 1 menit ke perekam suara."]
 ];
 function engSwCard(d){
@@ -2754,11 +2780,116 @@ const ENG_ROADMAP = [
 function engRoadmap(){
   const t = todayISO(), cur = ENG_ROADMAP.findIndex(r => t <= r.to), ci = cur < 0 ? ENG_ROADMAP.length-1 : Math.max(0, cur);
   return '<details class="card"'+(engDayNo() <= 1 ? ' open' : '')+'><summary><b>Roadmap 4 bulan menuju band 9</b> <span class="small muted">· sekarang: '+esc(ENG_ROADMAP[ci].nm)+'</span></summary><div class="stack" style="margin-top:12px">'+
-    '<p class="small muted">Levelnya naik pelan-pelan per bulan, bukan per hari. Tiap hari tetap 1–2 task, tiap Minggu mini test yang makin mirip tes asli. Target band per bulan itu perkiraan, nanti disesuaikan sama hasil mini test-mu.</p>'+
+    '<p class="small muted">Levelnya naik pelan-pelan per bulan, bukan per hari. Tiap hari 1 task + 5 menit ngomong spontan, tiap Minggu mini test yang makin mirip tes asli. Target band per bulan itu perkiraan, nanti disesuaikan sama hasil mini test-mu.</p>'+
     '<div class="eng-road">'+ENG_ROADMAP.map((r, i) => '<div class="ms'+(i===ci?' eng-now':'')+'"><div class="row" style="justify-content:space-between"><b>'+esc(r.nm)+'</b>'+(i===ci?'<span class="chip small pop">Sekarang</span>':'')+'</div><span class="small muted">'+fmt(r.from)+' – '+fmt(r.to)+' · target '+esc(r.band)+'</span><p class="small" style="margin:4px 0 0">'+esc(r.goal)+'</p></div>').join("")+'</div></div></details>';
 }
+/* ---------------- SPEAKING SPONTAN (pakai timer + rekam suara, tanpa teks) ---------------- */
+const ENG_BANK = {
+ p1:["What do you usually do in the evening?","Do you prefer mornings or evenings? Why?","What kind of food do you like most?","How do you usually get to campus?","Do you like rainy days?","What do you do to relax after a long day?","Have you ever been to a concert?","Do you enjoy shopping?","How often do you see your friends?","What's your favourite place in your hometown?","Do you like taking photos?","What did you do last weekend?","Do you prefer studying at home or in a library?","What kind of music do you listen to?","Do you like cooking?","How much time do you spend on your phone every day?","Do you have a favourite season?","What's the best gift you've ever received?","Do you like animals?","What do you usually have for breakfast?","Is there anything you'd like to learn in the future?","Do you prefer watching films at home or at the cinema?","Do you like your neighbourhood?","How do you feel about getting up early?"],
+ p2:[
+  {q:"Describe a person you admire.", points:["who this person is","how you know them","what they have done","and explain why you admire them."]},
+  {q:"Describe a place you visited that you really enjoyed.", points:["where it is","when you went there","what you did there","and explain why you enjoyed it."]},
+  {q:"Describe a skill you learned that you are proud of.", points:["what the skill is","when and how you learned it","how difficult it was","and explain why you are proud of it."]},
+  {q:"Describe a memorable meal you had.", points:["where you had it","who you were with","what you ate","and explain why it was memorable."]},
+  {q:"Describe a time you helped someone.", points:["who you helped","what the situation was","how you helped","and explain how you felt afterwards."]},
+  {q:"Describe an object that is important to you.", points:["what it is","where you got it","how often you use it","and explain why it is important to you."]}
+ ],
+ p3:["Why do some people find it hard to speak a foreign language, even after years of study?","Do you think people today have less free time than in the past?","How has social media changed friendships?","Is it better to study alone or in groups?","Should healthy food be cheaper than junk food?","Why do some young people want to live abroad?","What makes a good teacher?","Do you think doctors should spend more time talking to patients?","Will robots replace many jobs in the future?","Why is tourism important for some countries?"]
+};
+/* rencana latihan spontan harian (dari mudah ke sulit). n = jumlah pertanyaan, talk = detik bicara */
+const ENG_DRILL = {1:{p:1,n:3},2:{p:1,n:3},3:{p:1,n:3},4:{p:1,n:3},6:{p:1,n:4},7:{p:2,talk:60},8:{p:1,n:4},9:{p:2,talk:90},10:{p:1,n:4},11:{p:2,talk:120}};
+const ENG_PT = {1:{think:5, talk:40}, 2:{think:60, talk:120}, 3:{think:10, talk:60}};
+const ENG_PIDEAS = {
+ 1:["Well, to be honest, …","It depends, really.","mainly because…","For example, …","That said, …"],
+ 2:["The … I'd like to talk about is…","I first… when…","What I remember most is…","The reason it matters to me is…","Looking back, …"],
+ 3:["I'd say there are a few reasons.","On the one hand… on the other hand…","Take… for example.","It largely depends on…","In the long run, …"]
+};
+let engDr = null;
+function engDrSrc(key){
+  if (key.slice(0,3) === "day") {
+    const d = +key.slice(3), P = ENG_DRILL[d]; if (!P) return null;
+    if (P.p === 2) { const c = ENG_BANK.p2[(d-1) % ENG_BANK.p2.length]; return {title:"Speaking spontan · Part 2", qs:[{q:c.q, p:2, card:c, talk:P.talk}]}; }
+    const B = P.p === 3 ? ENG_BANK.p3 : ENG_BANK.p1, qs = [];
+    for (let k = 0; k < P.n; k++) qs.push({q:B[((d-1)*P.n + k) % B.length], p:P.p});
+    return {title:"Speaking spontan · Part "+P.p, qs};
+  }
+  const Sp = ENG_SPEAK[key]; if (!Sp) return null;
+  const pt = q => q.p || Sp.part, all = Sp.qs || [];
+  const qs = all.filter(q => pt(q) !== 3).map(q => ({q:q.q, p:pt(q)}));
+  if (Sp.card) qs.push({q:Sp.card.topic, p:2, card:Sp.card});
+  all.filter(q => pt(q) === 3).forEach(q => qs.push({q:q.q, p:3}));
+  return {title:"Langkah 1 · Jawab spontan dulu", qs};
+}
+function engDrT(Q){ const T = ENG_PT[Q.p] || ENG_PT[1]; return {think:T.think, talk:Q.talk || T.talk}; }
+function engMMSS(s){ s = Math.max(0, Math.ceil(s)); return Math.floor(s/60)+":"+String(s%60).padStart(2,"0"); }
+function engDrillBox(key){ return engDrSrc(key) ? '<div class="card stack eng-drill" id="engDrill" data-key="'+key+'">'+engDrillInner(key)+'</div>' : ''; }
+function engDrillInner(key){
+  const src = engDrSrc(key), st = engDr && engDr.key === key ? engDr : {i:0, phase:"idle"}, Q = src.qs[st.i], T = engDrT(Q), last = st.i >= src.qs.length - 1;
+  const daily = key.slice(0,3) === "day", doneToday = daily && (E().swd||{})[key.slice(3)];
+  let h = '<div class="row" style="justify-content:space-between"><b>🎙 '+esc(src.title)+'</b><span class="small mono">'+(st.i+1)+'/'+src.qs.length+(doneToday?' · ✓ hari ini':'')+'</span></div>';
+  if (st.phase === "idle" && st.i === 0) h += '<p class="small muted">Tanpa nulis, tanpa baca teks. Dengar pertanyaannya, mikir sebentar, lalu ngomong terus sampai timer habis. Grammar salah gapapa, yang penting <b>jangan berhenti</b>. Suaramu direkam supaya bisa kamu dengar ulang (tidak disimpan ke mana-mana).</p>';
+  h += '<div class="eng-q"><div class="row"><button class="speak" data-act="engdrq">▶</button><b>'+esc(Q.q)+'</b></div>'+(Q.card ? '<p class="small" style="margin:6px 0 2px">You should say:</p><ul class="eng-ul small">'+Q.card.points.map(p => '<li>'+esc(p)+'</li>').join("")+'</ul>' : '')+'</div>';
+  if (st.phase === "idle") h += '<div class="row"><button class="btn solid" data-act="engdrgo">Mulai: mikir '+T.think+' detik → ngomong '+engMMSS(T.talk)+'</button></div>';
+  else if (st.phase === "think" || st.phase === "talk") {
+    const talk = st.phase === "talk";
+    h += '<div class="eng-drt'+(talk?' rec':'')+'"><span id="engDrPh">'+(talk ? '🔴 Ngomong sekarang! Terus jalan…' : (Q.p === 2 ? 'Persiapan: pikirkan kata kunci tiap poin (boleh corat-coret, jangan tulis kalimat)' : 'Mikir dulu…'))+'</span><b id="engDrT" class="mono">'+engMMSS((st.end - Date.now())/1000)+'</b></div><div class="bar"><span id="engDrB" style="width:0%"></span></div>'+
+      '<div class="row">'+(talk ? '<button class="btn" data-act="engdrend">Selesai lebih cepat</button>' : '<button class="btn" data-act="engdrskip">Langsung ngomong</button>')+'</div>'+
+      (talk && st.noMic ? '<p class="small muted">Mikrofon tidak bisa dipakai di sini. Tetap ngomong keras-keras ya, atau rekam pakai voice recorder HP.</p>' : '');
+  } else {
+    h += (st.url ? '<div class="stack"><span class="small"><b>Dengar rekamanmu:</b></span><audio controls src="'+st.url+'" style="width:100%"></audio></div>' : (st.noMic ? '<p class="small muted">Tidak ada rekaman (mikrofon tidak diizinkan). Pakai voice recorder HP kalau mau dengar ulang.</p>' : ''))+
+      '<div class="ms small"><b>Cek cepat setelah dengar rekaman:</b><ul class="eng-ul"><li>Ada jeda lebih dari 3 detik? Di situ biasanya kamu lagi nerjemahin dari bahasa Indonesia.</li><li>Sudah kasih alasan + contoh, bukan cuma jawaban pendek?</li><li>Ada kata yang bikin kamu berhenti? Cari padanannya, lalu jawab ulang.</li></ul></div>'+
+      '<div><span class="small"><b>Frasa yang bisa dipakai kalau diulang:</b></span><div class="row" style="margin-top:4px">'+(ENG_PIDEAS[Q.p]||[]).map(c => '<span class="chip small">'+esc(c)+'</span>').join("")+'</div></div>'+
+      '<div class="row"><button class="btn" data-act="engdrgo">↻ Jawab ulang</button>'+
+      (!last ? '<button class="btn solid" data-act="engdrnext">Pertanyaan berikutnya →</button>' : daily ? (doneToday ? '<span class="chip small eng-st ok">Latihan hari ini selesai</span>' : '<button class="btn solid" data-act="engdrdone">Selesai latihan hari ini ✓</button>') : '<span class="small muted">Latihan spontan selesai. Sekarang baru buka jawaban model di bawah, shadowing sekali, lalu jawab ulang pertanyaan yang tadi macet.</span>')+'</div>';
+  }
+  return h;
+}
+function engDrPaint(){ const b = $("#engDrill"); if (b) b.innerHTML = engDrillInner(b.dataset.key); }
+function engBeep(){ try { const C = window.AudioContext || window.webkitAudioContext, c = new C(), o = c.createOscillator(), g = c.createGain(); o.frequency.value = 880; g.gain.value = 0.08; o.connect(g); g.connect(c.destination); o.start(); o.stop(c.currentTime + 0.2); setTimeout(() => c.close(), 500); } catch(e){} }
+function engDrHalt(){ if (!engDr) return; clearInterval(engDr.int); engDr.int = null; try { if (engDr.rec && engDr.rec.state !== "inactive") engDr.rec.stop(); } catch(e){} if (engDr.stream) engDr.stream.getTracks().forEach(t => t.stop()); }
+function engDrGo(key){
+  const keep = engDr && engDr.key === key ? engDr.i : 0; engDrHalt(); engStop();
+  if (engDr && engDr.url) URL.revokeObjectURL(engDr.url);
+  const Q = engDrSrc(key).qs[keep], T = engDrT(Q);
+  engDr = {key, i:keep, phase:"think", end:Date.now() + T.think*1000, len:T.think, int:null};
+  engSay(Q.q, {v:1});
+  engDr.int = setInterval(engDrTick, 250); engDrPaint();
+}
+function engDrTalk(){
+  const Q = engDrSrc(engDr.key).qs[engDr.i], T = engDrT(Q);
+  engStop(); engBeep(); engDr.phase = "talk"; engDr.t0 = Date.now(); engDr.end = Date.now() + T.talk*1000; engDr.len = T.talk; engDrPaint();
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.MediaRecorder) { engDr.noMic = true; engDrPaint(); return; }
+  const me = engDr;
+  navigator.mediaDevices.getUserMedia({audio:true}).then(s => {
+    if (engDr !== me || me.phase !== "talk") { s.getTracks().forEach(t => t.stop()); return; }
+    me.stream = s; const ch = [], rec = new MediaRecorder(s); me.rec = rec;
+    rec.ondataavailable = e => { if (e.data && e.data.size) ch.push(e.data); };
+    rec.onstop = () => { s.getTracks().forEach(t => t.stop()); if (ch.length) me.url = URL.createObjectURL(new Blob(ch, {type:rec.mimeType || "audio/webm"})); if (engDr === me) engDrPaint(); };
+    rec.start();
+  }).catch(() => { me.noMic = true; if (engDr === me) engDrPaint(); });
+}
+function engDrEnd(){
+  if (!engDr) return; clearInterval(engDr.int); engDr.int = null;
+  if (engDr.phase === "talk") { const sec = Math.round((Date.now() - engDr.t0)/1000); const e = E(); e.spk = (e.spk||0) + sec; save(); }
+  engDr.phase = "done";
+  try { if (engDr.rec && engDr.rec.state !== "inactive") engDr.rec.stop(); } catch(e){}
+  engDrPaint();
+}
+function engDrTick(){
+  if (!engDr) return;
+  if (!$("#engDrill")) { engDrHalt(); engDr = null; return; }
+  const left = (engDr.end - Date.now())/1000, t = $("#engDrT"), b = $("#engDrB");
+  if (t) t.textContent = engMMSS(left); if (b) b.style.width = Math.min(100, 100*(1 - left/engDr.len))+"%";
+  if (left <= 0) { if (engDr.phase === "think") engDrTalk(); else engDrEnd(); }
+}
+
 /* Reward: oleh-oleh tiap kali satu hari beres */
 const ENG_FUN = {
+  grindelwald:{hi:"Grüezi! (Swiss-Jerman)", f:[
+    "Grindelwald dijuluki 'desa gletser' karena dua gletser turun sampai dekat desanya.",
+    "Di atas desa ini menjulang dinding utara Gunung Eiger, tebing raksasa yang baru berhasil didaki tahun 1938.",
+    "Dari sini orang naik kereta ke Jungfraujoch (3.454 m), stasiun kereta tertinggi di Eropa yang dibuka tahun 1912."],
+    m:"Besok Minggu mini test #2. Ini saatnya buktiin progresmu dari minggu lalu. Gas!"},
   brienz:{hi:"Grüezi! (Swiss-Jerman)", f:[
     "Warna toska Danau Brienz berasal dari serbuk batuan halus yang digerus gletser, bukan dari alga.",
     "Brienz adalah rumah sekolah ukir kayu satu-satunya di Swiss, dan kota ini terkenal dengan kerajinan ukirnya.",
@@ -2773,7 +2904,7 @@ const ENG_FUN = {
     "Lembah ini punya 72 air terjun. Staubbach jatuh bebas hampir 300 m dari tebing.",
     "Goethe nulis puisi \"Gesang der Geister über den Wassern\" (1779) setelah lihat Staubbach.",
     "Tolkien pernah hiking ke sini tahun 1911, dan lembah ini sering disebut inspirasi Rivendell di The Lord of the Rings."],
-    m:"Reading + grammar hari ini itu fondasi. Pelan-pelan, tapi airnya terus ngalir kayak air terjun di sini."},
+    m:"12 kolokasi baru masuk kantong! Kosakata itu kayak air terjun di sini: sedikit-sedikit, tapi terus ngalir."},
   luzern:{hi:"Grüezi! Merci vielmal (makasih banyak)", f:[
     "Kapellbrücke dibangun abad ke-14 dan disebut jembatan kayu beratap tertua di Eropa.",
     "Tahun 1993 sebagian besar jembatan ini terbakar, lalu dibangun ulang mirip aslinya.",
@@ -2783,37 +2914,37 @@ const ENG_FUN = {
     "Speicherstadt adalah kompleks gudang terbesar di dunia yang berdiri di atas tiang-tiang kayu ek.",
     "Sejak 2015 kawasan ini jadi Warisan Dunia UNESCO bareng Chilehaus di sebelahnya.",
     "Miniatur Wunderland, model kereta api terbesar di dunia, ada di salah satu gudangnya."],
-    m:"Essay pertamamu jadi! Writing itu skill yang paling cepat naik kalau rajin nulis dan revisi. Kamu udah mulai."},
+    m:"Reading pertama beres! TFNG itu jebakan favorit IELTS, dan sekarang kamu udah tahu triknya."},
   elbphilharmonie:{hi:"Moin moin!", f:[
     "Elbphilharmonie dibuka Januari 2017 dan dibangun di atas gudang tua bernama Kaispeicher A.",
     "Dinding aula besarnya dilapisi sekitar 10.000 panel gipsum yang bentuknya beda-beda, biar suaranya merata.",
     "Ada teras Plaza setinggi 37 m yang bisa dikunjungi siapa saja buat lihat pelabuhan Hamburg."],
-    m:"Telingamu makin terlatih. Listening itu kayak konser: makin sering dengar, makin jelas tiap nadanya."},
+    m:"Grammar hari ini bikin kalimatmu kayak gedung ini: rapi, berlapis, dan elegan. Langsung coba pakai pas ngomong ya!"},
   brugge:{hi:"Hallo! Dank je wel (makasih, bahasa Belanda-Flemish)", f:[
     "Pusat kota Bruges jadi Warisan Dunia UNESCO sejak 2000 dan dijuluki \"Venesia dari Utara\".",
     "Menara Belfort tingginya 83 m. Ada 366 anak tangga sampai puncaknya, dan di dalamnya ada carillon 47 lonceng.",
     "Bruges terkenal sama renda (lace) buatan tangan dan cokelat Belgia."],
-    m:"Udah 7 dari 11 kota! Review hari ini bikin kata-kata lama nempel lebih lama."},
+    m:"Paragraf essay pertamamu jadi! Writing itu paling cepat naik kalau rajin nulis dan revisi. Kamu udah mulai."},
   brussel:{hi:"Bonjour! / Goeiedag! (Brussels resmi dua bahasa)", f:[
     "Grand-Place jadi Warisan Dunia UNESCO sejak 1998 dan sering disebut alun-alun tercantik di dunia.",
     "Tiap dua tahun di bulan Agustus, lantai alun-alun ini ditutup karpet bunga raksasa dari ratusan ribu begonia.",
     "Belgia punya tiga bahasa resmi: Belanda, Prancis, dan Jerman."],
-    m:"Reading panjang + speaking cue card di hari yang sama itu combo berat, dan kamu tuntasin. Keren banget!"},
+    m:"Cue card 2 menit pertamamu! Ngomong 2 menit tanpa berhenti itu berat, dan kamu tetap jalan. Keren banget!"},
   gent:{hi:"Hallo! Tot ziens (sampai jumpa)", f:[
     "Graslei dulunya pelabuhan abad pertengahan, tempat kapal bongkar muat gandum.",
     "Di Ghent ada lukisan altar karya Van Eyck (1432), salah satu karya seni yang paling sering dicuri dalam sejarah.",
     "Kastil Gravensteen di tengah kota dibangun tahun 1180."],
-    m:"Essay ketiga! Bandingin sama essay pertamamu, pasti udah kerasa bedanya. Progress itu nyata."},
+    m:"Telingamu makin terlatih. Listening Part 3 penuh jebakan, dan kamu udah ngelewatinnya."},
   hallstatt:{hi:"Servus! (salam khas Austria)", f:[
     "Tambang garam di Hallstatt disebut salah satu yang tertua di dunia, sudah ditambang sekitar 7.000 tahun.",
     "Ada Beinhaus, rumah tulang berisi ratusan tengkorak yang dicat dan diberi nama.",
     "Saking terkenalnya, Hallstatt pernah dibuatkan replika di Tiongkok tahun 2012."],
-    m:"Sepuluh hari! Kebiasaan udah mulai kebentuk. Besok Minggu mini test #2, saatnya buktiin progresmu. Gas!"},
+    m:"Sepuluh hari! Kebiasaan udah mulai kebentuk, dan kosakata kesehatan ini pasti kepakai di dunia kedokteran juga."},
   chillon:{hi:"Bonjour! (Swiss bagian Prancis)", f:[
     "Château de Chillon berdiri di atas pulau batu di tepi Danau Jenewa, dekat Montreux.",
     "Lord Byron nulis puisi \"The Prisoner of Chillon\" (1816) dan mengukir namanya di salah satu pilar penjaranya.",
     "Kastil ini termasuk monumen bersejarah yang paling banyak dikunjungi di Swiss."],
-    m:"11 HARI SELESAI! 11 kota, 4 negara, 2 mini test, semua skill IELTS udah kamu sentuh. Ini baru awal perjalanan ke band 9. Proud of you, Nadia!"}
+    m:"2 MINGGU PERTAMA SELESAI! 12 kota, 4 negara, 2 mini test. Bulan 1 masih lanjut, dan jalan ke band 9 makin jelas. Proud of you, Nadia!"}
 };
 function engReward(d){
   const D = ENG_DAYS[d-1], P = ENG_PLACES[D.place], F = ENG_FUN[D.place]; if (!F) return;
@@ -2854,14 +2985,15 @@ function vEnglish(){
     '<div class="count">'+
       '<div><div class="n">'+tot.done+'<span style="font-size:1rem;color:#EDE8FF">/'+tot.all+'</span></div><div class="l">task selesai</div></div>'+
       '<div><div class="n">'+engStreak()+'</div><div class="l">hari beruntun</div></div>'+
+      '<div><div class="n">'+Math.round((E().spk||0)/60)+'</div><div class="l">menit ngomong spontan</div></div>'+
       '<div><div class="n">'+engMastered()+'<span style="font-size:1rem;color:#EDE8FF">/36</span></div><div class="l">kolokasi dikuasai</div></div>'+
     '</div>'+
   '</div>'+
-  '<div class="stack"><div class="row" style="justify-content:space-between"><h3>'+(before?'Tugas Day 1 ('+fmt(ENG_START)+')':'Tugas hari ini')+'</h3><span class="small muted">Cukup 1–2 task, ±'+D.tasks.reduce((a,x)=>a+x.min,0)+' menit</span></div>'+
+  '<div class="stack"><div class="row" style="justify-content:space-between"><h3>'+(before?'Tugas Day 1 ('+fmt(ENG_START)+')':'Tugas hari ini')+'</h3><span class="small muted">1 task (±'+D.tasks.reduce((a,x)=>a+x.min,0)+' menit) + 5 menit speaking spontan</span></div>'+
     D.tasks.map((x, i) => engTaskRow(cur, i)).join("")+
     (D.bbc ? '<div class="task" style="grid-template-columns:auto 1fr auto"><span class="chip">Bonus</span><div class="t"><b>Dengar 6 menit: '+esc(D.bbc[1])+'</b><span>BBC 6 Minute English. Opsional, buat input harian & shadowing sambil jalan/makan.</span></div><a class="btn tiny" href="'+BBC6+D.bbc[0]+'" target="_blank" rel="noopener">Buka</a></div>' : '')+
   '</div>'+
-  engSwCard(cur)+engToolkit()+
+  (ENG_DRILL[cur] && !before ? engDrillBox("day"+cur) : ENG_DRILL[1] && before ? '<div class="card small muted">🎙 Mulai '+fmt(ENG_START)+' ada latihan <b>speaking spontan 5 menit</b> tiap hari: dengar pertanyaan, mikir sebentar, lalu ngomong pakai timer sambil direkam.</div>' : '')+engToolkit()+
   (late.length ? '<details class="more card"'+(engDayDone(cur)?' open':'')+'><summary>'+late.length+' task tertunda (boleh dikejar kapan saja)</summary><div class="stack" style="margin-top:10px">'+late.map(([d,i]) => engTaskRow(d,i,true)).join("")+'</div></details>' : '')+
   '<div class="grid2">'+
     '<div class="card stack"><div><span class="eyebrow">Pengingat harian</span><h3>Jam latihan English</h3></div>'+
@@ -3027,7 +3159,7 @@ function engSpeakView(x, d, i){
       '<p class="small muted">Rekam suaramu pakai perekam di HP, lalu dengarkan: cari jeda panjang, "ehm", dan kata yang diulang-ulang.</p>'+
       '<details><summary><b>Jawaban model band 9</b></summary><div class="stack" style="margin-top:8px"><button class="speak" data-act="engsp" data-id="'+x.id+'" data-k="-1">▶ Dengarkan & shadowing</button><div class="eng-model"><p>'+esc(Sp.m).replace(/\n\n/g,"</p><p>")+'</p></div></div></details></div>'
     : '<div class="card stack"><b>Pertanyaan</b><p class="small muted">Klik ▶ untuk mendengar pertanyaan seperti dari examiner, jawab KERAS-KERAS dulu (rekam pakai HP kalau bisa), baru buka jawaban model dan shadowing.</p>'+Sp.qs.map((q, k) => '<div class="eng-q"><div class="row"><button class="speak" data-act="engsq" data-id="'+x.id+'" data-k="'+k+'">▶</button><b>'+(k+1)+'. '+esc(q.q)+'</b></div><details><summary class="small">Jawaban model</summary><div class="row" style="align-items:flex-start;margin-top:6px"><button class="speak" data-act="engsp" data-id="'+x.id+'" data-k="'+k+'">▶ Shadow</button><p class="small" style="flex:1">'+esc(q.m)+'</p></div></details></div>').join("")+'</div>';
-  return '<div class="card stack"><b>Tips</b><ul class="eng-ul">'+Sp.tips.map(t => '<li>'+esc(t)+'</li>').join("")+'</ul></div>'+qs+
+  return engDrillBox(x.id)+'<div class="card stack"><b>Tips</b><ul class="eng-ul">'+Sp.tips.map(t => '<li>'+esc(t)+'</li>').join("")+'</ul></div>'+qs.replace('<b>Pertanyaan</b>','<b>Langkah 2 · Pertanyaan & jawaban model</b>')+
     '<div class="card stack"><b>Frasa natural untuk dicuri</b><div class="row">'+Sp.phrases.map(p => '<span class="chip small">'+esc(p)+'</span>').join("")+'</div></div>'+
     '<div class="card stack"><b>Transkrip jawabanmu (opsional)</b><p class="small muted">Ketik, atau pakai tombol mikrofon di keyboard HP (dikte) supaya yang tertulis = yang kamu ucapkan. Lalu minta penilaian di bawah.</p><textarea data-engtxt="'+x.id+'" rows="8" placeholder="Jawabanku…">'+esc(e.txt[x.id]||"")+'</textarea>'+
       '<div class="row">'+(i<0?'':engDone(d,i)?'<span class="chip small eng-st ok">Selesai</span>':'<button class="btn solid" data-act="engfin" data-d="'+d+'" data-i="'+i+'">Tandai selesai</button>')+'</div></div>'+
@@ -3117,6 +3249,12 @@ document.addEventListener("click", e => {
   const el = e.target.closest("[data-act]"); if (!el || !/^eng/.test(el.dataset.act)) return;
   const a = el.dataset.act, X = E();
   const H = {
+    engdrq(){ const b = $("#engDrill"); if (!b) return; const st = engDr && engDr.key === b.dataset.key ? engDr : {i:0}; engStop(); engSay(engDrSrc(b.dataset.key).qs[st.i].q, {v:1}); },
+    engdrgo(){ const b = $("#engDrill"); if (b) engDrGo(b.dataset.key); },
+    engdrskip(){ if (engDr && engDr.phase === "think") engDrTalk(); },
+    engdrend(){ engDrEnd(); },
+    engdrnext(){ if (!engDr) return; engDrHalt(); if (engDr.url) URL.revokeObjectURL(engDr.url); engDr = {key:engDr.key, i:engDr.i+1, phase:"idle"}; engDrPaint(); },
+    engdrdone(){ const b = $("#engDrill"); if (!b) return; X.swd = X.swd || {}; X.swd[b.dataset.key.slice(3)] = todayISO(); save(); confetti(); toast("Speaking spontan hari ini beres! Makin luwes tiap hari."); engDrPaint(); },
     engsec(){ ui.engSec = ui.engSec || {}; ui.engSec[el.dataset.t] = el.dataset.s; engStop(); render(); window.scrollTo({top:0}); },
     engswq(){ engStop(); engSay(ENG_SW[el.dataset.d].q, {v:1}); },
     engswm(){ engStop(); engSay(ENG_SW[el.dataset.d].m, {rate:0.92}); },
@@ -3130,7 +3268,7 @@ document.addEventListener("click", e => {
     engsq(){ engStop(); engSay(ENG_SPEAK[el.dataset.id].qs[+el.dataset.k].q, {v:1}); },
     engsp(){ engStop(); const Sp = ENG_SPEAK[el.dataset.id], k = +el.dataset.k; engSay(k < 0 ? Sp.m : Sp.qs[k].m, {rate:0.92}); },
     engsayw(){ engStop(); const W = engWord(el.dataset.w); engSay(W[0]+". "+W[2]); },
-    engsayall(){ engStop(); ENG_VOCAB[el.dataset.id].words.forEach(w => engSay(w[0], {rate:0.85})); },
+    engsayall(){ engStop(); const ws = ENG_VOCAB[el.dataset.id].words, tok = engAudio.tok; let k = 0; const nx = () => { if (tok !== engAudio.tok || k >= ws.length) return; engSay(ws[k++][0], {rate:0.85, end:() => setTimeout(nx, 600)}); }; nx(); },
     engpick(){ const m = el.dataset.m; X.ans[m] = X.ans[m]||{}; X.ans[m][el.dataset.k] = el.dataset.v; save(); el.parentNode.querySelectorAll(".opt").forEach(b => b.classList.toggle("sel", b === el)); },
     engcheck(){ engCheck(el.dataset.m); const o = ui.engOpen; if (o && ENG_DAYS[o.d-1].tasks[o.i].k !== "test") engMark(o.d, o.i); save(); render(); },
     engvcheck(){ const qk = "Q"+el.dataset.id, qs = ui.engVq[qk], ans = X.ans[qk]||{}; let s = 0; qs.forEach((q, k) => { const ok = String(ans["0-"+k]) === String(q.a); if (ok) s++; else X.err.push({src:el.dataset.id, q:q.q, your:ans["0-"+k]!=null?q.o[ans["0-"+k]]:"", right:q.o[q.a], why:q.why, at:todayISO()}); engVbSet(q.o[q.a], ok); });
