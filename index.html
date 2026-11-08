@@ -344,6 +344,8 @@ nav.tabs a.tab-eng[aria-current="page"]{color:#fff;background:var(--pop)}
 .eng-stiff{border-radius:12px;background:rgba(255,255,255,.7);border:1px dashed var(--line);padding:8px 12px}
 .eng-stiff p{margin:2px 0}.eng-stiff .bad{color:#C0392B;font-weight:700}.eng-stiff .good{color:#0E8A7E;font-weight:700}
 .eng-lvl{color:#B0124A;font-weight:700}
+.eng-cefr{background:#EDE8FF;color:#3D2A8C;font-weight:800;letter-spacing:.02em}
+.eng-cefrs{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}.eng-cefrs .ms{padding:8px 10px}.eng-cefrs .ms.muted{opacity:.6}
 .eng-drill{border:2px solid #C9B8F5}
 .eng-drt{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#F3EEFF;border-radius:12px;padding:10px 14px;font-weight:600}
 .eng-drt b{font-size:1.8rem;line-height:1}
@@ -1951,7 +1953,7 @@ function confetti(){
 /* ============================================================
    ENGLISH · IELTS 9.0 — DATA (materi semua dibuat sendiri)
    ============================================================ */
-const ENG_START = "2026-11-04";
+const ENG_START = "2026-11-09";
 const ENG_PLACES = {
   brienz:{nm:"Danau Brienz", cc:"Swiss", f:"brienz", cr:"Carsten Steger, CC BY-SA 4.0"},
   zermatt:{nm:"Matterhorn, Zermatt", cc:"Swiss", f:"zermatt", cr:"Roy Egloff, CC BY-SA 4.0"},
@@ -1964,68 +1966,80 @@ const ENG_PLACES = {
   gent:{nm:"Graslei, Ghent", cc:"Belgia", f:"gent", cr:"Michiel Hendryckx, CC BY-SA 4.0"},
   hallstatt:{nm:"Hallstatt", cc:"Austria", f:"hallstatt", cr:"C.Stadler/Bwag, CC BY-SA 4.0"},
   grindelwald:{nm:"Grindelwald & Gunung Eiger", cc:"Swiss", f:"grindelwald", cr:"Leonhard Lenz, CC0"},
-  chillon:{nm:"Château de Chillon, Danau Jenewa", cc:"Swiss", f:"chillon", cr:"Giles Laurent, CC BY-SA 4.0"}
+  chillon:{nm:"Château de Chillon, Danau Jenewa", cc:"Swiss", f:"chillon", cr:"Giles Laurent, CC BY-SA 4.0"},
+  salzburg:{nm:"Kota tua Salzburg", cc:"Austria", f:"salzburg", cr:"Uoaei1, CC BY-SA 4.0"},
+  bern:{nm:"Kota tua Bern & Sungai Aare", cc:"Swiss", f:"bern", cr:"August Geyler, CC BY-SA 4.0"}
 };
 const BBC6 = "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/";
 
-/* 12 hari (Rab 4 – Min 15 Nov). Tiap Minggu = mini test. Tiap hari 1 task + 5 menit speaking spontan. k = jenis task, id = materi. */
+/* 14 hari (Sen 9 – Min 22 Nov). Tiap Minggu = mini test. Tiap hari 1 task + 5 menit speaking spontan. k = jenis task, id = materi. */
 const ENG_DAYS = [
-  {place:"zermatt", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Kenal medan + Listening Part 1", skill:"Listening",
+  {place:"zermatt", lvl:"Bulan 1 · Fondasi · Minggu 1", cefr:"B1", title:"Kenal medan + Listening Part 1", skill:"Listening",
    why:"Hari pertama: kenalan dulu sama format IELTS dan langsung coba Listening Part 1 (isi formulir). Part 1 itu bagian 'paling ramah', cocok buat pemanasan dan ngukur titik awal.",
    tasks:[{k:"listen", id:"L1", min:25}],
    yt:[["Strategi Listening Part 1 (form completion)","IELTS listening part 1 form completion tips"],["Coba full test asli (opsional)","Cambridge IELTS 19 listening test 1 with answers"]],
    bbc:["ep-260910","Can apps teach you a language?"]},
-  {place:"lauterbrunnen", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Kosakata: pendidikan & belajar", skill:"Vocab",
+  {place:"lauterbrunnen", lvl:"Bulan 1 · Fondasi · Minggu 1", cefr:"B1", title:"Kosakata: pendidikan & belajar", skill:"Vocab",
    why:"Hari ringan: 12 kolokasi tentang belajar yang pasti kepakai di speaking & writing. Yang dihafal FRASA-nya (kata yang biasa nempel bareng), bukan kata tunggal.",
    tasks:[{k:"vocab", id:"V1", min:12}],
    yt:[["Kolokasi IELTS topik pendidikan","IELTS vocabulary education collocations"]],
    bbc:["ep-260917","Is rejection good for us?"]},
-  {place:"luzern", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Speaking Part 1: jawab spontan", skill:"Speaking",
+  {place:"luzern", lvl:"Bulan 1 · Fondasi · Minggu 1", cefr:"B1", title:"Speaking Part 1: jawab spontan", skill:"Speaking",
    why:"Speaking Part 1 = pertanyaan ringan tentang dirimu. Jawab SPONTAN dulu pakai timer & rekam suara, baru lihat jawaban model. Kuncinya: jawab langsung, kasih alasan, kasih contoh.",
    tasks:[{k:"speak", id:"S1", min:20}],
    yt:[["Contoh Speaking Part 1 band 9","IELTS speaking part 1 band 9 sample"]],
    bbc:["ep-261022","What should you eat for a better night's sleep?"]},
-  {place:"speicherstadt", lvl:"Bulan 1 · Fondasi · Minggu 1", title:"Reading: True / False / Not Given", skill:"Reading",
+  {place:"speicherstadt", lvl:"Bulan 1 · Fondasi · Minggu 1", cefr:"B1–B2", title:"Reading: True / False / Not Given", skill:"Reading",
    why:"TFNG adalah tipe soal yang paling sering bikin skor reading jatuh. Hari ini kita latih cara bedain FALSE (teks bilang kebalikannya) vs NOT GIVEN (teks gak bilang apa-apa).",
    tasks:[{k:"read", id:"R1", min:25}],
    yt:[["Cara jawab True/False/Not Given","IELTS reading true false not given strategy"]],
    bbc:null},
-  {place:"brienz", lvl:"Bulan 1 · Mini test #1", title:"Minggu: Mini test IELTS #1", skill:"Mini test",
-   why:"Hari Minggu = mini test. Semua bagian IELTS (listening, reading, writing, speaking) dalam versi pendek, ±50 menit. Hasilnya jadi titik awal yang nanti dibandingkan dengan mini test berikutnya.",
-   tasks:[{k:"test", id:"T1", min:50}],
-   yt:[["Gambaran hari tes IELTS","IELTS test day what to expect full format"]],
-   bbc:null},
-  {place:"elbphilharmonie", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Grammar: kalimat kompleks", skill:"Grammar",
+  {place:"elbphilharmonie", lvl:"Bulan 1 · Fondasi · Minggu 1", cefr:"B2", title:"Grammar: kalimat kompleks", skill:"Grammar",
    why:"Kalimat kompleks yang rapi itu syarat band 7+ di writing dan speaking. Hari ini: who/which/that, dan cara memadatkan kalimat pakai participle clause.",
    tasks:[{k:"gram", id:"G1", min:15}],
    yt:[["Relative clauses untuk IELTS","IELTS grammar relative clauses complex sentences"]],
    bbc:["ep-260903","Climate change and extreme weather"]},
-  {place:"brugge", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Writing Task 2: intro + 1 body", skill:"Writing",
+  {place:"brugge", lvl:"Bulan 1 · Fondasi · Minggu 1", cefr:"B2", title:"Writing Task 2: intro + 1 body", skill:"Writing",
    why:"Belum langsung full essay. Hari ini fokus fondasi band tinggi: membaca soal dengan benar, posisi yang jelas di intro, dan satu body paragraph yang berkembang penuh (ide → penjelasan → contoh).",
    tasks:[{k:"write", id:"W1", min:30}],
    yt:[["Struktur opinion essay","IELTS writing task 2 opinion essay structure band 9"]],
    bbc:null},
-  {place:"brussel", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Speaking Part 2: ngomong 2 menit", skill:"Speaking",
+  {place:"brienz", lvl:"Bulan 1 · Mini test #1", cefr:"B1–B2", title:"Minggu: Mini test IELTS #1", skill:"Mini test",
+   why:"Hari Minggu = mini test. Semua bagian IELTS (listening, reading, writing, speaking) dalam versi pendek, ±50 menit. Hasilnya jadi titik awal yang nanti dibandingkan dengan mini test berikutnya.",
+   tasks:[{k:"test", id:"T1", min:50}],
+   yt:[["Gambaran hari tes IELTS","IELTS test day what to expect full format"]],
+   bbc:null},
+  {place:"brussel", lvl:"Bulan 1 · Fondasi · Minggu 2", cefr:"B2", title:"Speaking Part 2: ngomong 2 menit", skill:"Speaking",
    why:"Part 2: 1 menit persiapan, lalu ngomong 2 menit tanpa berhenti. Coba spontan dulu pakai timer & rekam suara, baru lihat jawaban model.",
    tasks:[{k:"speak", id:"S2", min:20}],
    yt:[["Contoh Part 2 band 9","IELTS speaking part 2 band 9 sample describe a place"]],
    bbc:null},
-  {place:"gent", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Listening Part 3 (diskusi akademik)", skill:"Listening",
+  {place:"gent", lvl:"Bulan 1 · Fondasi · Minggu 2", cefr:"B2", title:"Listening Part 3 (diskusi akademik)", skill:"Listening",
    why:"Part 3 = diskusi mahasiswa dan dosen. Pilihan gandanya penuh jebakan: opini yang berubah, 'tapi', 'sebenarnya'.",
    tasks:[{k:"listen", id:"L2", min:25}],
    yt:[["Strategi Listening Part 3","IELTS listening part 3 multiple choice tips"]],
    bbc:null},
-  {place:"hallstatt", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Kosakata: kesehatan & kedokteran", skill:"Vocab",
+  {place:"hallstatt", lvl:"Bulan 1 · Fondasi · Minggu 2", cefr:"B2", title:"Kosakata: kesehatan & kedokteran", skill:"Vocab",
    why:"Hari ringan lagi: 12 kolokasi kesehatan. Topik ini sering muncul di IELTS, dan buat kamu yang anak kedokteran, ini bisa jadi senjata andalan.",
    tasks:[{k:"vocab", id:"V2", min:12}],
    yt:[["Kosakata IELTS topik kesehatan","IELTS vocabulary health collocations"]],
    bbc:["ep-261022","What should you eat for a better night's sleep?"]},
-  {place:"grindelwald", lvl:"Bulan 1 · Fondasi · Minggu 2", title:"Reading: Matching Headings", skill:"Reading",
+  {place:"grindelwald", lvl:"Bulan 1 · Fondasi · Minggu 2", cefr:"B2", title:"Reading: Matching Headings", skill:"Reading",
    why:"Matching headings melatih kamu menangkap IDE UTAMA paragraf, bukan sekadar mencari kata yang sama.",
    tasks:[{k:"read", id:"R2", min:22}],
    yt:[["Strategi matching headings","IELTS reading matching headings strategy"]],
    bbc:null},
-  {place:"chillon", lvl:"Bulan 1 · Mini test #2", title:"Minggu: Mini test IELTS #2 + evaluasi", skill:"Mini test",
+  {place:"salzburg", lvl:"Bulan 1 · Fondasi · Minggu 2", cefr:"B1", title:"Grammar: artikel, jamak & subject-verb agreement", skill:"Grammar",
+   why:"Kesalahan kecil yang paling sering bikin band orang Indonesia mentok: lupa a/the, lupa -s jamak, dan 'the data shows' vs 'the data show'. Levelnya B1, tapi kalau dibiarkan, ini yang nahan kamu di band 6.",
+   tasks:[{k:"gram", id:"G2", min:15}],
+   yt:[["Artikel a/an/the untuk IELTS","IELTS grammar articles a an the common mistakes"],["Subject-verb agreement","subject verb agreement IELTS writing mistakes"]],
+   bbc:null},
+  {place:"bern", lvl:"Bulan 1 · Fondasi · Minggu 2", cefr:"B2", title:"Kosakata: lingkungan, kota & travel", skill:"Vocab",
+   why:"Topik lingkungan dan kota hampir selalu keluar di Writing Task 2 dan Speaking Part 3. Hari ringan: 12 kolokasi B2 yang langsung bisa dipakai di essay besok-besok.",
+   tasks:[{k:"vocab", id:"V3", min:12}],
+   yt:[["Kosakata IELTS topik lingkungan","IELTS vocabulary environment collocations"]],
+   bbc:["ep-260903","Climate change and extreme weather"]},
+  {place:"chillon", lvl:"Bulan 1 · Mini test #2", cefr:"B2–C1", title:"Minggu: Mini test IELTS #2 + evaluasi", skill:"Mini test",
    why:"Mini test kedua, sedikit lebih menantang. Di halaman Hasil ada evaluasi 2 minggu: kirim ringkasannya ke aku supaya rencana berikutnya pas sasaran.",
    tasks:[{k:"test", id:"T2", min:60}],
    yt:[["Full listening test asli (bonus)","Cambridge IELTS 19 listening test 2 with answers"]],
@@ -2453,7 +2467,10 @@ const ENG_LINKS = [
 ];
 
 /* ---------- ENGLISH · IELTS 9.0 ---------- */
-function E(){ if (!S.eng) S.eng = {}; const e = S.eng; ["done","sc","ans","chk","txt","ai","vb","ack","ev","sb"].forEach(k => { if (!e[k] || typeof e[k] !== "object") e[k] = {}; }); if (!Array.isArray(e.err)) e.err = []; if (!e.time) e.time = "19:30"; return e; }
+function E(){ if (!S.eng) S.eng = {}; const e = S.eng; ["done","sc","ans","chk","txt","ai","vb","ack","ev","sb"].forEach(k => { if (!e[k] || typeof e[k] !== "object") e[k] = {}; }); if (!Array.isArray(e.err)) e.err = []; if (!e.time) e.time = "19:30";
+  if (!e.sched2) { const M = {5:7,6:5,7:6,12:14}, mv = o => { const n = {}; Object.keys(o||{}).forEach(k => { const p = k.split("-"), d = +p[0], nd = M[d] || d; p[0] = nd; n[p.join("-")] = o[k]; }); return n; };
+    e.done = mv(e.done); e.swd = mv(e.swd); e.sched2 = true; }
+  return e; }
 const ENG_KIND = {listen:"Listening", read:"Reading", write:"Writing", speak:"Speaking", gram:"Grammar", vocab:"Vocab", review:"Review vocab", eval:"Evaluasi", test:"Mini test"};
 const ENG_KCOL = {listen:"peri", read:"aqua", write:"pop", speak:"grape", gram:"sun", vocab:"aqua", review:"peri", eval:"pop", test:"pop"};
 const ENG_BOX = [0,1,2,4,7,14];
@@ -2717,9 +2734,9 @@ function engTestSpeak(id){
     engAIBox(id);
 }
 function engTestResult(tid, T, b, d, i){
-  const row = (k, nm, how) => '<div class="ms"><b>'+nm+'</b><p class="small" style="margin:4px 0 0">'+(b[k]!=null ? '≈ band <b>'+b[k]+'</b>' : '<span class="muted">'+how+'</span>')+'</p></div>';
+  const row = (k, nm, how) => '<div class="ms"><b>'+nm+'</b><p class="small" style="margin:4px 0 0">'+(b[k]!=null ? '≈ band <b>'+b[k]+'</b> '+engCefrChip(engCefr(b[k])) : '<span class="muted">'+how+'</span>')+'</p></div>';
   const prev = tid === "T2" ? engTestBands(ENG_TEST.T1) : null;
-  return '<div class="card stack"><div><span class="eyebrow">Hasil mini test</span><h3>'+(b.O!=null ? 'Perkiraan overall: band '+b.O : 'Lengkapi semua bagian dulu')+'</h3></div>'+
+  return '<div class="card stack"><div><span class="eyebrow">Hasil mini test</span><h3>'+(b.O!=null ? 'Perkiraan overall: band '+b.O+' · CEFR '+engCefr(b.O) : 'Lengkapi semua bagian dulu')+'</h3></div>'+
     '<div class="grid2">'+row("L","Listening","Belum dicek")+row("R","Reading","Belum dicek")+row("W","Writing","Minta penilaian Claude / isi band di bagian Writing")+row("S","Speaking","Minta penilaian Claude / isi band di bagian Speaking")+'</div>'+
     (prev && prev.O != null && b.O != null ? '<p class="small"><b>Dibanding mini test #1:</b> '+prev.O+' → '+b.O+(b.O>prev.O?' (naik, mantap!)':b.O===prev.O?' (stabil, soalnya lebih sulit lho)':' (soal lebih sulit, jangan patah semangat)')+'</p>' : '')+
     '<p class="small muted">Catatan: soal mini test jauh lebih sedikit dari tes asli, jadi band ini perkiraan kasar untuk memantau arah progres, bukan skor resmi.</p>'+
@@ -2795,20 +2812,23 @@ function engToolkit(){
 
 /* Roadmap 4 bulan: level naik per bulan, bukan per hari */
 const ENG_ROADMAP = [
-  {nm:"Bulan 1 · Fondasi", from:"2026-10-29", to:"2026-11-29", band:"±6–6.5",
+  {nm:"Bulan 1 · Fondasi", cefr:"B1 → B2", from:"2026-10-29", to:"2026-11-29", band:"±6–6.5",
    goal:"Kenal semua tipe soal IELTS, Speaking Part 1 lancar tanpa kaku, kalimat & paragraf rapi, kolokasi akademik dasar. Mini test tiap Minggu versi pendek."},
-  {nm:"Bulan 2 · Menengah", from:"2026-11-30", to:"2026-12-27", band:"±6.5–7",
+  {nm:"Bulan 2 · Menengah", cefr:"B2 → C1", from:"2026-11-30", to:"2026-12-27", band:"±6.5–7",
    goal:"Part 2 bicara 2 menit tanpa macet, listening Part 3–4, reading semua tipe soal pakai timer, essay penuh 40 menit, grammar kompleks."},
-  {nm:"Bulan 3 · Lanjut", from:"2026-12-28", to:"2027-01-24", band:"±7–7.5",
+  {nm:"Bulan 3 · Lanjut", cefr:"C1", from:"2026-12-28", to:"2027-01-24", band:"±7–7.5",
    goal:"Speaking Part 3 abstrak dengan hedging & idiom natural, reading passage 3 akademik, Task 1 semua jenis grafik/proses/peta, vocab level C1."},
-  {nm:"Bulan 4 · Mahir & simulasi", from:"2027-01-25", to:"2027-02-28", band:"8+ → 9",
+  {nm:"Bulan 4 · Mahir & simulasi", cefr:"C1 → C2", from:"2027-01-25", to:"2027-02-28", band:"8+ → 9",
    goal:"Full mock test tiap Minggu dengan waktu asli, poles kesalahan dari catatan error, jawaban spontan seperti native, strategi waktu ujian."}
 ];
+const ENG_CEFR = [["A1","Pemula","Kalimat sangat sederhana, kenalan diri"],["A2","Dasar","Obrolan sehari-hari yang rutin"],["B1","Menengah","IELTS ±4–5. Bisa cerita pengalaman, tapi masih kaku"],["B2","Menengah atas","IELTS ±5.5–6.5. Lancar diskusi topik umum dengan native"],["C1","Mahir","IELTS ±7–8. Fleksibel, natural, akademik"],["C2","Sangat mahir","IELTS ±8.5–9. Setara native terdidik"]];
+function engCefr(b){ return b == null ? "" : b >= 8.5 ? "C2" : b >= 7 ? "C1" : b >= 5.5 ? "B2" : b >= 4 ? "B1" : "A2"; }
+function engCefrChip(c){ return c ? '<span class="chip small eng-cefr" title="Level CEFR (A1 paling dasar – C2 paling mahir)">'+esc(c)+'</span>' : ''; }
 function engRoadmap(){
   const t = todayISO(), cur = ENG_ROADMAP.findIndex(r => t <= r.to), ci = cur < 0 ? ENG_ROADMAP.length-1 : Math.max(0, cur);
   return '<details class="card"'+(engDayNo() <= 1 ? ' open' : '')+'><summary><b>Roadmap 4 bulan menuju band 9</b> <span class="small muted">· sekarang: '+esc(ENG_ROADMAP[ci].nm)+'</span></summary><div class="stack" style="margin-top:12px">'+
-    '<p class="small muted">Levelnya naik pelan-pelan per bulan, bukan per hari. Tiap hari 1 task + 5 menit ngomong spontan, tiap Minggu mini test yang makin mirip tes asli. Target band per bulan itu perkiraan, nanti disesuaikan sama hasil mini test-mu.</p>'+
-    '<div class="eng-road">'+ENG_ROADMAP.map((r, i) => '<div class="ms'+(i===ci?' eng-now':'')+'"><div class="row" style="justify-content:space-between"><b>'+esc(r.nm)+'</b>'+(i===ci?'<span class="chip small pop">Sekarang</span>':'')+'</div><span class="small muted">'+fmt(r.from)+' – '+fmt(r.to)+' · target '+esc(r.band)+'</span><p class="small" style="margin:4px 0 0">'+esc(r.goal)+'</p></div>').join("")+'</div></div></details>';
+    '<div class="eng-cefrs">'+ENG_CEFR.map(([c, nm, d]) => '<div class="ms'+(["B1","B2","C1","C2"].includes(c)?'':' muted')+'"><b>'+c+'</b> <span class="small">'+nm+'</span><p class="small muted" style="margin:2px 0 0">'+d+'</p></div>').join("")+'</div><p class="small muted">Label A1–C2 di tiap hari = level CEFR materinya. Kamu mulai di B1–B2, target akhir C2 (band 9).</p><p class="small muted">Levelnya naik pelan-pelan per bulan, bukan per hari. Tiap hari 1 task + 5 menit ngomong spontan, tiap Minggu mini test yang makin mirip tes asli. Target band per bulan itu perkiraan, nanti disesuaikan sama hasil mini test-mu.</p>'+
+    '<div class="eng-road">'+ENG_ROADMAP.map((r, i) => '<div class="ms'+(i===ci?' eng-now':'')+'"><div class="row" style="justify-content:space-between"><b>'+esc(r.nm)+'</b>'+(i===ci?'<span class="chip small pop">Sekarang</span>':'')+'</div><span class="small muted">'+fmt(r.from)+' – '+fmt(r.to)+' · target '+esc(r.band)+' · CEFR '+esc(r.cefr)+'</span><p class="small" style="margin:4px 0 0">'+esc(r.goal)+'</p></div>').join("")+'</div></div></details>';
 }
 /* ---------------- SPEAKING SPONTAN (pakai timer + rekam suara, tanpa teks) ---------------- */
 const ENG_BANK = {
@@ -2824,7 +2844,7 @@ const ENG_BANK = {
  p3:["Why do some people find it hard to speak a foreign language, even after years of study?","Do you think people today have less free time than in the past?","How has social media changed friendships?","Is it better to study alone or in groups?","Should healthy food be cheaper than junk food?","Why do some young people want to live abroad?","What makes a good teacher?","Do you think doctors should spend more time talking to patients?","Will robots replace many jobs in the future?","Why is tourism important for some countries?"]
 };
 /* rencana latihan spontan harian (dari mudah ke sulit). n = jumlah pertanyaan, talk = detik bicara */
-const ENG_DRILL = {1:{p:1,n:3},2:{p:1,n:3},3:{p:1,n:3},4:{p:1,n:3},6:{p:1,n:4},7:{p:2,talk:60},8:{p:1,n:4},9:{p:2,talk:90},10:{p:1,n:4},11:{p:2,talk:120}};
+const ENG_DRILL = {1:{p:1,n:3},2:{p:1,n:3},3:{p:1,n:3},4:{p:1,n:3},5:{p:1,n:4},6:{p:1,n:4},8:{p:2,talk:60},9:{p:1,n:4},10:{p:2,talk:90},11:{p:1,n:4},12:{p:2,talk:90},13:{p:2,talk:120}};
 const ENG_PT = {1:{think:5, talk:40}, 2:{think:60, talk:120}, 3:{think:10, talk:60}};
 const ENG_PIDEAS = {
  1:["Well, to be honest, …","It depends, really.","mainly because…","For example, …","That said, …"],
@@ -2912,11 +2932,21 @@ function engDrTick(){
 
 /* Reward: oleh-oleh tiap kali satu hari beres */
 const ENG_FUN = {
+  salzburg:{hi:"Grüß Gott! (salam orang Austria)", f:[
+    "Salzburg artinya 'benteng garam'. Kota ini kaya raya berabad-abad dari tambang garam di pegunungan sekitarnya.",
+    "Mozart lahir di sini tahun 1756. Rumah kelahirannya di Getreidegasse sekarang jadi museum.",
+    "Benteng Hohensalzburg di atas bukit adalah salah satu kastil abad pertengahan terbesar yang masih utuh di Eropa, dan film The Sound of Music juga syuting di kota ini."],
+    m:"Grammar kecil kayak a/the dan -s jamak itu yang bedain band 6 sama band 7. Kamu barusan nambal salah satu lubang paling umum. Keren!"},
+  bern:{hi:"Grüessech! (salam khas orang Bern)", f:[
+    "Kota tua Bern masuk Warisan Dunia UNESCO. Trotoarnya beratap lengkungan batu sepanjang ±6 km, jadi bisa jalan-jalan walau hujan.",
+    "Einstein menyusun teori relativitas khusus tahun 1905 waktu tinggal dan kerja di Bern sebagai pegawai kantor paten.",
+    "Saat musim panas, warga Bern berenang hanyut santai di Sungai Aare yang hijau toska, lalu naik lagi di hilir."],
+    m:"Besok Minggu, mini test #2. Kosakata yang kamu kumpulin 2 minggu ini siap dipakai. Gas!"},
   grindelwald:{hi:"Grüezi! (Swiss-Jerman)", f:[
     "Grindelwald dijuluki 'desa gletser' karena dua gletser turun sampai dekat desanya.",
     "Di atas desa ini menjulang dinding utara Gunung Eiger, tebing raksasa yang baru berhasil didaki tahun 1938.",
     "Dari sini orang naik kereta ke Jungfraujoch (3.454 m), stasiun kereta tertinggi di Eropa yang dibuka tahun 1912."],
-    m:"Besok Minggu mini test #2. Ini saatnya buktiin progresmu dari minggu lalu. Gas!"},
+    m:"Matching headings itu soal nangkep ide utama. Skill ini kepakai juga buat baca jurnal kedokteran. Dua hari lagi mini test #2!"},
   brienz:{hi:"Grüezi! (Swiss-Jerman)", f:[
     "Warna toska Danau Brienz berasal dari serbuk batuan halus yang digerus gletser, bukan dari alga.",
     "Brienz adalah rumah sekolah ukir kayu satu-satunya di Swiss, dan kota ini terkenal dengan kerajinan ukirnya.",
@@ -3006,7 +3036,7 @@ function vEnglish(){
   return ''+
   '<div class="eng-hero" style="background-image:url(\''+engImg(D.place)+'\')">'+
     '<div class="eng-place">'+esc(P.nm)+' · '+esc(P.cc)+'</div>'+
-    '<span class="eyebrow" style="color:#EDE8FF">English rutin · target IELTS 9.0 · '+fmt(t)+(D.lvl?' · '+esc(D.lvl):'')+'</span>'+
+    '<span class="eyebrow" style="color:#EDE8FF">English rutin · target IELTS 9.0 · '+fmt(t)+(D.lvl?' · '+esc(D.lvl):'')+(D.cefr?' · CEFR '+esc(D.cefr):'')+'</span>'+
     '<h2>'+esc(head)+'</h2>'+
     '<p class="eng-why">'+esc(D.why)+'</p>'+
     '<div class="count">'+
@@ -3051,7 +3081,7 @@ function engDayCard(d){
   const st = done ? ['ok','Selesai'] : dt === t ? ['pop','Hari ini'] : dt < t ? ['warn','Tertunda'] : ['','Nanti'];
   return '<div class="eng-day'+(dt===t?' today':'')+'"><img src="'+engImg(D.place,true)+'" alt="'+esc(ENG_PLACES[D.place].nm)+'" loading="lazy">'+
     '<div class="eng-day-b"><div class="row" style="justify-content:space-between"><b>Day '+d+'</b><span class="chip small eng-st '+st[0]+'">'+st[1]+'</span></div>'+
-    (D.lvl?'<span class="small eng-lvl">'+esc(D.lvl)+'</span>':'')+'<span class="small muted">'+fmt(dt)+' · '+esc(ENG_PLACES[D.place].nm)+'</span><p class="small" style="margin:2px 0 4px"><b>'+esc(D.title)+'</b></p>'+
+    (D.lvl?'<span class="small eng-lvl">'+esc(D.lvl)+' '+engCefrChip(D.cefr)+'</span>':'')+'<span class="small muted">'+fmt(dt)+' · '+esc(ENG_PLACES[D.place].nm)+'</span><p class="small" style="margin:2px 0 4px"><b>'+esc(D.title)+'</b></p>'+
     D.tasks.map((x, i) => '<button class="eng-tk'+(engDone(d,i)?' on':'')+'" data-act="engopen" data-d="'+d+'" data-i="'+i+'">'+(engDone(d,i)?'✓ ':'○ ')+ENG_KIND[x.k]+'</button>').join("")+'</div></div>';
 }
 function engProgress(){
